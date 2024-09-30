@@ -1,0 +1,64 @@
+@import url(../../utils/colors/colors.css);
+@import url(../../utils//fonts/fonts.css);
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.container_header {
+  background-color: var(--cream);
+  position: fixed;
+  width: 100vw;
+  left: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  justify-content: space-between;
+}
+
+.container_header div:first-child {
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.container_header div:first-child .icon,
+.container_login .icon {
+  color: var(--orange);
+}
+
+.container_header div:first-child .icon:hover {
+  color: var(--darkOrange);
+}
+.container_image {
+  padding-left: 16px;
+  padding-top: 10px;
+}
+
+.container_login {
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 8px;
+  display: flex;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.container_login h3 {
+  font-family: var(--LeagueSpartan);
+  font-weight: normal;
+  padding-top: 4px;
+  font-size: 20px;
+}
+
+.container_login .icon {
+  margin-left: 4px;
+  font-size: 20px;
+}
+
+.container_login:hover {
+  background-color: var(--lighGray);
+}
