@@ -1,3 +1,6 @@
+@import url(../../utils/colors/colors.css);
+@import url(../../utils//fonts/fonts.css);
+
 .modal {
   position: fixed;
   top: 0;
@@ -12,7 +15,7 @@
 }
 
 .modal-content {
-  background-color: white;
+  background-color: var(--lighGray);
   padding: 2rem;
   border-radius: 10px;
   text-align: center;
@@ -21,10 +24,12 @@
 }
 
 .modal-title {
-  font-family: Arial, sans-serif;
+  font-family: var(--LeagueSpartan);
   margin-bottom: 1rem;
-  font-size: 1.5rem;
-  color: #333;
+  font-size: 1.7rem;
+  color: #000000;
+  font-weight: normal;
+  border-bottom: 1px solid var(--silver);
 }
 
 .brand {
@@ -41,38 +46,39 @@
 .login-form {
   display: flex;
   flex-direction: column;
-}
-
-.login-form label {
-  margin-bottom: 0.5rem;
-  text-align: left;
-  font-size: 0.9rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-form input {
   padding: 0.8rem;
   margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-.login-btn {
-  background-color: #ff4500;
-  color: white;
-  padding: 0.7rem;
   border: none;
   border-radius: 5px;
   font-size: 1rem;
+  width: 90%;
+  box-shadow: 0px 8px 10px -7px rgba(72, 77, 77, 0.35);
+}
+
+.login-btn {
+  color: var(--orange);
+  padding: 0.3rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px;
   cursor: pointer;
+  font-family: var(--Lalezar);
+  width: 50%;
 }
 
 .login-btn:hover {
-  background-color: #ff6347;
+  background-color: var(--orange);
+  color: white;
 }
 
 .register-link {
   margin-top: 1rem;
+  font-family: var(--LeagueSpartan);
 }
 
 .register-link a {
@@ -88,21 +94,28 @@
 
 .google-btn,
 .facebook-btn {
-  background-color: #eee;
+  background-color: var(--cream);
   color: #555;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
+  width: 48px;
+  box-shadow: 0px 8px 10px -3px rgba(72, 77, 77, 0.35);
+}
+
+.facebook-btn {
+  color: #3d6ad6;
 }
 
 .google-btn:hover {
-  background-color: #d34836;
+  background-color: #ea4335;
   color: white;
+  font-size: 0.8rem;
 }
 
 .facebook-btn:hover {
-  background-color: #3b5998;
+  background-color: #3d6ad6;
   color: white;
 }

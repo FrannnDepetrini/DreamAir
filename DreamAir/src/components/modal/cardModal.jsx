@@ -1,23 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./cardModal.css";
+import { FcGoogle, FaFacebookF, GrGoogle } from "../../utils/icons/icons";
 
 const CardModal = () => {
+  const [googleFocus, setgoogleFocus] = useState(false);
   return (
     <div className="modal">
       <div className="modal-content">
         <h2 className="modal-title">
           Bienvenido a{" "}
-          <span className="brand">
-            Dream<span className="brand-highlight">Air</span>
-          </span>
+          <img
+            style={{ width: "200px" }}
+            src="https://github.com/FrannnDepetrini/DreamAir/blob/main/DreamAir/src/utils/images/LogoDreamAirPH.png?raw=true"
+            alt=""
+          />
         </h2>
 
         <form className="login-form">
-          <button type="submit" className="login-btn">
-            Iniciar sesión
-          </button>
           <br />
-          <label htmlFor="email"></label>
+
           <input
             type="email"
             id="email"
@@ -25,7 +26,7 @@ const CardModal = () => {
             placeholder="Mail"
             required
           />
-          <label htmlFor="password"></label>
+
           <input
             type="password"
             id="password"
@@ -33,6 +34,9 @@ const CardModal = () => {
             placeholder="Contraseña"
             required
           />
+          <button type="submit" className="login-btn">
+            Iniciar sesion
+          </button>
         </form>
 
         <div className="register-link">
@@ -42,8 +46,16 @@ const CardModal = () => {
         </div>
 
         <div className="social-login">
-          <button className="google-btn">Google</button>
-          <button className="facebook-btn">Facebook</button>
+          <button
+            onMouseEnter={() => setgoogleFocus(true)}
+            onMouseLeave={() => setgoogleFocus(false)}
+            className="google-btn"
+          >
+            {googleFocus ? <GrGoogle fontSize={"0.8rem"} /> : <FcGoogle />}
+          </button>
+          <button className="facebook-btn">
+            <FaFacebookF />
+          </button>
         </div>
       </div>
     </div>
