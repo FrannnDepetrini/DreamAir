@@ -1,6 +1,6 @@
 import "./App.css";
 import CardFlight from "./components/cardFlight/cardFlight";
-
+import CardModal from "./components/modal/cardModal";
 function App() {
   const flight1 = {
     departure: "ROS Fisherton",
@@ -30,6 +30,7 @@ function App() {
   return (
     <div className="container_app">
       <CardFlight flightDeparture={flight1} />
+      <CardModal />
     </div>
   );
 }
