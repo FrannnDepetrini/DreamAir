@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.container_aside {
+  background-color: var(--cream);
+  position: fixed;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* width: 170px; */
+  overflow: hidden;
+  width: 54px;
+  z-index: 1000;
+  transition: width 0.3s ease-in-out;
+}
+
+.container_aside:hover {
+  width: 170px;
+}
+
+.container_aside div {
+  cursor: pointer;
+  width: 100%;
+  padding: 6px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 8px;
+  white-space: nowrap;
+}
+.container_button_flights_focus,
+.container_button_favs_focus,
+.container_button_my_flights_focus,
+.container_button_support_focus {
+  cursor: pointer;
+  width: 100%;
+  padding: 6px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 8px;
+  white-space: nowrap;
+  background-color: var(--platinium);
+}
+.container_button_flights_focus .icon,
+.container_button_my_flights_focus .icon,
+.container_button_favs_focus .icon,
+.container_button_support_focus .icon {
+  color: var(--orange) !important;
+}
+
+.container_button_flights_focus a,
+.container_button_my_flights_focus a,
+.container_button_support_focus a,
+.container_button_favs_focus a {
+  color: black !important;
+}
+.container_aside div:hover {
+  background-color: var(--platinium);
+}
+.container_aside div:hover .icon {
+  color: var(--orange);
+}
+
+.container_aside div .icon {
+  margin-right: 16px;
+  flex-shrink: 0;
+  color: var(--silver);
+  margin-left: 4px;
+}
+
+.container_aside div a {
+  text-decoration: none;
+  color: var(--silver);
+  font-size: 20px;
+  margin-top: 12px;
+  font-family: var(--LeagueSpartan);
+  font-weight: normal;
+}
+
+.container_aside div:hover a {
+  color: black;
+}
