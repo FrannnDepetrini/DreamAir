@@ -1,0 +1,54 @@
+.container_layout {
+  display: grid;
+  grid-template-columns: 54px 1fr; /* Ancho del aside y el main */
+  grid-template-rows: auto 1fr 200px;
+  grid-template-areas:
+    "header header"
+    "aside main"
+    "aside footer";
+  height: 100vh;
+}
+
+.container_layout div:first-child {
+  grid-area: header;
+  z-index: 10;
+}
+.container_layout div:nth-child(2) {
+  grid-area: aside;
+}
+
+.main,
+.main_adjusted {
+  margin-left: 10px;
+  grid-area: main;
+  background-color: red;
+  width: 400px;
+  height: 500px;
+  color: black;
+  font-size: 30;
+  margin-top: 70px;
+  border: 1px solid black;
+  transition: 0.15s ease-in-out;
+}
+.main {
+  margin-left: 10px;
+}
+.main_adjusted {
+  margin-left: 120px;
+}
+
+.footer,
+.footer_adjusted {
+  grid-area: footer;
+  height: 200px;
+  background-color: blue;
+  border: 1px solid black;
+  transition: margin-left 0.15s ease-in-out;
+}
+.footer {
+  margin-left: 10px;
+}
+
+.footer_adjusted {
+  margin-left: 120px;
+}

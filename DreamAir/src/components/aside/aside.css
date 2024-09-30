@@ -11,10 +11,20 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* width: 170px; */
   overflow: hidden;
   width: 54px;
-  z-index: 1000;
+  transition: width 0.3s ease-in-out;
+}
+
+.container_aside_open {
+  background-color: var(--cream);
+  position: fixed;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  width: 170px;
   transition: width 0.3s ease-in-out;
 }
 

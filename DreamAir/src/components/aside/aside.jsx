@@ -8,12 +8,16 @@ import {
 
 import "../aside/aside.css";
 
-const Aside = () => {
+const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   console.log(activeIndex);
   return (
-    <div className="container_aside">
+    <div
+      onMouseEnter={toggleMenuOpen}
+      onMouseLeave={toggleMenuClose}
+      className={`container_aside ${isMenuOpen ? "container_aside_open" : ""}`}
+    >
       <div
         onClick={() => setActiveIndex("flights")}
         className={
