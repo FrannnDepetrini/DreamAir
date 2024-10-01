@@ -1,0 +1,148 @@
+@import url(../../utils//fonts/fonts.css);
+
+*{
+    box-sizing: border-box;
+    font-family: var(--RadioCanada);
+}
+
+
+.div_container{
+    display: flex;
+    padding: 20px;
+    padding-top: 40px;
+    height: auto;
+    width: 100%;
+    background-color: #323255;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px 1px rgba(72, 77, 77, 0.452);
+}
+
+
+.div_search{
+    display: flex;
+    gap: 8px;
+    height: 100%;
+    width: 90%;
+}
+
+
+.div_search input{
+    height: 45px;
+    width: 50%;
+    padding: 8px 30px;
+    border-radius: 4px;
+    border: none;
+}
+
+.div_destinoCapacidad{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 16px;
+    height: 100%;
+    position: relative;
+}
+
+.div_destino{
+    display: flex;
+    gap: 8px;
+    position: relative;
+    align-items: center;
+}
+.div_capacidad{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.div_dates{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 16px;
+    height: 100%;
+    position: relative;
+}
+
+.div_dates input{
+    width: 90%;
+}
+
+
+
+
+
+
+.switch{
+    color: white;
+    background-color:#323255;
+    border-radius: 50%;
+    padding: 4px;
+    z-index: 1;
+    position: absolute;
+    left: 47%;
+    font-size: 24px;
+}
+
+.location1{
+    color:#ff6b35;
+    padding: 4px;
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    font-size: 28px;
+}
+.location2{
+    color:#ff6b35;
+    padding: 4px;
+    z-index: 1;
+    position: absolute;
+    left: 51%;
+    font-size: 28px;
+}
+
+.calendar1{
+    color:#ff6b35;
+    padding: 4px;
+    z-index: 1;
+    position: absolute;
+    top: 4%;
+    font-size: 28px;
+}
+.calendar2{
+    color:#ff6b35;
+    padding: 4px;
+    z-index: 1;
+    position: absolute;
+    top: 41%;
+    font-size: 28px;
+}
+.calendar3{
+    color:#ff6b35;
+    padding: 4px;
+    z-index: 1;
+    position: absolute;
+    top: 78%;
+    font-size: 28px;
+}
+
+
+
+.div_container button{
+    width: 100px;
+    height: 45px;
+    background-color: #ff6b35;
+    border-radius: 4px;
+    color: white;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-family: var(--Lalezar);
+}
+
+.div_container button:hover{
+    background-color:#c15129;
+}
