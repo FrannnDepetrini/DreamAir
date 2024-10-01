@@ -13,3 +13,4 @@ export { FaCalendarAlt } from "@react-icons/all-files/fa/FaCalendarAlt";
 export { HiOutlineSwitchHorizontal } from "@react-icons/all-files/hi/HiOutlineSwitchHorizontal";
 export { RiDeleteBin6Line } from "@react-icons/all-files/ri/RiDeleteBin6Line";
 export { DiAptana } from "@react-icons/all-files/di/DiAptana";
+export { FaPen } from "@react-icons/all-files/fa/FaPen"
