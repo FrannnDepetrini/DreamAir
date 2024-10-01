@@ -1,0 +1,119 @@
+@import url(../../../utils/colors/colors.css);
+@import url(../../../utils/fonts/fonts.css);
+
+* {
+  box-sizing: border-box;
+}
+
+.div_container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.table_container {
+  max-height: 50%;
+  overflow-y: scroll;
+  border-radius: 20px;
+  box-shadow: 1px 2px 20px 1px black;
+}
+
+.table_container::-webkit-scrollbar {
+  width: 12px;
+  background-color: #fdfbf6;
+  border-radius: 16px;
+}
+
+.table_container::-webkit-scrollbar-thumb {
+  background-color: #323255;
+  border-radius: 16px;
+}
+
+.table {
+  background-color: #fdfbf6;
+  width: 100%;
+  border-radius: 12px;
+  border-collapse: collapse;
+}
+
+.table thead {
+  height: 40px;
+  border-radius: 12px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #fdfbf6;
+}
+
+.table thead tr th:first-child {
+  border-top-left-radius: 12px;
+  border-left: none;
+}
+.table thead tr th:last-child {
+  border-top-right-radius: 12px;
+  border-right: none;
+}
+
+.table tbody tr td:last-child {
+  border-right: none;
+}
+
+.table tbody tr td:first-child {
+  border-left: none;
+}
+
+.table tfoot {
+  border-radius: 12px;
+  width: 100%;
+  height: 12px;
+}
+
+td,
+th {
+  border: 2px solid var(--silver);
+  padding: 0.5rem;
+  text-align: center;
+  font-family: var(--RadioCanada);
+  font-weight: bold;
+}
+
+th {
+  color: #323255;
+  border-top: none;
+}
+
+.div_container button {
+  width: 200px;
+  height: 35px;
+  background-color: #ff6b35;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+}
+
+.div_container button:hover {
+  background-color: #c15129;
+}
+
+.table_button {
+  background-color: var(--orange);
+  padding: 0.3rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px;
+  cursor: pointer;
+  font-family: var(--Lalezar);
+  width: 50%;
+}
+
+.edit_icon {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.edit_icon:hover {
+  font-size: 28px;
+}

@@ -1,0 +1,130 @@
+@import url(../../../utils//fonts/fonts.css);
+
+* {
+    box-sizing: border-box;
+    font-family: var(--RadioCanada);
+}
+
+
+.div_container {
+    background-color: #323255;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    width: 750px;
+    height: 400px;
+    box-shadow: 0px 4px 10px 1px rgba(72, 77, 77, 0.452);
+
+}
+
+.div_select{
+    display: flex;
+    gap: 12px;
+    width: auto;
+}
+
+.div_select select{
+    background-color:#323255;
+    border: none;
+    color: white;
+    height: 35px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.data_register {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+
+
+
+.data_register input {
+    height: 45px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+}
+
+
+
+
+.div_name {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+.div_phone {
+    display: flex;
+    gap: 8px;
+    width: 90%;
+}
+
+.div_email {
+    display: flex;
+    align-items: end;
+    gap: 8px;
+    width: 95%;
+}
+
+.div_password {
+    display: flex;
+    align-items: end;
+    gap: 8px;
+    width: 95%;
+}
+
+
+
+
+label{
+    color: white;
+   
+}
+
+.div_labelInput{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+}
+
+.input100{
+    width: 100%;
+    padding: 8px;
+}
+
+
+
+
+.button_register {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 92%;
+}
+
+.button_register button {
+    width: 120px;
+    height: 45px;
+    background-color: #ff6b35;
+    border-radius: 4px;
+    color: white;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-family: var(--Lalezar);
+}
+
+.button_register button:hover {
+    background-color: #c15129;
+
+}
