@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./cardModal.css";
 import { FcGoogle, FaFacebookF, GrGoogle } from "../../utils/icons/icons";
 
