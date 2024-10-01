@@ -1,4 +1,5 @@
 import "./App.css";
+import TableAirline from "./components/Airline/TableAirline/TableAirline";
 import CardFlight from "./components/cardFlight/cardFlight";
 import CardModal from "./components/modal/cardModal";
 import TableUser from "./components/tableUser/TableUser";
@@ -30,7 +31,7 @@ function App() {
   };
   return (
     <div className="container_app">
-      <TableUser />
+      <TableAirline />
     </div>
   );
 }
