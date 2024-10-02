@@ -1,5 +1,5 @@
 import "./TableUser.css";
-import { RiDeleteBin6Line } from "../../utils/icons/icons";
+import { RiDeleteBin6Line } from "../../../utils/icons/icons";
 const TableUser = () => {
   return (
     <div className="div_container">

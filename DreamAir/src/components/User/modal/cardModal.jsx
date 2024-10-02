@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./cardModal.css";
-import { FcGoogle, FaFacebookF, GrGoogle } from "../../utils/icons/icons";
+import { FcGoogle, FaFacebookF, GrGoogle } from "../../../utils/icons/icons";
 
 const CardModal = () => {
   const [googleFocus, setgoogleFocus] = useState(false);

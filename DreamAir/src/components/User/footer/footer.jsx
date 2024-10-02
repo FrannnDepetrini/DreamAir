@@ -1,5 +1,5 @@
-import "../footer/footer.css";
-import { FaFacebookF, FaInstagram } from "../../utils/icons/icons";
+import "./footer.css";
+import { FaFacebookF, FaInstagram } from "../../../utils/icons/icons";
 
 const Footer = () => {
   return (

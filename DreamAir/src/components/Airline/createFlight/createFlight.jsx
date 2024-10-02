@@ -1,5 +1,5 @@
-import "../createFlight/createFlight.css"
-import { IoLocationSharp, FaCalendarAlt, HiOutlineSwitchHorizontal } from "../../utils/icons/icons";
+import "./createFlight.css"
+import { IoLocationSharp, FaCalendarAlt, HiOutlineSwitchHorizontal } from "../../../utils/icons/icons.js";
 
 const CreateFlight = () => {
 

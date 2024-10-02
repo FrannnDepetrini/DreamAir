@@ -4,9 +4,9 @@ import {
   FaHeart,
   IoAirplaneSharp,
   HiOutlineTicket,
-} from "../../utils/icons/icons";
+} from "../../../utils/icons/icons";
 
-import "../aside/aside.css";
+import "./aside.css";
 
 const Aside = () => {
   const [activeIndex, setActiveIndex] = useState(null);

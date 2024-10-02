@@ -1,6 +1,8 @@
 import "./App.css";
+import Aside from "./components/User/aside/aside";
 
-import BuyFligth from "./components/buyFligth/BuyFligth";
+
+
 
 function App() {
   const flight1 = {
@@ -30,7 +32,7 @@ function App() {
   };
   return (
     <div className="container_app">
-      <BuyFligth />
+      <Aside/>
     </div>
   );
 }
