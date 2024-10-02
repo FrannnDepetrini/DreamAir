@@ -1,8 +1,7 @@
 import "./App.css";
-import TableAirline from "./components/Airline/TableAirline/TableAirline";
-import CardFlight from "./components/cardFlight/cardFlight";
-import CardModal from "./components/modal/cardModal";
-import TableUser from "./components/tableUser/TableUser";
+
+import BuyFligth from "./components/buyFligth/BuyFligth";
+
 function App() {
   const flight1 = {
     departure: "ROS Fisherton",
@@ -31,7 +30,7 @@ function App() {
   };
   return (
     <div className="container_app">
-      <TableAirline />
+      <BuyFligth />
     </div>
   );
 }

@@ -14,5 +14,5 @@ export { HiOutlineSwitchHorizontal } from "@react-icons/all-files/hi/HiOutlineSw
 export { RiDeleteBin6Line } from "@react-icons/all-files/ri/RiDeleteBin6Line";
 export { DiAptana } from "@react-icons/all-files/di/DiAptana";
 export { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
-export { FaPen } from "@react-icons/all-files/fa/FaPen"
-
+export { FaPen } from "@react-icons/all-files/fa/FaPen";
+export { FaArrowLeft } from "@react-icons/all-files/fa/FaArrowLeft";
