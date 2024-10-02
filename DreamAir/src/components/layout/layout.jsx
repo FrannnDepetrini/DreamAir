@@ -2,6 +2,7 @@ import Header from "../header/header";
 import Aside from "../aside/aside";
 import "../layout/layout.css";
 import { useState } from "react";
+import Footer from "../footer/footer";
 const Layout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handlerMenu = () => {
@@ -27,7 +28,7 @@ const Layout = () => {
       <div className={isMenuOpen ? "main_adjusted" : "main"}>
         <h3>main</h3>
       </div>
-      <div className={isMenuOpen ? "footer_adjusted" : "footer"}>footer</div>
+      <Footer />
     </div>
   );
 };
