@@ -1,9 +1,15 @@
 import "./BuyFligth.css";
-import { IoAirplaneSharp } from "../../utils/icons/icons";
+import { IoAirplaneSharp, FaArrowLeft   } from "../../utils/icons/icons";
 const BuyFligth = () => {
   return (
     <div className="div_container">
       <div className="user_data">
+        <h5> <FaArrowLeft /> Volver a la página anterior </h5>
+        <div className="div_h2">
+          <h2>Ya casi conseguis el vuelo de tus sueños!</h2>
+          <h2>Completa los datos y listo!</h2>
+        </div>
+
         <div className="user_info">
           <form className="form">
             <label htmlFor="nombre" className="form-label">
@@ -37,7 +43,6 @@ const BuyFligth = () => {
               name="nacionalidad"
               placeholder="Argentina"
               className="form-input"
-              disabled
             />
 
             <label htmlFor="dni" className="form-label">
@@ -63,17 +68,18 @@ const BuyFligth = () => {
 
             <label className="form-label">Sexo</label>
             <div className="button-group">
-              <button className="button">Masculino</button>
-              <button className="button">Femenino</button>
+              <button className="button" type="button">Masculino</button>
+              <button className="button" type="button">Femenino</button>
             </div>
 
             <label className="form-label">Clase</label>
             <div className="button-group">
-              <button className="button">Económica</button>
-              <button className="button">Primera clase</button>
+              <button className="button" type="button">Económica</button>
+              <button className="button" type="button">Primera clase</button>
             </div>
           </form>
         </div>
+        <h2>A donde enviamos tu(s) voucher?</h2>
         <div className="send_voucher">
           <form className="purchase-form">
             <label htmlFor="email" className="purchase-form-label">
@@ -109,12 +115,21 @@ const BuyFligth = () => {
         <div className="payment_info">
           <h2>Detalles del pago</h2>
           <div className="details">
-            <h5>Vuelo(s) para n persona(s) </h5>
-            <p>$85.130</p>
-            <h5>Recargo por clase n </h5>
-            <p>$32.700</p>
-            <h5>Impuestos </h5>
-            <p> $8.250</p>
+            <div className="details2">
+              <h5>Vuelo(s) para n persona(s) </h5>
+              <p>$85.130</p>
+            </div>
+            
+            <div className="details2">
+              <h5>Recargo por clase n </h5>
+              <p>$32.700</p>
+            </div>
+
+            <div className="details2">
+              <h5>Impuestos </h5>
+              <p> $8.250</p>
+            </div>
+            
           </div>
           <div className="total_payment">
             <h2>Total</h2>
@@ -124,7 +139,7 @@ const BuyFligth = () => {
         <div className="fligth_info">
           <h2>Detalles del vuelo</h2>
           <div className="from-to">
-            <IoAirplaneSharp />
+            <IoAirplaneSharp className="plane"/>
             <p>Buenos Aires(BUE) - Rosario</p>
             <p>Rosario - Buenos Aires(BUE)</p>
           </div>

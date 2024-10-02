@@ -5,37 +5,54 @@
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
+  font-family: var(--RadioCanada);
 }
 
 .div_container {
   display: flex;
-  background-color: var(--silver);
+  background-color: var(--lighGray);
   width: 100%;
-  min-width: 1000px;
-  justify-content: space-between;
+  padding: 8px;
 }
 
 .user_data {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 45%;
-  margin-top: 36px;
-  margin-left: 24px;
+  flex: 1;
+}
+
+.user_data h5{
+  color: var(--orange);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 32%;
+}
+
+.div_h2{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .user_info {
   background-color: var(--blue);
   padding: 20px;
   border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .fligth_data {
-  width: 35%;
-  background-color: #f0f0f0;
-  padding: 20px;
-  border-radius: 8px;
+  background-color: var(--lighGray);
+  font-family: var(--LeagueSpartan);
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding: 12px;
+  gap: 32px;
 }
 
 .form-label {
@@ -51,68 +68,34 @@
 .form-input {
   width: 68%;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 4px;
   font-size: 14px;
   font-family: var(--RadioCanada);
   font-weight: bold;
-  display: flex;
   color: gray;
-}
-
-.form-input[disabled] {
-  background-color: var(--cream);
-  color: #888;
-}
-
-.button-group {
-  display: flex;
-  width: 68%;
 }
 
 .button {
   background-color: var(--cream);
   color: black;
-  border: 1px solid var(--cream);
+  border: none;
   margin-right: -10px;
-  cursor: pointer;
   font-family: var(--RadioCanada);
   font-size: 16px;
-  text-align: center;
   font-weight: bold;
-}
-
-.button:last-child {
-  margin-right: 0;
 }
 
 .button:hover {
   background-color: #ddd;
 }
 
-/* .form-button {
-  background-color: #ff6b35;
-  color: #ffffff;
-  padding: 12px;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 16px;
-} */
-
-/* .form-button:hover {
-  background-color: #e65a25;
-} */
-
 /* Email para enviar el voucher */
 .send_voucher {
   background-color: var(--blue);
   padding: 12px;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .purchase-form {
   display: flex;
@@ -126,7 +109,6 @@
   font-size: 16px;
   font-weight: bold;
   color: var(--cream);
-
   font-family: var(--LeagueSpartan);
   padding: 4px;
 }
@@ -134,90 +116,105 @@
 .purchase-form-input {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 4px;
   font-size: 14px;
 }
-.buy_button {
-  display: flex;
-  align-items: flex-start;
-}
+
 .purchase_button {
-  font-family: var(--RadioCanada);
+  font-family: var(--Lalezar);
+  background-color: var(--orange);
   font-weight: bold;
   font-size: 20px;
-  background-color: var(--orange);
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 45px;
 }
 
 .purchase_button:hover {
   background-color: #e65a25;
 }
 
-.fligth_data {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  padding: 12px;
-  width: auto;
-  font-family: var(--LeagueSpartan);
-  align-items: flex-end;
-  background-color: white;
-  margin-right: 24px;
-}
-
 .payment_info {
-  display: flex;
-  flex-direction: column;
   padding: 16px;
-  justify-content: flex-start;
-  align-items: self-start;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: var(--cream);
 }
 .payment_info h2 {
   font-size: 28px;
   color: var(--blue);
 }
 .details {
+  margin: 0 auto;
+  width: 90%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  gap: 8px;
 }
-.details p {
-  justify-content: flex-end;
+
+.details2{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
+
 .total_payment {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   font-size: 22px;
   color: var(--blue);
+  
 }
 
 .fligth_info {
+  background-color: var(--cream);
+  width: 60%;
   display: flex;
   flex-direction: column;
   padding: 16px;
-  justify-content: flex-start;
-  align-items: self-start;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  margin-top: 12px;
   border-radius: 8px;
+  gap: 12px;
 }
+
 .fligth_info h2 {
   font-size: 28px;
   color: var(--blue);
 }
+
 .from-to {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  gap: 8px;
   font-family: var(--RadioCanada);
   font-weight: bold;
+}
+
+.plane{
+  font-size: 24px;
 }
 
 .fligth_date {
   display: flex;
   justify-content: space-between;
+  font-weight: bold;
 }
+
+.going{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .going h4 {
   color: var(--blue);
 }
