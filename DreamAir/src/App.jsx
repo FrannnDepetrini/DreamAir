@@ -1,11 +1,6 @@
 import "./App.css";
-import Aside from "./components/User/aside/aside";
 
-
-
-
-
-import Footer from "./components/footer/footer";
+import Layout from "./components/layout/layout";
 
 function App() {
   const flight1 = {
@@ -35,8 +30,7 @@ function App() {
   };
   return (
     <div className="container_app">
-      <Aside/>
-      <Footer />
+      <Layout/>
     </div>
   );
 }

@@ -1,5 +1,7 @@
-import Header from "../header/header";
-import Aside from "../aside/aside";
+import Header from "../User/header/header";
+import Aside from "../User/aside/aside";
+import Footer from "../User/footer/footer";
+import Register from "../User/register/register";
 import "../layout/layout.css";
 import { useState } from "react";
 const Layout = () => {
@@ -16,7 +18,7 @@ const Layout = () => {
   };
 
   return (
-    <div className="container_layout">
+    <div className={isMenuOpen ? "container_layout_ajusted" : "container_layout"}>
       <Header toggleMenu={handlerMenu} className="header" />
       <Aside
         isMenuOpen={isMenuOpen}
@@ -25,9 +27,11 @@ const Layout = () => {
         className="aside"
       />
       <div className={isMenuOpen ? "main_adjusted" : "main"}>
-        <h3>main</h3>
+        <h2>Registrate</h2>
+        <Register/>
       </div>
-      <div className={isMenuOpen ? "footer_adjusted" : "footer"}>footer</div>
+      
+      <Footer className={isMenuOpen ? "footer_adjusted" : "footer"}/>
     </div>
   );
 };
