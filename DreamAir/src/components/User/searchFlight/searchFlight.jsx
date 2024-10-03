@@ -1,5 +1,5 @@
-import "../searchFlight/searchFlight.css"
-import { IoLocationSharp, FaCalendarAlt, HiOutlineSwitchHorizontal } from "../../utils/icons/icons";
+import "./searchFlight.css"
+import { IoLocationSharp, FaCalendarAlt, HiOutlineSwitchHorizontal } from "../../../utils/icons/icons";
 import { useState } from "react";
 
 const SearchFlight = () => {

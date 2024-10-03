@@ -1,4 +1,9 @@
 import "./App.css";
+import Aside from "./components/User/aside/aside";
+
+
+
+
 
 import Footer from "./components/footer/footer";
 
@@ -30,6 +35,7 @@ function App() {
   };
   return (
     <div className="container_app">
+      <Aside/>
       <Footer />
     </div>
   );
