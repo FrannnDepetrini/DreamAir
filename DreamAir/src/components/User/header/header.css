@@ -10,7 +10,9 @@
 .container_header {
   background-color: var(--cream);
   position: fixed;
-  width: 100vw;
+  border: 1px solid var(--silver);
+  z-index: 10;
+  width: 100%;
   left: 0;
   height: 60px;
   display: flex;

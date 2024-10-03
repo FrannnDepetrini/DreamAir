@@ -1,11 +1,11 @@
 import "./header.css";
 import { FaUser, IoMenu } from "../../../utils/icons/icons";
 
-const Header = () => {
+const Header = ({ toggleMenu }) => {
   const handlerLogin = async () => {};
   return (
     <div className="container_header">
-      <div>
+      <div onClick={toggleMenu}>
         <div className="container_menu">
           <IoMenu className="icon" />
         </div>
