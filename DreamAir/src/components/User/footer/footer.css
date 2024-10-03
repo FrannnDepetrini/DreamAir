@@ -3,13 +3,6 @@
 
 .container_footer {
   background-color: var(--cream);
-  display: grid;
-  width: 90vw;
-  height: auto;
-
-  grid-template-areas:
-    ". oInfo iExtra ."
-    ". . . sMedia";
   display: flex;
   justify-content: space-around;
   grid-area: footer;
