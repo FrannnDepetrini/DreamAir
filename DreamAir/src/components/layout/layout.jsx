@@ -4,6 +4,7 @@ import Footer from "../User/footer/footer";
 import Register from "../User/register/register";
 import "../layout/layout.css";
 import { useState } from "react";
+import Footer from "../footer/footer";
 const Layout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handlerMenu = () => {
@@ -30,6 +31,7 @@ const Layout = () => {
         <h2>Registrate</h2>
         <Register/>
       </div>
+      <Footer />
       
       <Footer className={isMenuOpen ? "footer_adjusted" : "footer"}/>
     </div>
