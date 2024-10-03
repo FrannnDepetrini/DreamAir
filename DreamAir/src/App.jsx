@@ -4,6 +4,9 @@ import Aside from "./components/User/aside/aside";
 
 
 
+
+import Footer from "./components/footer/footer";
+
 function App() {
   const flight1 = {
     departure: "ROS Fisherton",
@@ -33,6 +36,7 @@ function App() {
   return (
     <div className="container_app">
       <Aside/>
+      <Footer />
     </div>
   );
 }
