@@ -1,0 +1,94 @@
+@import url(../../../utils/colors/colors.css);
+@import url(../../../utils//fonts/fonts.css);
+
+.container_footer {
+  background-color: var(--cream);
+  display: grid;
+  width: 100vw;
+  height: auto;
+  grid-template-areas:
+    ". oInfo iExtra ."
+    ". . . sMedia";
+}
+
+.container_our_info {
+  grid-area: oInfo;
+  padding: 16px;
+  text-align: start;
+}
+.container_our_info h2 {
+  font-family: var(--RadioCanada);
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.container_our_info a {
+  text-decoration: none;
+  color: black;
+  font-family: var(--Inter);
+  font-weight: normal;
+}
+.container_info_extra {
+  grid-area: iExtra;
+  padding: 16px;
+  text-align: start;
+}
+
+.container_info_extra h2 {
+  font-family: var(--RadioCanada);
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.container_info_extra a {
+  text-decoration: none;
+  color: black;
+  font-family: var(--Inter);
+  font-weight: normal;
+}
+.container_social_media {
+  grid-area: sMedia;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 50px;
+  padding-bottom: 10px;
+}
+
+.link_instagram {
+  text-decoration: none;
+  background-color: #f62528;
+  color: var(--cream);
+  margin-right: 10px;
+  border-radius: 50%;
+  font-size: 20px;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: backgroud-color 0.5s ease-in-out;
+}
+
+.link_instagram:hover {
+  background-color: #b61c1f;
+}
+.icon_ig {
+  margin-top: 4px;
+}
+.link_facebook {
+  background-color: #3d6ad6;
+  text-decoration: none;
+  color: var(--cream);
+  border-radius: 50%;
+  width: 40px;
+  font-size: 30px;
+  height: 40px;
+  cursor: pointer;
+}
+.link_facebook:hover {
+  background-color: #243f80;
+}
+.icon_fb {
+  margin-top: 4.5px;
+}

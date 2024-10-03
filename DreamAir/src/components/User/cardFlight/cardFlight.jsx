@@ -2,7 +2,7 @@
 // import { IoAirplaneSharp } from "@react-icons/all-files/io5/IoAirplaneSharp";
 
 import { useState } from "react";
-import { FaHeart, FaRegHeart, IoAirplaneSharp } from "../../utils/icons/icons";
+import { FaHeart, FaRegHeart, IoAirplaneSharp } from "../../../utils/icons/icons";
 import "./cardFlight.css";
 
 const CardFlight = ({ flightDeparture, flightArrival = null }) => {

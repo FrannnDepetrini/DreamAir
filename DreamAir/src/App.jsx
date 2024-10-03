@@ -1,5 +1,8 @@
 import "./App.css";
-import CardFlight from "./components/cardFlight/cardFlight";
+import Aside from "./components/User/aside/aside";
+
+
+
 
 function App() {
   const flight1 = {
@@ -29,7 +32,7 @@ function App() {
   };
   return (
     <div className="container_app">
-      <CardFlight flightDeparture={flight1} />
+      <Aside/>
     </div>
   );
 }

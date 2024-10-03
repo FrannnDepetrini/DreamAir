@@ -1,5 +1,5 @@
-import "../header/header.css";
-import { FaUser, IoMenu } from "../../utils/icons/icons";
+import "./header.css";
+import { FaUser, IoMenu } from "../../../utils/icons/icons";
 
 const Header = ({ toggleMenu }) => {
   const handlerLogin = async () => {};
