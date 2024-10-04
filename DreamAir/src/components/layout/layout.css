@@ -28,11 +28,15 @@
 
 
 
-.container_layout div:first-child{
+.container_layout div:first-child, .container_layout_ajusted div:first-child{
   grid-area: header;
 }
-.container_layout div:nth-child(2) {
+.container_layout div:nth-child(2), .container_layout_ajusted div:nth-child(2) {
   grid-area: aside;
+}
+
+.container_layout div:nth-child(3), .container_layout_ajusted div:nth-child(3) {
+  grid-area: main;
 }
 
 .main,

@@ -1,0 +1,14 @@
+@import url(../../utils/fonts/fonts.css);
+@import url(../../utils/colors/colors.css);
+
+.div_container_pagesRegister{
+    padding: 32px;
+    background-color: var(--lighGray);
+}
+
+.h2{
+    font-family: var(--Lalezar);
+    font-size: 32px;
+    font-weight: normal;
+    padding: 8px;
+}

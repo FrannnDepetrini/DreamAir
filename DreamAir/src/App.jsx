@@ -1,6 +1,8 @@
 import "./App.css";
+import {BrowserRouter as Router, Route, Routes } from "react-router-dom"
 
 import Layout from "./components/layout/layout";
+import PagesRegister from "./pages/register/pagesRegister";
 
 function App() {
   const flight1 = {
@@ -29,9 +31,15 @@ function App() {
     ticketsAvailable: "60",
   };
   return (
-    <div className="container_app">
-      <Layout/>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout/>}>
+          <Route index element={<PagesRegister/>}/>
+        </Route>
+      </Routes>
+    </Router>
+      
+    
   );
 }
 

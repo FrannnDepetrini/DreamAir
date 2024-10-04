@@ -3,6 +3,7 @@ import Aside from "../User/aside/aside";
 import Footer from "../User/footer/footer";
 import Register from "../User/register/register";
 import "../layout/layout.css";
+import {Outlet} from "react-router-dom"
 import { useState } from "react";
 const Layout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,9 +27,9 @@ const Layout = () => {
         toggleMenuClose={handlerMenuClose}
         className="aside"
       />
-      <div className={isMenuOpen ? "main_adjusted" : "main"}>
+      <Outlet className={isMenuOpen ? "main_adjusted" : "main"}>
         
-      </div>
+      </Outlet>
 
       <Footer className={isMenuOpen ? "footer_adjusted" : "footer"}/>
     </div>
