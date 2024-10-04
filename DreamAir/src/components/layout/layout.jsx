@@ -27,8 +27,7 @@ const Layout = () => {
         className="aside"
       />
       <div className={isMenuOpen ? "main_adjusted" : "main"}>
-        <h2>Registrate</h2>
-        <Register/>
+        
       </div>
 
       <Footer className={isMenuOpen ? "footer_adjusted" : "footer"}/>
