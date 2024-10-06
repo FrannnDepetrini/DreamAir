@@ -1,9 +1,8 @@
 import Header from "../User/header/header";
 import Aside from "../User/aside/aside";
 import Footer from "../User/footer/footer";
-import Register from "../User/register/register";
 import "../layout/layout.css";
-import {Outlet} from "react-router-dom"
+import { Outlet } from "react-router-dom";
 import { useState } from "react";
 const Layout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +18,9 @@ const Layout = () => {
   };
 
   return (
-    <div className={isMenuOpen ? "container_layout_ajusted" : "container_layout"}>
+    <div
+      className={isMenuOpen ? "container_layout_ajusted" : "container_layout"}
+    >
       <Header toggleMenu={handlerMenu} className="header" />
       <Aside
         isMenuOpen={isMenuOpen}
@@ -27,11 +28,9 @@ const Layout = () => {
         toggleMenuClose={handlerMenuClose}
         className="aside"
       />
-      <Outlet className={isMenuOpen ? "main_adjusted" : "main"}>
-        
-      </Outlet>
+      <Outlet className={isMenuOpen ? "main_adjusted" : "main"}></Outlet>
 
-      <Footer className={isMenuOpen ? "footer_adjusted" : "footer"}/>
+      <Footer className={isMenuOpen ? "footer_adjusted" : "footer"} />
     </div>
   );
 };

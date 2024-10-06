@@ -5,13 +5,22 @@ import {
   IoAirplaneSharp,
   HiOutlineTicket,
 } from "../../../utils/icons/icons";
+import { useNavigate } from "react-router-dom";
 
 import "./aside.css";
 
 const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen }) => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const navigate = useNavigate();
+  const focusOption = (currentOpt) => {
+    setActiveIndex(currentOpt);
+    handleNavigate(currentOpt);
+  };
 
-  console.log(activeIndex);
+  const handleNavigate = (currentOpt) => {
+    navigate(`/${currentOpt}`);
+  };
+
   return (
     <div
       onMouseEnter={toggleMenuOpen}
@@ -19,7 +28,7 @@ const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen }) => {
       className={`container_aside ${isMenuOpen ? "container_aside_open" : ""}`}
     >
       <div
-        onClick={() => setActiveIndex("flights")}
+        onClick={() => focusOption("flights")}
         className={
           activeIndex == "flights"
             ? "container_button_flights_focus"
@@ -33,7 +42,7 @@ const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen }) => {
         <a href="#">Vuelos</a>
       </div>
       <div
-        onClick={() => setActiveIndex("favs")}
+        onClick={() => focusOption("favs")}
         className={
           activeIndex == "favs"
             ? "container_button_favs_focus"
@@ -44,7 +53,7 @@ const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen }) => {
         <a href="#">Favoritos</a>
       </div>
       <div
-        onClick={() => setActiveIndex("myFlights")}
+        onClick={() => focusOption("myFlights")}
         className={
           activeIndex == "myFlights"
             ? "container_button_my_flights_focus"
@@ -55,7 +64,7 @@ const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen }) => {
         <a href="#">Mis viajes</a>
       </div>
       <div
-        onClick={() => setActiveIndex("support")}
+        onClick={() => focusOption("support")}
         className={
           activeIndex == "support"
             ? "container_button_support_focus"

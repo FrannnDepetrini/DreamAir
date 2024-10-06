@@ -1,8 +1,9 @@
 import "./App.css";
-import {BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Layout from "./components/layout/layout";
 import PagesRegister from "./pages/register/pagesRegister";
+import BuyFligth from "./pages/buyFligth/BuyFligth";
 
 function App() {
   const flight1 = {
@@ -30,16 +31,17 @@ function App() {
     airline: "Emirates",
     ticketsAvailable: "60",
   };
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Layout/>}>
-          <Route index element={<PagesRegister/>}/>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<PagesRegister />} />
+          <Route path="/register" element={<PagesRegister />} />
+          <Route path="/buyFlight" element={<BuyFligth />} />
         </Route>
       </Routes>
     </Router>
-      
-    
   );
 }
 

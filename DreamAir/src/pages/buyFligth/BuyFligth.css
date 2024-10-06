@@ -22,7 +22,7 @@
   flex: 1;
 }
 
-.user_data h5{
+.user_data h5 {
   color: var(--orange);
   display: flex;
   align-items: center;
@@ -30,7 +30,7 @@
   width: 32%;
 }
 
-.div_h2{
+.div_h2 {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -160,7 +160,7 @@
   gap: 8px;
 }
 
-.details2{
+.details2 {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -172,7 +172,6 @@
   width: 100%;
   font-size: 22px;
   color: var(--blue);
-  
 }
 
 .fligth_info {
@@ -199,7 +198,7 @@
   font-weight: bold;
 }
 
-.plane{
+.plane {
   font-size: 24px;
 }
 
@@ -209,7 +208,7 @@
   font-weight: bold;
 }
 
-.going{
+.going {
   display: flex;
   flex-direction: column;
   gap: 4px;
