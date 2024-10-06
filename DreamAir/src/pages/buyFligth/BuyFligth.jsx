@@ -1,10 +1,15 @@
 import "./BuyFligth.css";
-import { IoAirplaneSharp, FaArrowLeft   } from "../../utils/icons/icons";
+import { IoAirplaneSharp, FaArrowLeft } from "../../utils/icons/icons";
+import { useNavigate } from "react-router-dom";
 const BuyFligth = () => {
+  const navigate = useNavigate();
   return (
     <div className="div_container">
       <div className="user_data">
-        <h5> <FaArrowLeft /> Volver a la página anterior </h5>
+        <h5 onClick={() => navigate(-1)}>
+          {" "}
+          <FaArrowLeft /> Volver a la página anterior{" "}
+        </h5>
         <div className="div_h2">
           <h2>Ya casi conseguis el vuelo de tus sueños!</h2>
           <h2>Completa los datos y listo!</h2>
@@ -68,14 +73,22 @@ const BuyFligth = () => {
 
             <label className="form-label">Sexo</label>
             <div className="button-group">
-              <button className="button" type="button">Masculino</button>
-              <button className="button" type="button">Femenino</button>
+              <button className="button" type="button">
+                Masculino
+              </button>
+              <button className="button" type="button">
+                Femenino
+              </button>
             </div>
 
             <label className="form-label">Clase</label>
             <div className="button-group">
-              <button className="button" type="button">Económica</button>
-              <button className="button" type="button">Primera clase</button>
+              <button className="button" type="button">
+                Económica
+              </button>
+              <button className="button" type="button">
+                Primera clase
+              </button>
             </div>
           </form>
         </div>
@@ -119,7 +132,7 @@ const BuyFligth = () => {
               <h5>Vuelo(s) para n persona(s) </h5>
               <p>$85.130</p>
             </div>
-            
+
             <div className="details2">
               <h5>Recargo por clase n </h5>
               <p>$32.700</p>
@@ -129,7 +142,6 @@ const BuyFligth = () => {
               <h5>Impuestos </h5>
               <p> $8.250</p>
             </div>
-            
           </div>
           <div className="total_payment">
             <h2>Total</h2>
@@ -139,7 +151,7 @@ const BuyFligth = () => {
         <div className="fligth_info">
           <h2>Detalles del vuelo</h2>
           <div className="from-to">
-            <IoAirplaneSharp className="plane"/>
+            <IoAirplaneSharp className="plane" />
             <p>Buenos Aires(BUE) - Rosario</p>
             <p>Rosario - Buenos Aires(BUE)</p>
           </div>

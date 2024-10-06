@@ -1,114 +1,101 @@
 @import url(../../../utils//fonts/fonts.css);
+@import url(../../../utils//colors/colors.css);
 
 * {
-    box-sizing: border-box;
-    font-family: var(--RadioCanada);
+  box-sizing: border-box;
+  font-family: var(--RadioCanada);
 }
 
-.div_container {
-    background-color: #323255;
-    padding: 12px;
-    border-radius: 8px;
-    display: flex;
-    width: 750px;
-    height: 400px;
-    box-shadow: 0px 4px 10px 1px rgba(72, 77, 77, 0.555);
-
+.div_container_reg {
+  background-color: var(--blue);
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  width: 750px;
+  height: 400px;
+  box-shadow: 0px 4px 10px 1px rgba(72, 77, 77, 0.555);
 }
 
 .data_register {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 100%;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
 }
-
-
 
 .data_register input {
-    height: 45px;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
+  height: 45px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
 }
 
-
-
-
 .div_name {
-    display: flex;
-    gap: 8px;
-    width: 100%;
+  display: flex;
+  gap: 8px;
+  width: 100%;
 }
 
 .div_phone {
-    display: flex;
-    gap: 8px;
-    width: 90%;
+  display: flex;
+  gap: 8px;
+  width: 90%;
 }
 
 .div_email {
-    display: flex;
-    align-items: end;
-    gap: 8px;
-    width: 95%;
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  width: 95%;
 }
 
 .div_password {
-    display: flex;
-    align-items: end;
-    gap: 8px;
-    width: 95%;
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  width: 95%;
 }
 
-
-
-
-label{
-    color: white;
-   
+label {
+  color: white;
 }
 
-.div_labelInput{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    font-size: 12px;
-    width: 100%;
+.div_labelInput {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-size: 12px;
+  width: 100%;
 }
 
-.input100{
-    width: 100%;
-    padding: 8px;
+.input100 {
+  width: 100%;
+  padding: 8px;
 }
-
-
-
 
 .button_register {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    height: 92%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  height: 92%;
 }
 
 .button_register button {
-    width: 120px;
-    height: 45px;
-    background-color: #ff6b35;
-    border-radius: 4px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    font-family: var(--Lalezar);
-    border: none;
+  width: 120px;
+  height: 45px;
+  background-color: #ff6b35;
+  border-radius: 4px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-family: var(--Lalezar);
+  border: none;
 }
 
 .button_register button:hover {
-    background-color: #c15129;
-
+  background-color: #c15129;
 }
