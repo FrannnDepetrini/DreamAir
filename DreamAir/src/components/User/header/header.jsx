@@ -1,15 +1,26 @@
 import "./header.css";
 import { FaUser, IoMenu } from "../../../utils/icons/icons";
+import { useNavigate } from "react-router-dom";
 
-const Header = ({ toggleMenu }) => {
-  const handlerLogin = async () => {};
+const Header = ({ toggleMenu, showModal }) => {
+  const navigate = useNavigate();
+  const handlerLogin = () => {};
+  const handleNavigate = (path) => {
+    navigate(`/${path}`);
+  };
+  const openModal = () => {
+    showModal(true);
+  };
   return (
     <div className="container_header">
-      <div onClick={toggleMenu}>
-        <div className="container_menu">
+      <div>
+        <div onClick={toggleMenu} className="container_menu">
           <IoMenu className="icon" />
         </div>
-        <div className="container_image">
+        <div
+          className="container_image"
+          onClick={() => handleNavigate("searchFlights")}
+        >
           <img
             style={{ width: "200px" }}
             src="https://github.com/FrannnDepetrini/DreamAir/blob/main/DreamAir/src/utils/images/LogoDreamAirPH.png?raw=true"
@@ -17,7 +28,7 @@ const Header = ({ toggleMenu }) => {
           />
         </div>
       </div>
-      <div onClick={handlerLogin} className="container_login">
+      <div onClick={openModal} className="container_login">
         <h3>Iniciar sesion</h3>
         <FaUser className="icon" />
       </div>

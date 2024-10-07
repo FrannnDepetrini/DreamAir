@@ -38,7 +38,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<PageSearchFlight />} />
-          <Route path="/flights" element={<PageSearchFlight />} />
+          <Route path="/searchFlights" element={<PageSearchFlight />} />
+          {/* <Route path="/flights" element={} /> */}
           <Route path="/register" element={<PagesRegister />} />
           <Route path="/buyFlight" element={<BuyFligth />} />
         </Route>
