@@ -1,164 +1,195 @@
-*{
-    box-sizing: border-box;
+@import url(../../../utils/colors/colors.css);
+@import url(../../../utils/fonts/fonts.css);
+
+* {
+  box-sizing: border-box;
 }
 
-.div_container{
-    flex-direction: column;
-    display: flex;
-    align-items: start;
-    padding: 16px;
-    gap: 20px;
-    height: 150px;
-    width: 90%;
-    background-color: #323255;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px 1px rgba(72, 77, 77, 0.452);
+.div_container {
+  flex-direction: column;
+  display: flex;
+  align-items: start;
+  padding: 16px;
+  gap: 20px;
+  height: 150px;
+  width: 55%;
+  background-color: var(--blue);
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px 1px rgba(72, 77, 77, 0.452);
 }
 
-.div_select{
-    display: flex;
-    gap: 12px;
-    width: auto;
+.div_container_adjusted {
+  flex-direction: column;
+  display: flex;
+  align-items: start;
+  padding: 16px;
+  gap: 20px;
+  height: 150px;
+  width: 65%;
+  background-color: var(--blue);
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px 1px rgba(72, 77, 77, 0.452);
 }
 
-.div_select select{
-    background-color:#323255;
-    border: none;
-    color: white;
-    text-align: end;
-    padding: 4px;
+.div_select {
+  display: flex;
+  gap: 12px;
+  width: auto;
 }
 
-.div_search{
-    display: flex;
-    gap: 8px;
-    width: 100%;
+.div_select select {
+  background-color: var(--blue);
+  border: none;
+  color: var(--cream);
+  text-align: end;
+  padding: 4px;
+  font-family: var(--LeagueSpartan);
+  font-weight: 400;
+  font-size: 18px;
+}
+.div_select select option {
+  font-family: var(--LeagueSpartan);
+  font-weight: 400;
+  font-size: 18px;
 }
 
-
-.div_search input{
-    height: 35px;
-    width: 45%;
-    padding: 8px 30px;
-    border-radius: 4px;
-    border: none;
+.div_search {
+  display: flex;
+  gap: 8px;
+  width: 100%;
 }
 
+.div_search input {
+  height: 35px;
+  width: 45%;
+  padding: 8px 30px;
+  border-radius: 4px;
+  border: none;
+}
 input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none; /* Oculta el ícono de calendario en navegadores WebKit (Chrome, Safari) */
+  display: none; /* Oculta el ícono de calendario en navegadores WebKit (Chrome, Safari) */
+}
+.calendarHiddenGo {
+  position: absolute;
+  opacity: 0;
+  left: 400px;
+  pointer-events: none;
 }
 
-.div_destino{
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    position: relative;
+.calendarHiddenBack {
+  position: absolute;
+  opacity: 0;
+  left: 600px;
+  pointer-events: none;
 }
 
-.switch{
-    color: white;
-    background-color:#323255;
-    border-radius: 50%;
-    padding: 4px;
-    font-size: 24px;
-    z-index: 1;
-    position: absolute;
-    left: 23.2%;
-    cursor: pointer;
+.div_destino {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
 }
 
-.location1{
-    color:#ff6b35;
-    padding: 4px;
-    font-size: 28px;
-    z-index: 1;
-    position: absolute;
-    left: 0;
-}
-.location2{
-    color:#ff6b35;
-    font-size: 28px;
-    padding: 4px;
-    z-index: 1;
-    position: absolute;
-    left: 26%;
+.switch {
+  color: var(--cream);
+  background-color: var(--blue);
+  border-radius: 50%;
+  padding: 4px;
+  font-size: 24px;
+  z-index: 1;
+  position: absolute;
+  left: 23.2%;
+  cursor: pointer;
 }
 
-.calendar1{
-    color:#ff6b35;
-    padding: 4px;
-    font-size: 24px;
-    z-index: 1;
-    position: absolute;
-    left: 51%;
+.location1 {
+  color: var(--orange);
+  padding: 4px;
+  font-size: 28px;
+  z-index: 1;
+  position: absolute;
+  left: 0;
 }
-.calendar2{
-    color:#ff6b35;
-    padding: 4px;
-    font-size: 24px;
-    z-index: 1;
-    position: absolute;
-    left: 76%;
-}
-
-
-
-.div_search button{
-    width: 100px;
-    height: 35px;
-    background-color: #ff6b35;
-    border-radius: 4px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.location2 {
+  color: var(--orange);
+  font-size: 28px;
+  padding: 4px;
+  z-index: 1;
+  position: absolute;
+  left: 26%;
 }
 
-.div_search button:hover{
-    background-color:#c15129;
+.calendar1 {
+  color: var(--orange);
+  padding: 4px;
+  font-size: 24px;
+  z-index: 1;
+  position: absolute;
+  left: 51%;
+}
+.calendar2 {
+  color: var(--orange);
+  padding: 4px;
+  font-size: 24px;
+  z-index: 1;
+  position: absolute;
+  left: 76%;
 }
 
+.div_search button {
+  width: 100px;
+  height: 35px;
+  background-color: var(--orange);
+  border-radius: 4px;
+  color: var(--cream);
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.div_search button:hover {
+  background-color: #c15129;
+}
 
 /* IDA */
 
-.switchIda{
-    color: white;
-    background-color:#323255;
-    border-radius: 50%;
-    padding: 4px;
-    font-size: 24px;
-    z-index: 1;
-    position: absolute;
-    left: 30.6%;
-    cursor: pointer;
+.switchIda {
+  color: var(--cream);
+  background-color: var(--blue);
+  border-radius: 50%;
+  padding: 4px;
+  font-size: 24px;
+  z-index: 1;
+  position: absolute;
+  left: 30.6%;
+  cursor: pointer;
 }
 
-.locationIda1{
-    color:#ff6b35;
-    padding: 4px;
-    font-size: 28px;
-    z-index: 1;
-    position: absolute;
-    left: 0;
+.locationIda1 {
+  color: var(--orange);
+  padding: 4px;
+  font-size: 28px;
+  z-index: 1;
+  position: absolute;
+  left: 0;
 }
-.locationIda2{
-    color:#ff6b35;
-    font-size: 28px;
-    padding: 4px;
-    z-index: 1;
-    position: absolute;
-    left: 34.2%;
+.locationIda2 {
+  color: var(--orange);
+  font-size: 28px;
+  padding: 4px;
+  z-index: 1;
+  position: absolute;
+  left: 34.2%;
 }
 
-.calendarIda1{
-    color:#ff6b35;
-    padding: 4px;
-    font-size: 24px;
-    z-index: 1;
-    position: absolute;
-    left: 68.5%;
+.calendarIda1 {
+  color: var(--orange);
+  padding: 4px;
+  font-size: 24px;
+  z-index: 1;
+  position: absolute;
+  left: 68.5%;
 }

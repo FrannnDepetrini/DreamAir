@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/layout";
 import PagesRegister from "./pages/register/pagesRegister";
 import BuyFligth from "./pages/buyFligth/BuyFligth";
+import PageSearchFlight from "./pages/pageSearchFlight/pageSearchFlight";
 
 function App() {
   const flight1 = {
@@ -36,7 +37,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<PagesRegister />} />
+          <Route index element={<PageSearchFlight />} />
+          <Route path="/flights" element={<PageSearchFlight />} />
           <Route path="/register" element={<PagesRegister />} />
           <Route path="/buyFlight" element={<BuyFligth />} />
         </Route>

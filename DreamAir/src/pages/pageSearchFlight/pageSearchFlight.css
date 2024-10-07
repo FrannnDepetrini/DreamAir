@@ -1,0 +1,14 @@
+@import url(../../utils/fonts/fonts.css);
+* {
+  box-sizing: border-box;
+}
+.container_searchFlight {
+  padding: 32px;
+  background-color: var(--lighGray);
+}
+.title {
+  font-family: var(--Lalezar);
+  font-size: 32px;
+  font-weight: normal;
+  padding: 8px;
+}
