@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/layout";
 import PagesRegister from "./pages/register/pagesRegister";
 import BuyFligth from "./pages/buyFligth/BuyFligth";
+import MyFlights from "./pages/myFlights/myFlights";
 
 function App() {
   const flight1 = {
@@ -39,6 +40,7 @@ function App() {
           <Route index element={<PagesRegister />} />
           <Route path="/register" element={<PagesRegister />} />
           <Route path="/buyFlight" element={<BuyFligth />} />
+          <Route path="/myFlights" element={<MyFlights />} />
         </Route>
       </Routes>
     </Router>
