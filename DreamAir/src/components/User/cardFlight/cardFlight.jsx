@@ -6,7 +6,7 @@ import { FaHeart, FaRegHeart, IoAirplaneSharp } from "../../../utils/icons/icons
 import "./cardFlight.css";
 
 const CardFlight = ({ flightDeparture, flightArrival = null }) => {
-  const [isSaved, SetIsSaved] = useState(false);
+  const [isSaved, SetIsSaved] = useState(true);
 
   const handlerSave = () => {
     SetIsSaved(!isSaved);
