@@ -11,5 +11,6 @@
 .h2 {
   font-family: var(--Lalezar);
   font-weight: normal;
+  padding-left: 12px;
   font-size: 36px;
 }
