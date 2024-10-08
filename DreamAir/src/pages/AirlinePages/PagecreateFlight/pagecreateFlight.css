@@ -1,0 +1,12 @@
+@import url(../../../utils/colors/colors.css);
+@import url(../../../utils/fonts/fonts.css);
+
+.page_create_flight {
+  width: 60%;
+  padding: 40px;
+}
+.h2-title {
+  font-family: var(--Lalezar);
+  font-weight: normal;
+  font-size: 36px;
+}

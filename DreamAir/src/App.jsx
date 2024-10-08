@@ -6,10 +6,9 @@ import PagesRegister from "./pages/register/pagesRegister";
 import BuyFligth from "./pages/buyFligth/BuyFligth";
 import MyFlights from "./pages/myFlights/myFlights";
 import Flights from "./pages/flights/flights";
+import PagecreateFlight from "./pages/AirlinePages/PagecreateFlight/pagecreateFlight";
 
 function App() {
- 
-
   return (
     <Router>
       <Routes>
@@ -19,6 +18,7 @@ function App() {
           <Route path="/buyFlight" element={<BuyFligth />} />
           <Route path="/myFlights" element={<MyFlights />} />
           <Route path="/flights" element={<Flights />} />
+          <Route path="/createFlight" element={<PagecreateFlight />} />
         </Route>
       </Routes>
     </Router>
