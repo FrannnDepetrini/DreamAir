@@ -5,33 +5,10 @@ import Layout from "./components/layout/layout";
 import PagesRegister from "./pages/register/pagesRegister";
 import BuyFligth from "./pages/buyFligth/BuyFligth";
 import MyFlights from "./pages/myFlights/myFlights";
+import Flights from "./pages/flights/flights";
 
 function App() {
-  const flight1 = {
-    departure: "ROS Fisherton",
-    arrival: "BSB Presidente",
-    timeArrival: "16:20",
-    timeDeparture: "8:20",
-    duration: "8h 46m",
-    date: "string",
-    totalAmount: "100",
-    priceDefault: "150000",
-    airline: "Emirates",
-    ticketsAvailable: "60",
-  };
-
-  const flight2 = {
-    departure: "BSB Presidente",
-    arrival: "ROS Fisherton",
-    timeArrival: "8:20",
-    timeDeparture: "16:20",
-    duration: "8h 46m",
-    date: "string",
-    totalAmount: "100",
-    priceDefault: "160000",
-    airline: "Emirates",
-    ticketsAvailable: "60",
-  };
+ 
 
   return (
     <Router>
@@ -41,6 +18,7 @@ function App() {
           <Route path="/register" element={<PagesRegister />} />
           <Route path="/buyFlight" element={<BuyFligth />} />
           <Route path="/myFlights" element={<MyFlights />} />
+          <Route path="/flights" element={<Flights />} />
         </Route>
       </Routes>
     </Router>
