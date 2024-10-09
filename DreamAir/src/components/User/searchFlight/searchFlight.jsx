@@ -63,6 +63,7 @@ const SearchFlight = () => {
                 onChange={(e) => setDateGo(e.target.value)}
               />
               <input
+                readOnly
                 onClick={openCalendarGo}
                 type="text"
                 value={dateGo}
@@ -77,6 +78,7 @@ const SearchFlight = () => {
                 onChange={(e) => setDateBack(e.target.value)}
               />
               <input
+                readOnly
                 onClick={openCalendarBack}
                 type="text"
                 value={dateBack}
@@ -99,6 +101,7 @@ const SearchFlight = () => {
                 onChange={(e) => setDateGo(e.target.value)}
               />
               <input
+                readOnly
                 onClick={openCalendarGo}
                 type="text"
                 value={dateGo}

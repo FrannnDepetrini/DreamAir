@@ -2,19 +2,20 @@ import { useState } from "react";
 import "./cardModal.css";
 import { FcGoogle, FaFacebookF, GrGoogle } from "../../../utils/icons/icons";
 
-const CardModal = ({ showModal, closeModal }) => {
+const CardModal = ({ isOpen, closeModal }) => {
   const [googleFocus, setgoogleFocus] = useState(false);
-  // const handleCloseModal = () => {
-  //   closeModal(false);
-  // };
 
   const handleLogIn = (e) => {
     e.preventDefault();
-    closeModal(false);
+    closeModal();
   };
   return (
-    <div className={showModal ? "modal" : "modal-closed"}>
-      <div className="modal-content">
+    <>
+      <div
+        onClick={closeModal}
+        className={`modal ${isOpen ? "" : "closed"}`}
+      ></div>
+      <div className={`modal-content ${isOpen ? "" : "closed"}`}>
         <h2 className="modal-title">
           Bienvenido a{" "}
           <img
@@ -66,7 +67,7 @@ const CardModal = ({ showModal, closeModal }) => {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -9,7 +9,7 @@ const Header = ({ toggleMenu, showModal }) => {
     navigate(`/${path}`);
   };
   const openModal = () => {
-    showModal(true);
+    showModal();
   };
   return (
     <div className="container_header">

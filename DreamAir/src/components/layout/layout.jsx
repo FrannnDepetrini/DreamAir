@@ -8,6 +8,7 @@ import CardModal from "../User/modal/cardModal";
 const Layout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+
   const handlerMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -18,8 +19,12 @@ const Layout = () => {
   const handlerMenuClose = () => {
     setIsMenuOpen(false);
   };
-  const showModal = (bool) => {
-    setIsModalVisible(bool);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setIsModalVisible(false);
   };
 
   return (
@@ -42,7 +47,7 @@ const Layout = () => {
 
         <Footer className={isMenuOpen ? "footer_adjusted" : "footer"} />
       </div>
-      <CardModal showModal={isModalVisible} closeModal={showModal} />
+      <CardModal isOpen={isModalVisible} closeModal={closeModal} />
     </>
   );
 };
