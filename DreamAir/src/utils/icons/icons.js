@@ -16,3 +16,4 @@ export { DiAptana } from "@react-icons/all-files/di/DiAptana";
 export { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
 export { FaPen } from "@react-icons/all-files/fa/FaPen";
 export { FaArrowLeft } from "@react-icons/all-files/fa/FaArrowLeft";
+export { IoMdArrowDropdown  } from "@react-icons/all-files/io/IoMdArrowDropdown";

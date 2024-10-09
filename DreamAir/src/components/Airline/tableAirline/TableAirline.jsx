@@ -2,7 +2,7 @@ import { DiAptana } from "../../../utils/icons/icons";
 import "./TableAirline.css";
 const TableAirline = () => {
   return (
-    <div className="div_container">
+    <div className="div_container_table_airline">
       <div className="table_container">
         <table className="table">
           <thead>
@@ -30,7 +30,78 @@ const TableAirline = () => {
                 <DiAptana className="edit_icon" />
               </td>
             </tr>
-
+            <tr>
+              <td>01/09/2024</td>
+              <td>Buenos Aires (BUE)</td>
+              <td>Catamarca (CTC)</td>
+              <td>11/09/2024</td>
+              <td>12:00 Hs</td>
+              <td>18:00 Hs</td>
+              <td>Completo</td>
+              <td>
+                <DiAptana className="edit_icon" />
+              </td>
+            </tr>
+            <tr>
+              <td>01/09/2024</td>
+              <td>Buenos Aires (BUE)</td>
+              <td>Catamarca (CTC)</td>
+              <td>11/09/2024</td>
+              <td>12:00 Hs</td>
+              <td>18:00 Hs</td>
+              <td>Completo</td>
+              <td>
+                <DiAptana className="edit_icon" />
+              </td>
+            </tr>
+            <tr>
+              <td>01/09/2024</td>
+              <td>Buenos Aires (BUE)</td>
+              <td>Catamarca (CTC)</td>
+              <td>11/09/2024</td>
+              <td>12:00 Hs</td>
+              <td>18:00 Hs</td>
+              <td>Completo</td>
+              <td>
+                <DiAptana className="edit_icon" />
+              </td>
+            </tr>
+            <tr>
+              <td>01/09/2024</td>
+              <td>Buenos Aires (BUE)</td>
+              <td>Catamarca (CTC)</td>
+              <td>11/09/2024</td>
+              <td>12:00 Hs</td>
+              <td>18:00 Hs</td>
+              <td>Completo</td>
+              <td>
+                <DiAptana className="edit_icon" />
+              </td>
+            </tr>
+            <tr>
+              <td>01/09/2024</td>
+              <td>Buenos Aires (BUE)</td>
+              <td>Catamarca (CTC)</td>
+              <td>11/09/2024</td>
+              <td>12:00 Hs</td>
+              <td>18:00 Hs</td>
+              <td>Completo</td>
+              <td>
+                <DiAptana className="edit_icon" />
+              </td>
+            </tr>
+            <tr>
+              <td>01/09/2024</td>
+              <td>Buenos Aires (BUE)</td>
+              <td>Catamarca (CTC)</td>
+              <td>11/09/2024</td>
+              <td>12:00 Hs</td>
+              <td>18:00 Hs</td>
+              <td>Completo</td>
+              <td>
+                <DiAptana className="edit_icon" />
+              </td>
+            </tr>
             <tr>
               <td>01/09/2024</td>
               <td>Catamarca (CTC)</td>

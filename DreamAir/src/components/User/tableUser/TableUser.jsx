@@ -56,6 +56,103 @@ const TableUser = () => {
                 <RiDeleteBin6Line className="trash_icon" />
               </td>
             </tr>
+            <tr>
+              <td>01/09/2024</td>
+              <td>Catamarca (CTC)</td>
+              <td>Buenos Aires (BUE)</td>
+              <td>21/09/2024</td>
+              <td>16:00 Hs</td>
+              <td>22:00 Hs</td>
+              <td>Incompleto</td>
+              <td>
+                <RiDeleteBin6Line className="trash_icon" />
+              </td>
+            </tr>
+            <tr>
+              <td>01/09/2024</td>
+              <td>Catamarca (CTC)</td>
+              <td>Buenos Aires (BUE)</td>
+              <td>21/09/2024</td>
+              <td>16:00 Hs</td>
+              <td>22:00 Hs</td>
+              <td>Incompleto</td>
+              <td>
+                <RiDeleteBin6Line className="trash_icon" />
+              </td>
+            </tr>
+            <tr>
+              <td>01/09/2024</td>
+              <td>Catamarca (CTC)</td>
+              <td>Buenos Aires (BUE)</td>
+              <td>21/09/2024</td>
+              <td>16:00 Hs</td>
+              <td>22:00 Hs</td>
+              <td>Incompleto</td>
+              <td>
+                <RiDeleteBin6Line className="trash_icon" />
+              </td>
+            </tr>
+            <tr>
+              <td>01/09/2024</td>
+              <td>Catamarca (CTC)</td>
+              <td>Buenos Aires (BUE)</td>
+              <td>21/09/2024</td>
+              <td>16:00 Hs</td>
+              <td>22:00 Hs</td>
+              <td>Incompleto</td>
+              <td>
+                <RiDeleteBin6Line className="trash_icon" />
+              </td>
+            </tr>
+            <tr>
+              <td>01/09/2024</td>
+              <td>Catamarca (CTC)</td>
+              <td>Buenos Aires (BUE)</td>
+              <td>21/09/2024</td>
+              <td>16:00 Hs</td>
+              <td>22:00 Hs</td>
+              <td>Incompleto</td>
+              <td>
+                <RiDeleteBin6Line className="trash_icon" />
+              </td>
+            </tr>
+            <tr>
+              <td>01/09/2024</td>
+              <td>Catamarca (CTC)</td>
+              <td>Buenos Aires (BUE)</td>
+              <td>21/09/2024</td>
+              <td>16:00 Hs</td>
+              <td>22:00 Hs</td>
+              <td>Incompleto</td>
+              <td>
+                <RiDeleteBin6Line className="trash_icon" />
+              </td>
+            </tr>
+
+            <tr>
+              <td>01/09/2024</td>
+              <td>Catamarca (CTC)</td>
+              <td>Buenos Aires (BUE)</td>
+              <td>21/09/2024</td>
+              <td>16:00 Hs</td>
+              <td>22:00 Hs</td>
+              <td>Incompleto</td>
+              <td>
+                <RiDeleteBin6Line className="trash_icon" />
+              </td>
+            </tr>
+            <tr>
+              <td>01/09/2024</td>
+              <td>Catamarca (CTC)</td>
+              <td>Buenos Aires (BUE)</td>
+              <td>21/09/2024</td>
+              <td>16:00 Hs</td>
+              <td>22:00 Hs</td>
+              <td>Incompleto</td>
+              <td>
+                <RiDeleteBin6Line className="trash_icon" />
+              </td>
+            </tr>
           </tbody>
           <tfoot></tfoot>
         </table>

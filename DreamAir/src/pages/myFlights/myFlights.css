@@ -1,0 +1,16 @@
+@import url(../../utils/colors/colors.css);
+@import url(../../utils/fonts/fonts.css);
+.div-container-page-myflights {
+  height: 100%;
+  background-color: var(--lighGray);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.h2 {
+  font-family: var(--Lalezar);
+  font-weight: normal;
+  padding-left: 12px;
+  font-size: 36px;
+}
