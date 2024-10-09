@@ -1,0 +1,14 @@
+@import url(../../../utils/colors/colors.css);
+@import url(../../../utils/fonts/fonts.css);
+
+.page_table_airline {
+  padding: 40px;
+  background-color: var(--lighGray);
+  width: 100%;
+}
+
+.page_h2_table_airline {
+  font-family: var(--Lalezar);
+  font-weight: normal;
+  font-size: 36px;
+}

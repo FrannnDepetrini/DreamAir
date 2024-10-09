@@ -7,7 +7,7 @@ import BuyFligth from "./pages/buyFligth/BuyFligth";
 import MyFlights from "./pages/myFlights/myFlights";
 import Flights from "./pages/flights/flights";
 import PagecreateFlight from "./pages/AirlinePages/PagecreateFlight/pagecreateFlight";
-
+import PagetableAirline from "./pages/AirlinePages/PageTableAirline/pagetableAirline";
 function App() {
   return (
     <Router>
@@ -19,6 +19,7 @@ function App() {
           <Route path="/myFlights" element={<MyFlights />} />
           <Route path="/flights" element={<Flights />} />
           <Route path="/createFlight" element={<PagecreateFlight />} />
+          <Route path="/tableAirline" element={<PagetableAirline />} />
         </Route>
       </Routes>
     </Router>
