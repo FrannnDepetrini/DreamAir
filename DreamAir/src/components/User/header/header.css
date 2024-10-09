@@ -40,6 +40,10 @@
   padding-top: 10px;
 }
 
+.container_image img {
+  cursor: pointer;
+}
+
 .container_login {
   border: 1px solid black;
   border-radius: 6px;
