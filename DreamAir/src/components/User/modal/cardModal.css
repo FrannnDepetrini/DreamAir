@@ -25,7 +25,7 @@
 }
 
 .modal-content {
-  position: absolute;
+  position: fixed;
   margin: auto;
   background-color: var(--lighGray);
   padding: 2rem;

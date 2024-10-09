@@ -5,7 +5,7 @@ const TableAdmin = () => {
   return (
     <div className="div_container_table_users">
       <div className="table_container">
-        <table className="table">
+        <table className="table_admin">
           <thead>
             <tr>
               <th>Nombre</th>

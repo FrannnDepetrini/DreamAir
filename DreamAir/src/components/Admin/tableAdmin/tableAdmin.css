@@ -30,14 +30,14 @@
   border-radius: 16px;
 }
 
-.table {
+.table_admin {
   background-color: #fdfbf6;
   width: 100%;
   border-radius: 12px;
   border-collapse: collapse;
 }
 
-.table thead {
+.table_admin thead {
   height: 40px;
   border-radius: 12px;
   position: sticky;
@@ -46,36 +46,36 @@
   background-color: #fdfbf6;
 }
 
-.table thead tr th:first-child {
+.table_admin thead tr th:first-child {
   border-top-left-radius: 12px;
   border-left: none;
 }
-.table thead tr th:last-child {
+.table_admin thead tr th:last-child {
   border-top-right-radius: 12px;
   border-right: none;
 }
 
-.table tbody tr td:last-child {
+.table_admin tbody tr td:last-child {
   border-right: none;
 }
 
-.table tbody tr td:first-child {
+.table_admin tbody tr td:first-child {
   border-left: none;
 }
 
-.table tfoot {
+.table_admin tfoot {
   border-radius: 12px;
   width: 100%;
   height: 12px;
 }
 
-td,
-th {
+.table_admin td,
+.table_admin th {
   border: 2px solid #c7c8ca;
   padding: 0.5rem;
   text-align: center;
   font-weight: bold;
-  height: 45px;
+  height: 50px;
 }
 
 th {
