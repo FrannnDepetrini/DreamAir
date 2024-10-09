@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const BuyFligth = () => {
   const navigate = useNavigate();
   return (
-    <div className="div_container">
+    <div className="div_container_buy_flight">
       <div className="user_data">
         <h5 onClick={() => navigate(-1)}>
           {" "}

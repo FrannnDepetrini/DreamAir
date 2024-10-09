@@ -8,7 +8,7 @@
   font-family: var(--RadioCanada);
 }
 
-.div_container {
+.div_container_buy_flight {
   display: flex;
   background-color: var(--lighGray);
   width: 100%;

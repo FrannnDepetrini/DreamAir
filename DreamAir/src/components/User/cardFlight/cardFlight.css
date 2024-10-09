@@ -103,7 +103,7 @@ body_flight_dp_ar {
   justify-content: space-between;
   padding: 8px;
   width: 45%;
-  gap: 12PX;
+  gap: 12px;
 }
 
 .body_flight h4:last-child {

@@ -30,14 +30,14 @@
   border-radius: 16px;
 }
 
-.table {
+.table_airline {
   background-color: #fdfbf6;
   width: 100%;
   border-radius: 12px;
   border-collapse: collapse;
 }
 
-.table thead {
+.table_airline thead {
   height: 40px;
   border-radius: 12px;
   position: sticky;
@@ -46,36 +46,37 @@
   background-color: #fdfbf6;
 }
 
-.table thead tr th:first-child {
+.table_airline thead tr th:first-child {
   border-top-left-radius: 12px;
   border-left: none;
 }
-.table thead tr th:last-child {
+.table_airline thead tr th:last-child {
   border-top-right-radius: 12px;
   border-right: none;
 }
 
-.table tbody tr td:last-child {
+.table_airline tbody tr td:last-child {
   border-right: none;
 }
 
-.table tbody tr td:first-child {
+.table_airline tbody tr td:first-child {
   border-left: none;
 }
 
-.table tfoot {
+.table_airline tfoot {
   border-radius: 12px;
   width: 100%;
   height: 12px;
 }
 
-td,
-th {
+.table_airline td,
+.table_airline th {
   border: 2px solid var(--silver);
   padding: 0.5rem;
   text-align: center;
   font-family: var(--RadioCanada);
   font-weight: bold;
+  height: 50px;
 }
 
 th {
@@ -89,7 +90,7 @@ th {
   background-color: #ff6b35;
   border-radius: 4px;
   color: white;
-  font-weight: bold;
+  font-weight: normal;
   font-size: 18px;
   border: none;
 }
@@ -98,7 +99,7 @@ th {
   background-color: #c15129;
 }
 
-.table_button {
+.table_button_airline {
   background-color: var(--orange);
   padding: 0.3rem;
   border: none;

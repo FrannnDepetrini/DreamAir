@@ -2,7 +2,7 @@ import "../createUser/createUser.css";
 
 const CreateUser = () => {
   return (
-    <div className="div_container">
+    <div className="div_container_create_users">
       <div className="data_register">
         <div className="div_select">
           <select>

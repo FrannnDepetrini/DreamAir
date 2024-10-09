@@ -8,6 +8,8 @@ import MyFlights from "./pages/myFlights/myFlights";
 import Flights from "./pages/flights/flights";
 import PagecreateFlight from "./pages/AirlinePages/PagecreateFlight/pagecreateFlight";
 import PagetableAirline from "./pages/AirlinePages/PageTableAirline/pagetableAirline";
+import PagetableUsers from "./pages/AdminPages/PageTableUsers/pagetableUsers";
+import PagecreateUsers from "./pages/AdminPages/PageCreateUsers/pagecreateUsers";
 function App() {
   return (
     <Router>
@@ -20,6 +22,8 @@ function App() {
           <Route path="/flights" element={<Flights />} />
           <Route path="/createFlight" element={<PagecreateFlight />} />
           <Route path="/tableAirline" element={<PagetableAirline />} />
+          <Route path="/tableAdmin" element={<PagetableUsers />} />
+          <Route path="/createAdmin" element={<PagecreateUsers />} />
         </Route>
       </Routes>
     </Router>
