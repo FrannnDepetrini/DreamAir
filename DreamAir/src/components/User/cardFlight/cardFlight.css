@@ -101,7 +101,11 @@ body_flight_dp_ar {
   align-items: center;
   justify-content: start;
   padding: 8px;
+
+  
+
   width: 100%;
+
   gap: 12px;
 }
 

@@ -2,7 +2,7 @@ import "./TableUser.css";
 import { RiDeleteBin6Line } from "../../../utils/icons/icons";
 const TableUser = () => {
   return (
-    <div className="div_container">
+    <div className="div_container_table_user">
       {/* <h2 className="table_title">Mis Viajes</h2> */}
       <div className="table_container">
         <table className="table">
@@ -157,7 +157,7 @@ const TableUser = () => {
           <tfoot></tfoot>
         </table>
       </div>
-      <button className="table_button">Comprar un vuelo</button>
+      <button className="table_button_user">Comprar un vuelo</button>
     </div>
   );
 };

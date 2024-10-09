@@ -4,7 +4,7 @@ const TableAirline = () => {
   return (
     <div className="div_container_table_airline">
       <div className="table_container">
-        <table className="table">
+        <table className="table_airline">
           <thead>
             <tr>
               <th>Fecha de creacion</th>
@@ -130,7 +130,7 @@ const TableAirline = () => {
           <tfoot></tfoot>
         </table>
       </div>
-      <button className="table_button">Crea un vuelo nuevo</button>
+      <button className="table_button_airline">Crea un vuelo nuevo</button>
     </div>
   );
 };
