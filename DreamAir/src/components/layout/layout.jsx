@@ -5,9 +5,8 @@ import "../layout/layout.css";
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import CardModal from "../User/modal/cardModal";
-const Layout = () => {
+const Layout = ({ isModalVisible, showModal, closeModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handlerMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -18,13 +17,6 @@ const Layout = () => {
 
   const handlerMenuClose = () => {
     setIsMenuOpen(false);
-  };
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const closeModal = () => {
-    setIsModalVisible(false);
   };
 
   return (

@@ -25,16 +25,22 @@ const SearchFlight = () => {
   return (
     <div
       className={
-        travel == "Idavuelta" ? "div_container_adjusted" : "div_container_search_flight"
+        travel == "Idavuelta"
+          ? "div_container_adjusted"
+          : "div_container_search_flight"
       }
     >
       <div className="div_select">
         <select onChange={handleSelect}>
-          <option value="Idavuelta" selected>Ida y vuelta</option>
+          <option value="Idavuelta" defaultValue>
+            Ida y vuelta
+          </option>
           <option value="Ida">Ida</option>
         </select>
         <select>
-          <option selected disabled>Cant Pasajeros</option>
+          <option defaultValue disabled>
+            Cant Pasajeros
+          </option>
           <option value="">1</option>
           <option value="">2</option>
           <option value="">3</option>

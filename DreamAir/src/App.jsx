@@ -14,18 +14,41 @@ import PagetableAirline from "./pages/AirlinePages/PageTableAirline/pagetableAir
 // ADMIN
 import PagetableUsers from "./pages/AdminPages/PageTableUsers/pagetableUsers";
 import PagecreateUsers from "./pages/AdminPages/PageCreateUsers/pagecreateUsers";
-
-
-
+import Protected from "./components/protected/Protected";
+import { useState } from "react";
 function App() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+  const closeModal = () => {
+    setIsModalVisible(false);
+  };
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route
+          path="/"
+          element={
+            <Layout
+              showModal={showModal}
+              closeModal={closeModal}
+              isModalVisible={isModalVisible}
+            />
+          }
+        >
           {/* USER */}
-          <Route path="/searchFlights"  index element={<PageSearchFlight />} />
+          <Route index element={<PageSearchFlight />} />
+          <Route path="/searchFlights" element={<PageSearchFlight />} />
           <Route path="/register" element={<PagesRegister />} />
-          <Route path="/buyFlight" element={<BuyFligth />} />
+          <Route
+            path="/buyFlight"
+            element={
+              <Protected showModal={showModal}>
+                <BuyFligth />
+              </Protected>
+            }
+          />
           <Route path="/myFlights" element={<MyFlights />} />
           <Route path="/favs" element={<Flights />} />
           <Route path="/flights" element={<Flights />} />

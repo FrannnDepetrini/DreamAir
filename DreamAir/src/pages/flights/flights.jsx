@@ -37,7 +37,7 @@ const Flights = () => {
         <div className="selected_div">
           <label htmlFor="">Ordenar por </label>
           <select>
-            <option value="default" selected>
+            <option value="default" defaultValue>
               Recomendado
             </option>
             <option value="mayor">Mayor precio</option>
