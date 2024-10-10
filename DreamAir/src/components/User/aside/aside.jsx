@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import "./aside.css";
 
 const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen }) => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState("searchFlights");
   const navigate = useNavigate();
   const focusOption = (currentOpt) => {
     setActiveIndex(currentOpt);
@@ -28,9 +28,9 @@ const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen }) => {
       className={`container_aside ${isMenuOpen ? "container_aside_open" : ""}`}
     >
       <div
-        onClick={() => focusOption("flights")}
+        onClick={() => focusOption("searchFlights")}
         className={
-          activeIndex == "flights"
+          activeIndex == "searchFlights"
             ? "container_button_flights_focus"
             : "container_button_flights"
         }

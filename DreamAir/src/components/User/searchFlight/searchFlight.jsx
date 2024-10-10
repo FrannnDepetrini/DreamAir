@@ -5,6 +5,7 @@ import {
   HiOutlineSwitchHorizontal,
 } from "../../../utils/icons/icons";
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SearchFlight = () => {
   const inputDateGoRef = useRef(null);
@@ -12,6 +13,12 @@ const SearchFlight = () => {
   const [travel, settravel] = useState("Idavuelta");
   const [dateGo, setDateGo] = useState("");
   const [dateBack, setDateBack] = useState("");
+  const [departure, setDeparture] = useState("");
+  const [arrival, setArrival] = useState("");
+  // const [date, setdate] = useState('');
+  const [passengers, setPassengers] = useState(1);
+  // const [typeFlight, setTypeFlight] = useState('');
+  const navigate = useNavigate();
   const openCalendarGo = () => {
     inputDateGoRef.current.showPicker();
   };
@@ -20,6 +27,17 @@ const SearchFlight = () => {
   };
   const handleSelect = (e) => {
     settravel(e.target.value);
+  };
+  const handleNavigateFlights = () => {
+    if (travel === "Idavuelta") {
+      navigate(
+        `/flights/${departure}/${arrival}/${dateGo}/${dateBack}/${travel}/${passengers}`
+      );
+    } else {
+      navigate(
+        `/flights/${departure}/${arrival}/${dateGo}/${travel}/${passengers}`
+      );
+    }
   };
 
   return (
@@ -37,15 +55,15 @@ const SearchFlight = () => {
           </option>
           <option value="Ida">Ida</option>
         </select>
-        <select>
-          <option defaultValue disabled>
-            Cant Pasajeros
+        <select onChange={(e) => setPassengers(e.target.value)}>
+          <option disabled>Cant Pasajeros</option>
+          <option defaultValue value="1">
+            1
           </option>
-          <option value="">1</option>
-          <option value="">2</option>
-          <option value="">3</option>
-          <option value="">4</option>
-          <option value="">5</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
         </select>
       </div>
 
@@ -53,11 +71,19 @@ const SearchFlight = () => {
         <div className="div_destino">
           {travel == "Idavuelta" ? (
             <>
-              <IoLocationSharp className="location1" />
-              <input type="text" placeholder="Destino*" />
-              <HiOutlineSwitchHorizontal className="switch" />
               <IoLocationSharp className="location2" />
-              <input type="text" placeholder="Origen*" />
+              <input
+                onChange={(e) => setDeparture(e.target.value)}
+                type="text"
+                placeholder="Origen*"
+              />
+              <HiOutlineSwitchHorizontal className="switch" />
+              <IoLocationSharp className="location1" />
+              <input
+                onChange={(e) => setArrival(e.target.value)}
+                type="text"
+                placeholder="Destino*"
+              />
 
               <FaCalendarAlt onClick={openCalendarGo} className="calendar1" />
               <input
@@ -91,11 +117,19 @@ const SearchFlight = () => {
             </>
           ) : (
             <>
-              <IoLocationSharp className="locationIda1" />
-              <input type="text" placeholder="Destino*" />
-              <HiOutlineSwitchHorizontal className="switchIda" />
               <IoLocationSharp className="locationIda2" />
-              <input type="text" placeholder="Origen*" />
+              <input
+                onChange={(e) => setDeparture(e.target.value)}
+                type="text"
+                placeholder="Origen*"
+              />
+              <HiOutlineSwitchHorizontal className="switchIda" />
+              <IoLocationSharp className="locationIda1" />
+              <input
+                type="text"
+                onChange={(e) => setArrival(e.target.value)}
+                placeholder="Destino*"
+              />
 
               <FaCalendarAlt className="calendarIda1" />
               <input
@@ -115,7 +149,12 @@ const SearchFlight = () => {
           )}
         </div>
 
-        <button className="buttom_search_flight">Buscar</button>
+        <button
+          onClick={handleNavigateFlights}
+          className="buttom_search_flight"
+        >
+          Buscar
+        </button>
       </div>
     </div>
   );
