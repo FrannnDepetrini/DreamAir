@@ -1,41 +1,39 @@
 import CardFlight from "../../components/User/cardFlight/cardFlight";
 import "../flights/flights.css";
 import { IoMdArrowDropdown } from "../../utils/icons/icons.js";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Flights = () => {
-  const flight1 = {
-    departure: "ROS Fisherton",
-    arrival: "BSB Presidente",
-    timeArrival: "16:20",
-    timeDeparture: "8:20",
-    duration: "8h 46m",
-    date: "string",
-    totalAmount: "100",
-    priceDefault: "150000",
-    airline: "Emirates",
-    ticketsAvailable: "60",
-  };
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const flight2 = {
-    departure: "BSB Presidente",
-    arrival: "ROS Fisherton",
-    timeArrival: "8:20",
-    timeDeparture: "16:20",
-    duration: "8h 46m",
-    date: "string",
-    totalAmount: "100",
-    priceDefault: "160000",
-    airline: "Emirates",
-    ticketsAvailable: "60",
-  };
+  const { arrival, departure, dateGo, dateBack, travel, passengers } =
+    useParams();
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://localhost:7001/Get");
+        const data = await response.json();
+        setData(data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  console.log(data);
   return (
     <div className="flights_container">
       <div className="title_and_order">
         <h2>Vuelos</h2>
 
         <div className="selected_div">
-          <label htmlFor="">Ordenar por </label>
+          <label>Ordenar por </label>
           <select>
             <option value="default" defaultValue>
               Recomendado
@@ -90,10 +88,13 @@ const Flights = () => {
           </div>
         </div>
         <div className="flight-card">
-          <CardFlight flightDeparture={flight1} />
-          <CardFlight flightDeparture={flight2} flightArrival={flight1} />
-          <CardFlight flightDeparture={flight1} />
-          <CardFlight flightDeparture={flight1} flightArrival={flight2} />
+          {loading ? (
+            <p>...Cargando vuelos...</p>
+          ) : data.length > 0 && data[0].departure === departure ? (
+            <CardFlight flightDeparture={data[0]} />
+          ) : (
+            <h1>No hay vuelos con esas caracteristicas</h1>
+          )}
         </div>
       </div>
     </div>

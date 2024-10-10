@@ -164,7 +164,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-size: 24px;
   z-index: 1;
   position: absolute;
-  left: 30.6%;
+  left: 31%;
   cursor: pointer;
 }
 
