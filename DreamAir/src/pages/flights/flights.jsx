@@ -3,14 +3,19 @@ import "../flights/flights.css";
 import { IoMdArrowDropdown } from "../../utils/icons/icons.js";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const Flights = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
-  const { , departure, dateGo, dateBack, travel, passengers } =
+  const { arrival, departure, dateGo, dateBack, travel, passengers } =
     useParams();
-
+  const navigateBuy = (flightSelected) => {
+    navigate("/buyFlight", {
+      state: { ...flightSelected, passengers: passengers },
+    });
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,7 +31,6 @@ const Flights = () => {
     fetchData();
   }, []);
 
-  console.log(data);
   return (
     <div className="flights_container">
       <div className="title_and_order">
@@ -91,7 +95,10 @@ const Flights = () => {
           {loading ? (
             <p>...Cargando vuelos...</p>
           ) : data.length > 0 && data[0].departure === departure ? (
-            <CardFlight flightDeparture={data[0]} />
+            <CardFlight
+              handlerNavigateBuy={navigateBuy}
+              flightDeparture={data[0]}
+            />
           ) : (
             <h1>No hay vuelos con esas caracteristicas</h1>
           )}

@@ -39,7 +39,7 @@ const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen }) => {
           className="icon"
           style={{ fontSize: "32px", rotate: "315deg" }}
         />
-        <a href="#">Vuelos</a>
+        <a>Vuelos</a>
       </div>
       <div
         onClick={() => focusOption("favs")}
@@ -50,7 +50,7 @@ const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen }) => {
         }
       >
         <FaHeart className="icon" style={{ fontSize: "32px" }} />
-        <a href="#">Favoritos</a>
+        <a>Favoritos</a>
       </div>
       <div
         onClick={() => focusOption("myFlights")}
@@ -61,7 +61,7 @@ const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen }) => {
         }
       >
         <HiOutlineTicket className="icon" style={{ fontSize: "32px" }} />
-        <a href="#">Mis viajes</a>
+        <a>Mis viajes</a>
       </div>
       <div
         onClick={() => focusOption("support")}
@@ -72,7 +72,7 @@ const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen }) => {
         }
       >
         <BiSupport className="icon" style={{ fontSize: "32px" }} />
-        <a href="#">Soporte</a>
+        <a>Soporte</a>
       </div>
     </div>
   );

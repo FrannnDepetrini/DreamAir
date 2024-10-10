@@ -30,7 +30,7 @@ const CardModal = ({ isOpen, closeModal }) => {
 
           <input
             type="email"
-            id="email"
+            id="emailmodal"
             name="email"
             placeholder="Mail"
             required

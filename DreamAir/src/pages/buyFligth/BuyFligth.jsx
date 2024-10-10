@@ -1,8 +1,36 @@
 import "./BuyFligth.css";
 import { IoAirplaneSharp, FaArrowLeft } from "../../utils/icons/icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
 const BuyFligth = () => {
+  const [activeIndex, setActiveIndex] = useState("");
+  const [activeIndex1, setActiveIndex1] = useState("");
+  const [taxes, setTaxes] = useState(0);
+  const [fee, setFee] = useState(0);
+  const focusOption = (currentOpt) => {
+    setActiveIndex(currentOpt);
+  };
+  const focusOption1 = (currentopt) => {
+    setActiveIndex1(currentopt);
+    setFee(
+      currentopt === ""
+        ? "-----"
+        : currentopt == "Primera clase"
+        ? "32700"
+        : "25600"
+    );
+    setTaxes(
+      0.21 * (parseFloat(fee) * parseFloat(flight.passengers) + subtotal)
+    );
+  };
+
   const navigate = useNavigate();
+  const location = useLocation();
+  const flight = location.state;
+  let subtotal =
+    parseFloat(flight.passengers) * parseFloat(flight.priceDefault);
+  let date = new Date(flight.date);
+  const opts = { year: "numeric", month: "short", day: "numeric" };
   return (
     <div className="div_container_buy_flight">
       <div className="user_data">
@@ -73,20 +101,42 @@ const BuyFligth = () => {
 
             <label className="form-label">Sexo</label>
             <div className="button-group">
-              <button className="button" type="button">
+              <button
+                onClick={() => focusOption("Man")}
+                className={activeIndex == "Man" ? "button_selected" : "button"}
+                type="button"
+              >
                 Masculino
               </button>
-              <button className="button" type="button">
+              <button
+                onClick={() => focusOption("Female")}
+                className={
+                  activeIndex == "Female" ? "button_selected" : "button"
+                }
+                type="button"
+              >
                 Femenino
               </button>
             </div>
 
             <label className="form-label">Clase</label>
             <div className="button-group">
-              <button className="button" type="button">
+              <button
+                onClick={() => focusOption1("Economica")}
+                className={
+                  activeIndex1 == "Economica" ? "button_selected" : "button"
+                }
+                type="button"
+              >
                 Económica
               </button>
-              <button className="button" type="button">
+              <button
+                onClick={() => focusOption1("Primera clase")}
+                className={
+                  activeIndex1 == "Primera clase" ? "button_selected" : "button"
+                }
+                type="button"
+              >
                 Primera clase
               </button>
             </div>
@@ -129,45 +179,49 @@ const BuyFligth = () => {
           <h2>Detalles del pago</h2>
           <div className="details">
             <div className="details2">
-              <h5>Vuelo(s) para n persona(s) </h5>
-              <p>$85.130</p>
+              <h5>Vuelo(s) para {flight.passengers} persona(s) </h5>
+              <p>${subtotal}</p>
             </div>
 
             <div className="details2">
-              <h5>Recargo por clase n </h5>
-              <p>$32.700</p>
+              <h5>Recargo por clase {activeIndex1} </h5>
+              <p>${fee}</p>
             </div>
 
             <div className="details2">
               <h5>Impuestos </h5>
-              <p> $8.250</p>
+              <p> ${taxes}</p>
             </div>
           </div>
           <div className="total_payment">
             <h2>Total</h2>
-            <p>$128.902</p>
+            <p>${parseFloat(taxes) + parseFloat(fee) + subtotal}</p>
           </div>
         </div>
         <div className="fligth_info">
           <h2>Detalles del vuelo</h2>
           <div className="from-to">
             <IoAirplaneSharp className="plane" />
-            <p>Buenos Aires(BUE) - Rosario</p>
-            <p>Rosario - Buenos Aires(BUE)</p>
+            <p>
+              {flight.departure} - {flight.arrival}
+            </p>
+            {/* <p>Rosario - Buenos Aires(BUE)</p> */}
           </div>
           <div className="fligth_date">
             <div className="going">
               <h4>IDA</h4>
-              <p>02 Oct. 2024</p>
-              <p>06:50 - 7:50</p>
+              <p>{date.toLocaleDateString("es-ES", opts)}</p>
+              <p>
+                {flight.timeDeparture} - {flight.timeArrival}
+              </p>
             </div>
-            <div className="going">
+            {/* <div className="going">
               <h4>VUELTA</h4>
               <p>09 Oct. 2024</p>
               <p>16:50 - 17:50</p>
-            </div>
+            </div> */}
           </div>
-          <p>Aerolines Argentinas</p>
+          <p>{flight.airline}</p>
         </div>
       </div>
     </div>
