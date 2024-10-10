@@ -8,7 +8,7 @@ const Flights = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const { arrival, departure, dateGo, dateBack, travel, passengers } =
+  const { , departure, dateGo, dateBack, travel, passengers } =
     useParams();
 
   useEffect(() => {
