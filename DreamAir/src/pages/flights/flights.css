@@ -50,6 +50,7 @@
 .filter_container{
     display: flex;
     flex-direction: column;
+    justify-content: start;
     gap: 4px;
 }
 
@@ -57,18 +58,38 @@
 .icon{
     font-size: 20px;
     color: var(--blue);
+    transition: rotate 0.4s ease-in-out;
 }
+
+.iconOpen{
+    rotate: 180deg;
+}
+
+
+
+.container-radios{
+    height: 0 ;
+    opacity: 0;
+    pointer-events: none;
+    transition: height 0.4s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.container-radios-open{
+    height: 160px ;
+    opacity: 1;
+    pointer-events: auto;
+}
+
 
 .titles_filters{
     display: flex;
+    width: 150px;
     justify-content: space-between;
-    border-top: 1px dotted lightgray;
+    align-items: center;
+    border-bottom: 1px dotted lightgray;
     font-size: 18px;
     padding: 8px;
-}
-
-.titles_filters:first-child{
-    border: none;
+    cursor: pointer;
 }
 
 .checkbox_filters{

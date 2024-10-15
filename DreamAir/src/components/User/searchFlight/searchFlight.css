@@ -72,14 +72,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .calendarHiddenGo {
   position: absolute;
   opacity: 0;
-  left: 400px;
+  left: 442px;
   pointer-events: none;
 }
 
 .calendarHiddenBack {
   position: absolute;
   opacity: 0;
-  left: 600px;
+  left: 663px;
   pointer-events: none;
 }
 
