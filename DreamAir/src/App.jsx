@@ -50,7 +50,6 @@ function App() {
             }
           />
           <Route path="/myFlights" element={<MyFlights />} />
-          <Route path="/favs" element={<Flights />} />
           <Route
             path="/flights/:departure/:arrival/:dateGo/:dateBack?/:travel/:passengers"
             element={<Flights />}

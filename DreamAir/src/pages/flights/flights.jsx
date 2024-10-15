@@ -7,6 +7,10 @@ import { useNavigate } from "react-router-dom";
 const Flights = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sorted, setSorted] = useState("")
+  const [filterAirline, setFilterAirline] = useState("Todos")
+  const [icon, setIcon] = useState(false)
+  const [iconClass, setIconClass] = useState(false)
   const navigate = useNavigate();
 
   const { arrival, departure, dateGo, dateBack, travel, passengers } =
@@ -16,6 +20,10 @@ const Flights = () => {
       state: { ...flightSelected, passengers: passengers },
     });
   };
+
+  const handleSelectSorted = (e) => {
+    setSorted(e.target.value);
+  }
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,6 +39,49 @@ const Flights = () => {
     fetchData();
   }, []);
 
+  // CHECKBOXS RADIO
+
+  const handleRadio = (e) => {
+    setFilterAirline(e.target.value)
+  }
+
+  const renderFlights = (() => {
+    const filteredFlights = data
+      .filter((flight) =>
+        filterAirline === "Todos"
+          ? flight.departure === departure
+          : flight.departure === departure && flight.airline === filterAirline
+      )
+      .sort((a, b) =>
+        sorted === ""
+          ? new Date(a.duration.replace("Hs", "").replace(":", "")) - new Date(b.duration.replace("Hs", "").replace(":", ""))
+          : sorted === "mayor"
+            ? b.priceDefault - a.priceDefault
+            : a.priceDefault - b.priceDefault
+      );
+
+    return filteredFlights.length > 0 ? (
+      filteredFlights.map((flight) => (
+        <CardFlight
+          key={flight.id}
+          handlerNavigateBuy={navigateBuy}
+          flightDeparture={flight}
+        />
+      ))
+    ) : (
+      <h1>No hay vuelos con esas características</h1>
+    );
+  })
+
+
+  const handleIcon = () => {
+    setIcon(!icon);
+  }
+
+  const handleIconClass = () => {
+    setIconClass(!iconClass)
+  }
+
   return (
     <div className="flights_container">
       <div className="title_and_order">
@@ -38,8 +89,8 @@ const Flights = () => {
 
         <div className="selected_div">
           <label>Ordenar por </label>
-          <select>
-            <option value="default" defaultValue>
+          <select onChange={handleSelectSorted}>
+            <option value="" defaultValue >
               Recomendado
             </option>
             <option value="mayor">Mayor precio</option>
@@ -51,57 +102,71 @@ const Flights = () => {
       <div className="filter_and_flights">
         <div className="filter_container">
           {/* AEROLINEAS */}
-          <div className="titles_filters">
+          <div className="titles_filters" onClick={handleIcon}>
             <h3>Aerolinea</h3>
-            <IoMdArrowDropdown className="icon" />
+            {/* <IoMdArrowDropdown className="icon" id={icon ? "rotateUp" : "torateDown"} onClick={handleIcon}/> */}
+            <IoMdArrowDropdown className={`icon ${icon ? "iconOpen" : ""}`} />
           </div>
-          <div className="checkbox_filters">
-            <input type="radio" name="radio" />
-            <p>Avianca</p>
-          </div>
-          <div className="checkbox_filters">
-            <input type="radio" name="radio" />
-            <p>Aerolineas Arg.</p>
-          </div>
-          <div className="checkbox_filters">
-            <input type="radio" name="radio" />
-            <p>Emirate</p>
+          {/* Usuarios de Aerolineas tiene que ir aca */}
+          <div className={`container-radios ${icon ? "container-radios-open" : ""}`}>
+            <div className="checkbox_filters">
+              <input type="radio" name="radio" value={"Todos"} onChange={handleRadio} />
+              <p>Todos</p>
+            </div>
+            <div className="checkbox_filters">
+              <input type="radio" name="radio" value={"Avianca"} onChange={handleRadio} />
+              <p>Avianca</p>
+            </div>
+            <div className="checkbox_filters">
+              <input type="radio" name="radio" value={"Aerolineas Argentinas"} onChange={handleRadio} />
+              <p>Aerolineas Arg.</p>
+            </div>
+            <div className="checkbox_filters">
+              <input type="radio" name="radio" value={"Emirates"} onChange={handleRadio} />
+              <p>Emirates</p>
+            </div>
+            <div className="checkbox_filters">
+              <input type="radio" name="radio" value={"Flybondi"} onChange={handleRadio} />
+              <p>Flybondi</p>
+            </div>
+            <div className="checkbox_filters">
+              <input type="radio" name="radio" value={"Sol"} onChange={handleRadio} />
+              <p>Sol</p>
+            </div>
           </div>
 
           {/* CLASES */}
-          <div className="titles_filters">
+          <div className="titles_filters" onClick={handleIconClass}>
             <h3>Clase</h3>
-            <IoMdArrowDropdown className="icon" />
+            <IoMdArrowDropdown className={`icon ${iconClass ? "iconOpen" : ""}`} />
           </div>
-          <div className="checkbox_filters">
-            <input type="radio" name="radio2" />
-            <p>Economica</p>
-          </div>
-          <div className="checkbox_filters">
-            <input type="radio" name="radio2" />
-            <p>Mixta</p>
-          </div>
-          <div className="checkbox_filters">
-            <input type="radio" name="radio2" />
-            <p>Business</p>
-          </div>
-          {/* AVIONES */}
-          <div className="titles_filters">
-            <h3>Avion</h3>
-            <IoMdArrowDropdown className="icon" />
+
+          <div className={`container-radios ${iconClass ? "container-radios-open" : ""}`}>
+            <div className="checkbox_filters">
+              <input type="radio" name="radio2" />
+              <p>Economica</p>
+            </div>
+            <div className="checkbox_filters">
+              <input type="radio" name="radio2" />
+              <p>Mixta</p>
+            </div>
+            <div className="checkbox_filters">
+              <input type="radio" name="radio2" />
+              <p>Business</p>
+            </div>
           </div>
         </div>
         <div className="flight-card">
-          {loading ? (
+
+          {loading ?
             <p>...Cargando vuelos...</p>
-          ) : data.length > 0 && data[0].departure === departure ? (
-            <CardFlight
-              handlerNavigateBuy={navigateBuy}
-              flightDeparture={data[0]}
-            />
-          ) : (
-            <h1>No hay vuelos con esas caracteristicas</h1>
-          )}
+            : data.length > 0 ?
+              renderFlights()
+              :
+              <h1>No hay vuelos disponibles</h1>
+          }
+
+
         </div>
       </div>
     </div>

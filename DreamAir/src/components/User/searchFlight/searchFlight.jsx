@@ -4,7 +4,7 @@ import {
   FaCalendarAlt,
   HiOutlineSwitchHorizontal,
 } from "../../../utils/icons/icons";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SearchFlight = () => {
@@ -15,8 +15,12 @@ const SearchFlight = () => {
   const [dateBack, setDateBack] = useState("");
   const [departure, setDeparture] = useState("");
   const [arrival, setArrival] = useState("");
+
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   // const [date, setdate] = useState('');
-  const [passengers, setPassengers] = useState(1);
+  const [passengers, setPassengers] = useState("0");
   // const [typeFlight, setTypeFlight] = useState('');
   const navigate = useNavigate();
   const openCalendarGo = () => {
@@ -40,6 +44,35 @@ const SearchFlight = () => {
     }
   };
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://localhost:7001/Get");
+        const data = await response.json();
+        setData(data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+
+
+  const DeparturesMapped = (() => {
+    const departuresMappedDp = [...new Set(data.map(flight => flight.departure))]
+    const optionMapped = departuresMappedDp.map(dep => <option key={dep} value={dep}></option>)
+    return optionMapped
+  })
+  const ArrivalMapped = (() => {
+    const arrivalMappedDp = [...new Set(data.map(flight => flight.arrival))]
+    const optionMapped = arrivalMappedDp.map(arr => <option key={arr} value={arr}></option>)
+    return optionMapped
+  })
+
   return (
     <div
       className={
@@ -55,11 +88,9 @@ const SearchFlight = () => {
           </option>
           <option value="Ida">Ida</option>
         </select>
-        <select onChange={(e) => setPassengers(e.target.value)}>
-          <option disabled>Cant Pasajeros</option>
-          <option defaultValue value="1">
-            1
-          </option>
+        <select value={passengers} onChange={(e) => setPassengers(e.target.value)}>
+          <option value="0" disabled>Cant Pasajeros</option>
+          <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
@@ -72,18 +103,27 @@ const SearchFlight = () => {
           {travel == "Idavuelta" ? (
             <>
               <IoLocationSharp className="location2" />
+
               <input
                 onChange={(e) => setDeparture(e.target.value)}
                 type="text"
                 placeholder="Origen*"
+                list="vuelosOrigen"
               />
+              <datalist id="vuelosOrigen">
+                {!loading ? DeparturesMapped() : null}
+              </datalist>
               <HiOutlineSwitchHorizontal className="switch" />
               <IoLocationSharp className="location1" />
               <input
                 onChange={(e) => setArrival(e.target.value)}
                 type="text"
                 placeholder="Destino*"
+                list="vuelosDestino"
               />
+              <datalist id="vuelosDestino">
+                {!loading ?ArrivalMapped() : null}
+              </datalist>
 
               <FaCalendarAlt onClick={openCalendarGo} className="calendar1" />
               <input
@@ -122,14 +162,23 @@ const SearchFlight = () => {
                 onChange={(e) => setDeparture(e.target.value)}
                 type="text"
                 placeholder="Origen*"
+                list="vuelosOrigen"
               />
+              <datalist id="vuelosOrigen">
+                {!loading ?DeparturesMapped() : null}
+              </datalist>
+              
               <HiOutlineSwitchHorizontal className="switchIda" />
               <IoLocationSharp className="locationIda1" />
               <input
                 type="text"
                 onChange={(e) => setArrival(e.target.value)}
                 placeholder="Destino*"
+                list="vuelosDestino"
               />
+              <datalist id="vuelosDestino">
+                {!loading ?ArrivalMapped() : null}
+              </datalist>
 
               <FaCalendarAlt className="calendarIda1" />
               <input
@@ -152,6 +201,8 @@ const SearchFlight = () => {
         <button
           onClick={handleNavigateFlights}
           className="buttom_search_flight"
+          disabled={passengers == "0"}
+
         >
           Buscar
         </button>
