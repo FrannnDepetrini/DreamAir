@@ -76,9 +76,28 @@
   color: gray;
 }
 
-.button {
+/* .button {
   background-color: var(--cream);
   color: black;
+  border: none;
+  margin-right: -10px;
+  font-family: var(--RadioCanada);
+  font-size: 16px;
+  font-weight: bold;
+} */
+.button {
+  z-index: 1;
+  background-color: var(--cream);
+  color: gray;
+  border: none;
+  margin-right: -10px;
+  font-family: var(--RadioCanada);
+  font-size: 16px;
+  font-weight: bold;
+}
+.button_selected {
+  background-color: var(--cream);
+  color: var(--orange);
   border: none;
   margin-right: -10px;
   font-family: var(--RadioCanada);

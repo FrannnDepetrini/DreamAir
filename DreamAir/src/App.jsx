@@ -44,9 +44,9 @@ function App() {
           <Route
             path="/buyFlight"
             element={
-              <Protected showModal={showModal}>
-                <BuyFligth />
-              </Protected>
+              // <Protected showModal={showModal}>
+              // </Protected>
+              <BuyFligth />
             }
           />
           <Route path="/myFlights" element={<MyFlights />} />

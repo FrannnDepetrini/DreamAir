@@ -9,15 +9,18 @@ import {
 } from "../../../utils/icons/icons";
 import "./cardFlight.css";
 
-const CardFlight = ({ flightDeparture, flightArrival = null }) => {
-  const [isSaved, SetIsSaved] = useState(true);
-
+const CardFlight = ({
+  handlerNavigateBuy,
+  flightDeparture,
+  flightArrival = null,
+}) => {
+  const [isSaved, SetIsSaved] = useState(false);
   const handlerSave = () => {
     SetIsSaved(!isSaved);
   };
 
   const handlerBuy = () => {
-    alert("Compra exitosa");
+    handlerNavigateBuy(flightDeparture);
   };
   return flightArrival == null ? (
     <div className="container_main">
@@ -25,7 +28,7 @@ const CardFlight = ({ flightDeparture, flightArrival = null }) => {
         <div className="nav_flight">
           <h5> {flightDeparture.airline} </h5>
           <div onClick={handlerSave} className="button_save">
-            {isSaved ? (
+            {!isSaved ? (
               <>
                 <FaRegHeart /> <h5>Guardar</h5>
               </>
@@ -64,7 +67,7 @@ const CardFlight = ({ flightDeparture, flightArrival = null }) => {
         <div className="nav_flight">
           <h5> {flightDeparture.airline} </h5>
           <div onClick={handlerSave} className="button_save">
-            {isSaved ? (
+            {!isSaved ? (
               <>
                 <FaRegHeart /> <h5>Guardar</h5>
               </>
