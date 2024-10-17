@@ -48,7 +48,7 @@ const SearchFlight = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://localhost:7001/Get");
+        const response = await fetch("https://localhost:7001/api/Flight/Get");
         const data = await response.json();
         setData(data);
       } catch (err) {

@@ -8,9 +8,10 @@ const Flights = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sorted, setSorted] = useState("")
-  const [filterAirline, setFilterAirline] = useState("Todos")
   const [icon, setIcon] = useState(false)
   const [iconClass, setIconClass] = useState(false)
+  const [filterAirline, setFilterAirline] = useState("Todos")
+  const [filterSeat, setFilterSeat] = useState("")
   const navigate = useNavigate();
 
   const { arrival, departure, dateGo, dateBack, travel, passengers } =
@@ -27,7 +28,7 @@ const Flights = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://localhost:7001/Get");
+        const response = await fetch("https://localhost:7001/api/Flight/Get");
         const data = await response.json();
         setData(data);
       } catch (err) {
@@ -39,18 +40,35 @@ const Flights = () => {
     fetchData();
   }, []);
 
-  // CHECKBOXS RADIO
+  // CHECKBOXS RADIO AEROLINEAS
 
-  const handleRadio = (e) => {
+  const handleRadioAirline = (e) => {
     setFilterAirline(e.target.value)
+  }
+
+  // CHECKBOXS RADIO ASIENTOS
+
+  const handleRadioSeat = (e) => {
+    setFilterSeat(e.target.value)
   }
 
   const renderFlights = (() => {
     const filteredFlights = data
-      .filter((flight) =>
-        filterAirline === "Todos"
+      .filter((flight) => {
+        // Filtrar por aerolínea
+        const matchesAirline = filterAirline === "Todos"
           ? flight.departure === departure
-          : flight.departure === departure && flight.airline === filterAirline
+          : flight.departure === departure && flight.airline === filterAirline;
+
+        // Filtrar por clase de asiento
+        const matchesSeat = filterSeat === "Economic"
+        ? flight.totalAmountEconomic > 0
+        : filterSeat === "FirstClass"
+        ? flight.totalAmountFirstClass > 0
+        : true
+
+        return matchesAirline && matchesSeat;
+      }
       )
       .sort((a, b) =>
         sorted === ""
@@ -110,27 +128,27 @@ const Flights = () => {
           {/* Usuarios de Aerolineas tiene que ir aca */}
           <div className={`container-radios ${icon ? "container-radios-open" : ""}`}>
             <div className="checkbox_filters">
-              <input type="radio" name="radio" value={"Todos"} onChange={handleRadio} />
+              <input type="radio" name="radio" value={"Todos"} onChange={handleRadioAirline} />
               <p>Todos</p>
             </div>
             <div className="checkbox_filters">
-              <input type="radio" name="radio" value={"Avianca"} onChange={handleRadio} />
+              <input type="radio" name="radio" value={"Avianca"} onChange={handleRadioAirline} />
               <p>Avianca</p>
             </div>
             <div className="checkbox_filters">
-              <input type="radio" name="radio" value={"Aerolineas Argentinas"} onChange={handleRadio} />
+              <input type="radio" name="radio" value={"Aerolineas Argentinas"} onChange={handleRadioAirline} />
               <p>Aerolineas Arg.</p>
             </div>
             <div className="checkbox_filters">
-              <input type="radio" name="radio" value={"Emirates"} onChange={handleRadio} />
+              <input type="radio" name="radio" value={"Emirates"} onChange={handleRadioAirline} />
               <p>Emirates</p>
             </div>
             <div className="checkbox_filters">
-              <input type="radio" name="radio" value={"Flybondi"} onChange={handleRadio} />
+              <input type="radio" name="radio" value={"Flybondi"} onChange={handleRadioAirline} />
               <p>Flybondi</p>
             </div>
             <div className="checkbox_filters">
-              <input type="radio" name="radio" value={"Sol"} onChange={handleRadio} />
+              <input type="radio" name="radio" value={"Sol"} onChange={handleRadioAirline} />
               <p>Sol</p>
             </div>
           </div>
@@ -143,16 +161,16 @@ const Flights = () => {
 
           <div className={`container-radios ${iconClass ? "container-radios-open" : ""}`}>
             <div className="checkbox_filters">
-              <input type="radio" name="radio2" />
+              <input type="radio" value={"Economic"} name="radio2" onChange={handleRadioSeat} />
               <p>Economica</p>
             </div>
             <div className="checkbox_filters">
-              <input type="radio" name="radio2" />
+              <input type="radio" value={"Mix"} name="radio2" onChange={handleRadioSeat} />
               <p>Mixta</p>
             </div>
             <div className="checkbox_filters">
-              <input type="radio" name="radio2" />
-              <p>Business</p>
+              <input type="radio" value={"FirstClass"} name="radio2" onChange={handleRadioSeat} />
+              <p>Primera Clase</p>
             </div>
           </div>
         </div>
