@@ -8,12 +8,28 @@
 .div_container_create_flight {
   display: flex;
   padding: 20px;
-  padding-top: 40px;
   height: auto;
   width: 55%;
   background-color: #323255;
   border-radius: 8px;
   box-shadow: 0px 4px 10px 1px rgba(72, 77, 77, 0.452);
+  flex-direction: column;
+  gap: 28px;
+}
+
+.selected_div_create_flight{
+  width: 40%;
+}
+
+.select_createFlight{
+  background-color: var(--blue);
+  border: none;
+  color: var(--cream);
+  height: 40px;
+  padding: 8px;
+  font-family: var(--LeagueSpartan);
+  font-weight: 400;
+  font-size: 20px;
 }
 
 .div_search {
@@ -21,6 +37,11 @@
   gap: 8px;
   height: 100%;
   width: 90%;
+
+}
+.contenedor{
+  display: flex;
+
 }
 
 .div_search input {
@@ -73,7 +94,7 @@
   padding: 4px;
   z-index: 1;
   position: absolute;
-  left: 47%;
+  left: 48%;
   font-size: 24px;
 }
 
@@ -102,20 +123,46 @@
   top: 4%;
   font-size: 28px;
 }
-.calendar2_airline {
+
+.calendarHiddenGoCreateFlight {
+  position: absolute;
+  opacity: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.seat1_airline{
   color: #ff6b35;
   padding: 4px;
   z-index: 1;
   position: absolute;
-  top: 41%;
+  left: 34%;
   font-size: 28px;
 }
-.calendar3_airline {
+
+.usd_airline{
   color: #ff6b35;
   padding: 4px;
   z-index: 1;
   position: absolute;
-  top: 78%;
+  left: 67.7%;
+  font-size: 28px;
+}
+
+.clock2_airline {
+  color: #ff6b35;
+  padding: 4px;
+  z-index: 1;
+  position: absolute;
+  top: 42%;
+  font-size: 28px;
+}
+.clock3_airline {
+  color: #ff6b35;
+  padding: 4px;
+  z-index: 1;
+  position: absolute;
+  top: 79%;
   font-size: 28px;
 }
 

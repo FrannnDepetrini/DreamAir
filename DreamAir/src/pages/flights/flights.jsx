@@ -27,7 +27,7 @@ const Flights = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://localhost:7001/Get");
+        const response = await fetch("https://localhost:7001/api/Flight/Get");
         const data = await response.json();
         setData(data);
       } catch (err) {
@@ -40,7 +40,7 @@ const Flights = () => {
   }, []);
 
   // CHECKBOXS RADIO
-
+  console.log(data)
   const handleRadio = (e) => {
     setFilterAirline(e.target.value)
   }

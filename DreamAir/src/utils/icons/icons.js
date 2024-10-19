@@ -17,3 +17,8 @@ export { FaInstagram } from "@react-icons/all-files/fa/FaInstagram";
 export { FaPen } from "@react-icons/all-files/fa/FaPen";
 export { FaArrowLeft } from "@react-icons/all-files/fa/FaArrowLeft";
 export { IoMdArrowDropdown  } from "@react-icons/all-files/io/IoMdArrowDropdown";
+export { MdAirlineSeatReclineExtra } from "@react-icons/all-files/md/MdAirlineSeatReclineExtra";
+export { IoLogoUsd } from "@react-icons/all-files/io/IoLogoUsd";
+export { FaClock } from "@react-icons/all-files/fa/FaClock";
+export { FaCheckCircle } from "@react-icons/all-files/fa/FaCheckCircle";
+export { MdCancel } from "@react-icons/all-files/md/MdCancel";
