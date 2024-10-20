@@ -16,6 +16,7 @@ import PagetableUsers from "./pages/AdminPages/PageTableUsers/pagetableUsers";
 import PagecreateUsers from "./pages/AdminPages/PageCreateUsers/pagecreateUsers";
 import Protected from "./components/protected/Protected";
 import { useState } from "react";
+import { AuthContextProvider } from "./services/authContext/authContext";
 function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
@@ -30,11 +31,13 @@ function App() {
         <Route
           path="/"
           element={
-            <Layout
-              showModal={showModal}
-              closeModal={closeModal}
-              isModalVisible={isModalVisible}
-            />
+            <AuthContextProvider>
+              <Layout
+                showModal={showModal}
+                closeModal={closeModal}
+                isModalVisible={isModalVisible}
+              />
+            </AuthContextProvider>
           }
         >
           {/* USER */}
@@ -44,15 +47,21 @@ function App() {
           <Route
             path="/buyFlight"
             element={
-              // <Protected showModal={showModal}>
-              // </Protected>
-              <BuyFligth />
+              <AuthContextProvider>
+                <Protected showModal={showModal}>
+                  <BuyFligth />
+                </Protected>
+              </AuthContextProvider>
             }
           />
           <Route path="/myFlights" element={<MyFlights />} />
           <Route
             path="/flights/:departure/:arrival/:dateGo/:dateBack?/:travel/:passengers"
-            element={<Flights />}
+            element={
+              <AuthContextProvider>
+                <Flights showModal={showModal} />
+              </AuthContextProvider>
+            }
           />
           {/* AIRLINE */}
           <Route path="/createFlight" element={<PagecreateFlight />} />

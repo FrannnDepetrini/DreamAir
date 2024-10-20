@@ -2,11 +2,36 @@ import { useState } from "react";
 import "./cardModal.css";
 import { FcGoogle, FaFacebookF, GrGoogle } from "../../../utils/icons/icons";
 
-const CardModal = ({ isOpen, closeModal }) => {
+const CardModal = ({ handleLogin, isOpen, closeModal }) => {
   const [googleFocus, setgoogleFocus] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleLogIn = (e) => {
+  const handleSetEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSetPass = (e) => {
+    setPassword(e.target.value);
+  };
+  const handlerLogIn = async (e) => {
     e.preventDefault();
+    const res = await fetch("https://localhost:7001/api/Autentication/login", {
+      method: "POST",
+      headers: {
+        "content-type": "Application/Json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    try {
+      if (!res.ok) throw res;
+
+      const token = await res.text();
+      handleLogin(email, token);
+    } catch (err) {
+      console.error(err);
+    }
     closeModal();
   };
   return (
@@ -25,10 +50,11 @@ const CardModal = ({ isOpen, closeModal }) => {
           />
         </h2>
 
-        <form onSubmit={handleLogIn} className="login-form">
+        <form onSubmit={handlerLogIn} className="login-form">
           <br />
 
           <input
+            onChange={handleSetEmail}
             type="email"
             id="emailmodal"
             name="email"
@@ -37,6 +63,7 @@ const CardModal = ({ isOpen, closeModal }) => {
           />
 
           <input
+            onChange={handleSetPass}
             type="password"
             id="password"
             name="password"

@@ -2,16 +2,18 @@ import CardFlight from "../../components/User/cardFlight/cardFlight";
 import "../flights/flights.css";
 import { IoMdArrowDropdown } from "../../utils/icons/icons.js";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-const Flights = () => {
+import { AuthContext } from "../../services/authContext/authContext.jsx";
+const Flights = ({ showModal }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [sorted, setSorted] = useState("")
-  const [filterAirline, setFilterAirline] = useState("Todos")
-  const [icon, setIcon] = useState(false)
-  const [iconClass, setIconClass] = useState(false)
+  const [sorted, setSorted] = useState("");
+  const [filterAirline, setFilterAirline] = useState("Todos");
+  const [icon, setIcon] = useState(false);
+  const [iconClass, setIconClass] = useState(false);
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
   const { arrival, departure, dateGo, dateBack, travel, passengers } =
     useParams();
@@ -23,7 +25,7 @@ const Flights = () => {
 
   const handleSelectSorted = (e) => {
     setSorted(e.target.value);
-  }
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -40,12 +42,12 @@ const Flights = () => {
   }, []);
 
   // CHECKBOXS RADIO
-  console.log(data)
+  console.log(data);
   const handleRadio = (e) => {
-    setFilterAirline(e.target.value)
-  }
+    setFilterAirline(e.target.value);
+  };
 
-  const renderFlights = (() => {
+  const renderFlights = () => {
     const filteredFlights = data
       .filter((flight) =>
         filterAirline === "Todos"
@@ -54,16 +56,19 @@ const Flights = () => {
       )
       .sort((a, b) =>
         sorted === ""
-          ? new Date(a.duration.replace("Hs", "").replace(":", "")) - new Date(b.duration.replace("Hs", "").replace(":", ""))
+          ? new Date(a.duration.replace("Hs", "").replace(":", "")) -
+            new Date(b.duration.replace("Hs", "").replace(":", ""))
           : sorted === "mayor"
-            ? b.priceDefault - a.priceDefault
-            : a.priceDefault - b.priceDefault
+          ? b.priceDefault - a.priceDefault
+          : a.priceDefault - b.priceDefault
       );
 
     return filteredFlights.length > 0 ? (
       filteredFlights.map((flight) => (
         <CardFlight
+          user={user}
           key={flight.id}
+          showModal={showModal}
           handlerNavigateBuy={navigateBuy}
           flightDeparture={flight}
         />
@@ -71,16 +76,15 @@ const Flights = () => {
     ) : (
       <h1>No hay vuelos con esas características</h1>
     );
-  })
-
+  };
 
   const handleIcon = () => {
     setIcon(!icon);
-  }
+  };
 
   const handleIconClass = () => {
-    setIconClass(!iconClass)
-  }
+    setIconClass(!iconClass);
+  };
 
   return (
     <div className="flights_container">
@@ -90,7 +94,7 @@ const Flights = () => {
         <div className="selected_div">
           <label>Ordenar por </label>
           <select onChange={handleSelectSorted}>
-            <option value="" defaultValue >
+            <option value="" defaultValue>
               Recomendado
             </option>
             <option value="mayor">Mayor precio</option>
@@ -108,29 +112,63 @@ const Flights = () => {
             <IoMdArrowDropdown className={`icon ${icon ? "iconOpen" : ""}`} />
           </div>
           {/* Usuarios de Aerolineas tiene que ir aca */}
-          <div className={`container-radios ${icon ? "container-radios-open" : ""}`}>
+          <div
+            className={`container-radios ${
+              icon ? "container-radios-open" : ""
+            }`}
+          >
             <div className="checkbox_filters">
-              <input type="radio" name="radio" value={"Todos"} onChange={handleRadio} />
+              <input
+                type="radio"
+                name="radio"
+                value={"Todos"}
+                onChange={handleRadio}
+              />
               <p>Todos</p>
             </div>
             <div className="checkbox_filters">
-              <input type="radio" name="radio" value={"Avianca"} onChange={handleRadio} />
+              <input
+                type="radio"
+                name="radio"
+                value={"Avianca"}
+                onChange={handleRadio}
+              />
               <p>Avianca</p>
             </div>
             <div className="checkbox_filters">
-              <input type="radio" name="radio" value={"Aerolineas Argentinas"} onChange={handleRadio} />
+              <input
+                type="radio"
+                name="radio"
+                value={"Aerolineas Argentinas"}
+                onChange={handleRadio}
+              />
               <p>Aerolineas Arg.</p>
             </div>
             <div className="checkbox_filters">
-              <input type="radio" name="radio" value={"Emirates"} onChange={handleRadio} />
+              <input
+                type="radio"
+                name="radio"
+                value={"Emirates"}
+                onChange={handleRadio}
+              />
               <p>Emirates</p>
             </div>
             <div className="checkbox_filters">
-              <input type="radio" name="radio" value={"Flybondi"} onChange={handleRadio} />
+              <input
+                type="radio"
+                name="radio"
+                value={"Flybondi"}
+                onChange={handleRadio}
+              />
               <p>Flybondi</p>
             </div>
             <div className="checkbox_filters">
-              <input type="radio" name="radio" value={"Sol"} onChange={handleRadio} />
+              <input
+                type="radio"
+                name="radio"
+                value={"Sol"}
+                onChange={handleRadio}
+              />
               <p>Sol</p>
             </div>
           </div>
@@ -138,10 +176,16 @@ const Flights = () => {
           {/* CLASES */}
           <div className="titles_filters" onClick={handleIconClass}>
             <h3>Clase</h3>
-            <IoMdArrowDropdown className={`icon ${iconClass ? "iconOpen" : ""}`} />
+            <IoMdArrowDropdown
+              className={`icon ${iconClass ? "iconOpen" : ""}`}
+            />
           </div>
 
-          <div className={`container-radios ${iconClass ? "container-radios-open" : ""}`}>
+          <div
+            className={`container-radios ${
+              iconClass ? "container-radios-open" : ""
+            }`}
+          >
             <div className="checkbox_filters">
               <input type="radio" name="radio2" />
               <p>Economica</p>
@@ -157,16 +201,13 @@ const Flights = () => {
           </div>
         </div>
         <div className="flight-card">
-
-          {loading ?
+          {loading ? (
             <p>...Cargando vuelos...</p>
-            : data.length > 0 ?
-              renderFlights()
-              :
-              <h1>No hay vuelos disponibles</h1>
-          }
-
-
+          ) : data.length > 0 ? (
+            renderFlights()
+          ) : (
+            <h1>No hay vuelos disponibles</h1>
+          )}
         </div>
       </div>
     </div>
