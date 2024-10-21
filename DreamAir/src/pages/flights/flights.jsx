@@ -49,11 +49,21 @@ const Flights = ({ showModal }) => {
   };
 
   const renderFlights = () => {
+    console.log(new Date(data[0].date).toLocaleDateString("en-CA"));
+    console.log(data[1].date.slice(0, 10));
     const filteredFlights = data
-      .filter((flight) =>
-        filterAirline === "Todos"
-          ? flight.departure === departure
-          : flight.departure === departure && flight.airline === filterAirline
+      .filter(
+        (flight) =>
+          filterAirline === "Todos"
+            ? flight.departure === departure &&
+              flight.arrival === arrival &&
+              flight.date.slice(0, 10) === dateGo
+            : //new Date(flight.date).toLocaleDateString("en-CA") === dateGo
+              flight.departure === departure &&
+              flight.airline === filterAirline &&
+              flight.arrival === arrival &&
+              flight.date.slice(0, 10) === dateGo
+        //new Date(flight.date).toLocaleDateString("en-CA") === dateGo //&& flight.date === dateBack
       )
       .sort((a, b) =>
         sorted === ""
@@ -72,6 +82,7 @@ const Flights = ({ showModal }) => {
           showModal={showModal}
           handlerNavigateBuy={navigateBuy}
           flightDeparture={flight}
+          flightDate={flight.date}
         />
       ))
     ) : (

@@ -19,8 +19,9 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const handleLogout = () => {
-    setUser(initialState);
     localStorage.removeItem("DreamAir-token");
+    localStorage.removeItem("DreamAir-email");
+    setUser(initialState);
   };
 
   return (

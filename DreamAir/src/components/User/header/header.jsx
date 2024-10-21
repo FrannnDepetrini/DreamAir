@@ -1,15 +1,21 @@
 import "./header.css";
 import { FaUser, IoMenu } from "../../../utils/icons/icons";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-const Header = ({ user, toggleMenu, showModal }) => {
+const Header = ({ user, toggleMenu, showModal, handleLogOut }) => {
   const navigate = useNavigate();
 
   const handleNavigate = (path) => {
     navigate(`/${path}`);
   };
   const openModal = () => {
-    showModal();
+    if (user.token) {
+      alert("Cerrando Sesion");
+      handleLogOut();
+    } else {
+      showModal();
+    }
   };
   return (
     <div className="container_header">

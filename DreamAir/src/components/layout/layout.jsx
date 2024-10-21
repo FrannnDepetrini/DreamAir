@@ -8,7 +8,7 @@ import CardModal from "../User/modal/cardModal";
 import { AuthContext } from "../../services/authContext/authContext";
 const Layout = ({ isModalVisible, showModal, closeModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { handleLogin, user } = useContext(AuthContext);
+  const { handleLogin, user, handleLogout } = useContext(AuthContext);
   const handlerMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -29,6 +29,7 @@ const Layout = ({ isModalVisible, showModal, closeModal }) => {
           user={user}
           showModal={showModal}
           toggleMenu={handlerMenu}
+          handleLogOut={handleLogout}
           className="header"
         />
         <Aside

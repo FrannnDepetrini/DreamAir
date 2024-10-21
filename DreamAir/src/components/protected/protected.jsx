@@ -6,41 +6,24 @@ import { jwtDecode } from "jwt-decode";
 const Protected = ({ children, showModal, requiredRole }) => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  const [isAuthorized, setIsAuthorized] = useState(null);
 
   useEffect(() => {
-    const checkAuthorization = () => {
-      if (!user?.token) {
-        showModal();
-        navigate(-1);
-        return;
-      }
+    if (!user?.token) {
+      showModal();
+      return navigate(-1);
+    }
 
-      try {
-        const decodedToken = jwtDecode(user.token);
-        const userRole = decodedToken.Role;
-
-        if (userRole === requiredRole) {
-          setIsAuthorized(true);
-        } else {
-          setIsAuthorized(false);
-          console.log("No estás autorizado");
-          navigate("/unauthorized");
-        }
-      } catch (error) {
-        console.error("Error decoding JWT:", error);
-        setIsAuthorized(false);
-        navigate("/unauthorized");
-      }
-    };
-
-    checkAuthorization();
-  }, [user, navigate, requiredRole, showModal]);
-
-  if (isAuthorized === null) {
-    return null;
-  }
-
+    const decodedToken = jwtDecode(user.token);
+    console.log(decodedToken);
+    const userRole =
+      decodedToken[
+        "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+      ];
+    console.log(userRole);
+    if (userRole !== requiredRole) {
+      return navigate("/unauthorized");
+    }
+  }, []);
   return children;
 };
 

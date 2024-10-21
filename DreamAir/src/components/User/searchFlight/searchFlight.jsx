@@ -33,14 +33,24 @@ const SearchFlight = () => {
     settravel(e.target.value);
   };
   const handleNavigateFlights = () => {
-    if (travel === "Idavuelta") {
-      navigate("/flights", {
-        state: { departure, arrival, dateGo, dateBack, travel, passengers },
-      });
+    if (
+      departure == "" ||
+      arrival == "" ||
+      dateGo == "" ||
+      dateBack == "" ||
+      passengers == 0
+    ) {
+      alert("Complete todos los campos");
     } else {
-      navigate("/flights", {
-        state: { departure, arrival, dateGo, travel, passengers },
-      });
+      if (travel === "Idavuelta") {
+        navigate("/flights", {
+          state: { departure, arrival, dateGo, dateBack, travel, passengers },
+        });
+      } else {
+        navigate("/flights", {
+          state: { departure, arrival, dateGo, travel, passengers },
+        });
+      }
     }
   };
 
@@ -209,7 +219,6 @@ const SearchFlight = () => {
         <button
           onClick={handleNavigateFlights}
           className="buttom_search_flight"
-          disabled={passengers == "0"}
         >
           Buscar
         </button>
