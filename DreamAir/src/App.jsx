@@ -72,7 +72,9 @@ function App() {
             path="/tableAirline"
             element={
               <Protected showModal={showModal} requiredRole="admin">
-                <PagetableAirline />
+                <AuthContextProvider>
+                  <PagetableAirline />
+                </AuthContextProvider>
               </Protected>
             }
           />
