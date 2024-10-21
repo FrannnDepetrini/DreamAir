@@ -17,6 +17,9 @@ import PagecreateUsers from "./pages/AdminPages/PageCreateUsers/pagecreateUsers"
 import Protected from "./components/protected/Protected";
 import { useState } from "react";
 import { AuthContextProvider } from "./services/authContext/authContext";
+
+//Unauthorized
+import Unauthorized from "./pages/Unauthorized/unauthorized";
 function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
@@ -48,7 +51,7 @@ function App() {
             path="/buyFlight"
             element={
               <AuthContextProvider>
-                <Protected showModal={showModal}>
+                <Protected showModal={showModal} requiredRole="cliente">
                   <BuyFligth />
                 </Protected>
               </AuthContextProvider>
@@ -56,7 +59,7 @@ function App() {
           />
           <Route path="/myFlights" element={<MyFlights />} />
           <Route
-            path="/flights/:departure/:arrival/:dateGo/:dateBack?/:travel/:passengers"
+            path="/flights"
             element={
               <AuthContextProvider>
                 <Flights showModal={showModal} />
@@ -65,11 +68,19 @@ function App() {
           />
           {/* AIRLINE */}
           <Route path="/createFlight" element={<PagecreateFlight />} />
-          <Route path="/tableAirline" element={<PagetableAirline />} />
+          <Route
+            path="/tableAirline"
+            element={
+              <Protected showModal={showModal} requiredRole="admin">
+                <PagetableAirline />
+              </Protected>
+            }
+          />
           {/* ADMIN */}
           <Route path="/tableAdmin" element={<PagetableUsers />} />
           <Route path="/createAdmin" element={<PagecreateUsers />} />
         </Route>
+        <Route path="/unauthorized" element={<Unauthorized />} />
       </Routes>
     </Router>
   );

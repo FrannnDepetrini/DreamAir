@@ -1,7 +1,7 @@
 import CardFlight from "../../components/User/cardFlight/cardFlight";
 import "../flights/flights.css";
 import { IoMdArrowDropdown } from "../../utils/icons/icons.js";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../services/authContext/authContext.jsx";
@@ -15,14 +15,15 @@ const Flights = ({ showModal }) => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
-  const { arrival, departure, dateGo, dateBack, travel, passengers } =
-    useParams();
+  const location = useLocation();
+  const { departure, arrival, dateGo, dateBack, travel, passengers } =
+    location.state;
+
   const navigateBuy = (flightSelected) => {
     navigate("/buyFlight", {
-      state: { ...flightSelected, passengers: passengers },
+      state: { ...flightSelected, passengers: passengers, travel },
     });
   };
-
   const handleSelectSorted = (e) => {
     setSorted(e.target.value);
   };
