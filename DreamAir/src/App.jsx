@@ -50,31 +50,20 @@ function App() {
           <Route
             path="/buyFlight"
             element={
-              <AuthContextProvider>
-                <Protected showModal={showModal} requiredRole="cliente">
-                  <BuyFligth />
-                </Protected>
-              </AuthContextProvider>
+              <Protected showModal={showModal} requiredRole="cliente">
+                <BuyFligth />
+              </Protected>
             }
           />
           <Route path="/myFlights" element={<MyFlights />} />
-          <Route
-            path="/flights"
-            element={
-              <AuthContextProvider>
-                <Flights showModal={showModal} />
-              </AuthContextProvider>
-            }
-          />
+          <Route path="/flights" element={<Flights showModal={showModal} />} />
           {/* AIRLINE */}
           <Route path="/createFlight" element={<PagecreateFlight />} />
           <Route
             path="/tableAirline"
             element={
               <Protected showModal={showModal} requiredRole="admin">
-                <AuthContextProvider>
-                  <PagetableAirline />
-                </AuthContextProvider>
+                <PagetableAirline />
               </Protected>
             }
           />
