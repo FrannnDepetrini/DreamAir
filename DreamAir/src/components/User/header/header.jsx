@@ -2,9 +2,9 @@ import "./header.css";
 import { FaUser, IoMenu } from "../../../utils/icons/icons";
 import { useNavigate } from "react-router-dom";
 
-const Header = ({ toggleMenu, showModal }) => {
+const Header = ({ user, toggleMenu, showModal }) => {
   const navigate = useNavigate();
-  const handlerLogin = () => {};
+
   const handleNavigate = (path) => {
     navigate(`/${path}`);
   };
@@ -29,7 +29,7 @@ const Header = ({ toggleMenu, showModal }) => {
         </div>
       </div>
       <div onClick={openModal} className="container_login">
-        <h3>Iniciar sesion</h3>
+        <h3>{!user.token ? "Iniciar sesion" : user.email}</h3>
         <FaUser className="icon" />
       </div>
     </div>

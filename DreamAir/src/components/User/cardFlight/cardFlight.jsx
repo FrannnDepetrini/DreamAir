@@ -10,6 +10,8 @@ import {
 import "./cardFlight.css";
 
 const CardFlight = ({
+  user,
+  showModal,
   handlerNavigateBuy,
   flightDeparture,
   flightArrival = null,
@@ -20,7 +22,12 @@ const CardFlight = ({
   };
 
   const handlerBuy = () => {
-    handlerNavigateBuy(flightDeparture);
+    console.log(user.email + "123");
+    if (!user.token) {
+      showModal();
+    } else {
+      handlerNavigateBuy(flightDeparture);
+    }
   };
   return flightArrival == null ? (
     <div className="container_main">

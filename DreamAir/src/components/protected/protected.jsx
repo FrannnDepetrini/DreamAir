@@ -1,12 +1,12 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../services/authContext/authContext";
 
 const Protected = ({ children, showModal }) => {
   const navigate = useNavigate();
-  const token = localStorage.getItem("dream-air-token");
-  if (!token) {
-    setTimeout(() => {
-      showModal();
-    }, 0);
+  const { user } = useContext(AuthContext);
+  if (!user.token) {
+    showModal();
     navigate(-1);
     return null;
   }

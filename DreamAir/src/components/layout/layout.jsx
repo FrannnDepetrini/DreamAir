@@ -3,11 +3,12 @@ import Aside from "../User/aside/aside";
 import Footer from "../User/footer/footer";
 import "../layout/layout.css";
 import { Outlet } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CardModal from "../User/modal/cardModal";
+import { AuthContext } from "../../services/authContext/authContext";
 const Layout = ({ isModalVisible, showModal, closeModal }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const { handleLogin, user } = useContext(AuthContext);
   const handlerMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -25,6 +26,7 @@ const Layout = ({ isModalVisible, showModal, closeModal }) => {
         className={isMenuOpen ? "container_layout_ajusted" : "container_layout"}
       >
         <Header
+          user={user}
           showModal={showModal}
           toggleMenu={handlerMenu}
           className="header"
@@ -39,7 +41,11 @@ const Layout = ({ isModalVisible, showModal, closeModal }) => {
 
         <Footer className={isMenuOpen ? "footer_adjusted" : "footer"} />
       </div>
-      <CardModal isOpen={isModalVisible} closeModal={closeModal} />
+      <CardModal
+        handleLogin={handleLogin}
+        isOpen={isModalVisible}
+        closeModal={closeModal}
+      />
     </>
   );
 };
