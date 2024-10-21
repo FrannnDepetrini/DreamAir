@@ -15,10 +15,7 @@ const Protected = ({ children, showModal, requiredRole }) => {
 
     const decodedToken = jwtDecode(user.token);
     console.log(decodedToken);
-    const userRole =
-      decodedToken[
-        "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
-      ];
+    const userRole = decodedToken.Role;
     console.log(userRole);
     if (userRole !== requiredRole) {
       return navigate("/unauthorized");
