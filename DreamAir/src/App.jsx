@@ -6,6 +6,7 @@ import Layout from "./components/layout/layout";
 import PagesRegister from "./pages/register/pagesRegister";
 import BuyFligth from "./pages/buyFligth/BuyFligth";
 import PageSearchFlight from "./pages/pageSearchFlight/pageSearchFlight";
+import Favs from "./pages/favs/Favs";
 import MyFlights from "./pages/myFlights/myFlights";
 import Flights from "./pages/flights/flights";
 //AIRLINE
@@ -55,6 +56,7 @@ function App() {
               </Protected>
             }
           />
+          <Route path="/favs" element={<Favs showModal={showModal} />} />
           <Route path="/myFlights" element={<MyFlights />} />
           <Route path="/flights" element={<Flights showModal={showModal} />} />
           {/* AIRLINE */}

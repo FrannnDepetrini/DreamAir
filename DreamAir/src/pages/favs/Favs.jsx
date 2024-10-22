@@ -1,68 +1,47 @@
-import CardFlight from "../../components/User/cardFlight/cardFlight";
 import "../flights/flights.css";
+import CardFlight from "../../components/User/cardFlight/cardFlight";
 import { IoMdArrowDropdown } from "../../utils/icons/icons.js";
-import { useLocation } from "react-router-dom";
+
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { AuthContext } from "../../services/authContext/authContext.jsx";
-const Flights = ({ showModal }) => {
-  const [data, setData] = useState([]);
+const Favs = ({ showModal }) => {
   const [loading, setLoading] = useState(true);
   const [sorted, setSorted] = useState("");
   const [filterAirline, setFilterAirline] = useState("Todos");
   const [icon, setIcon] = useState(false);
   const [iconClass, setIconClass] = useState(false);
-  const navigate = useNavigate();
+
   const { user } = useContext(AuthContext);
 
-  const location = useLocation();
-  const { departure, arrival, dateGo, dateBack, travel, passengers } =
-    location.state;
+  const [savedFlights, setSavedFlights] = useState([]);
 
-  const navigateBuy = (flightSelected) => {
-    navigate("/buyFlight", {
-      state: { ...flightSelected, passengers: passengers, travel },
-    });
-  };
   const handleSelectSorted = (e) => {
     setSorted(e.target.value);
   };
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("https://localhost:7001/api/Flight/Get");
-        const data = await response.json();
-        setData(data);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
 
-  // CHECKBOXS RADIO
+  useEffect(() => {
+    const saved = localStorage.getItem("FlightSaved");
+    if (saved) {
+      setSavedFlights(JSON.parse(saved)); // Guardamos el array completo de vuelos guardados
+    }
+    setLoading(false);
+  }, []);
 
   const handleRadio = (e) => {
     setFilterAirline(e.target.value);
   };
+  const handleIcon = () => {
+    setIcon(!icon);
+  };
+
+  const handleIconClass = () => {
+    setIconClass(!iconClass);
+  };
 
   const renderFlights = () => {
-    const filteredFlights = data
-      .filter(
-        (flight) =>
-          filterAirline === "Todos"
-            ? flight.departure === departure &&
-              flight.arrival === arrival &&
-              flight.date.slice(0, 10) === dateGo
-            : //new Date(flight.date).toLocaleDateString("en-CA") === dateGo
-              flight.departure === departure &&
-              flight.airline === filterAirline &&
-              flight.arrival === arrival &&
-              flight.date.slice(0, 10) === dateGo
-        //new Date(flight.date).toLocaleDateString("en-CA") === dateGo //&& flight.date === dateBack
-      )
+    const filteredFlights = savedFlights
+      .filter((flight) => flight.airline === filterAirline)
       .sort((a, b) =>
         sorted === ""
           ? new Date(a.duration.replace("Hs", "").replace(":", "")) -
@@ -78,24 +57,15 @@ const Flights = ({ showModal }) => {
           user={user}
           key={flight.id}
           showModal={showModal}
-          handlerNavigateBuy={navigateBuy}
+          handlerNavigateBuy={null}
           flightDeparture={flight}
-          flightDate={flight.date}
+          //   flightDate={flight.date}
         />
       ))
     ) : (
       <h1>No hay vuelos con esas características</h1>
     );
   };
-
-  const handleIcon = () => {
-    setIcon(!icon);
-  };
-
-  const handleIconClass = () => {
-    setIconClass(!iconClass);
-  };
-
   return (
     <div className="flights_container">
       <div className="title_and_order">
@@ -213,7 +183,7 @@ const Flights = ({ showModal }) => {
         <div className="flight-card">
           {loading ? (
             <p>...Cargando vuelos...</p>
-          ) : data.length > 0 ? (
+          ) : savedFlights.length > 0 ? (
             renderFlights()
           ) : (
             <h1>No hay vuelos disponibles</h1>
@@ -224,4 +194,4 @@ const Flights = ({ showModal }) => {
   );
 };
 
-export default Flights;
+export default Favs;

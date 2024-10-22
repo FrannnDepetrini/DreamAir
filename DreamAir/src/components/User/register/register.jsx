@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./register.css";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -12,7 +13,7 @@ const Register = () => {
   const [emailValidation, setEmailValidation] = useState("");
   const [password, setPassword] = useState("");
   const [passwordValidation, setPasswordValidation] = useState("");
-
+  const navigate = useNavigate();
   const handleName = (e) => {
     setName(e.target.value);
   };
@@ -63,9 +64,10 @@ const Register = () => {
         },
         body: JSON.stringify(createClient),
       }).then((response) => {
-        if (response.ok)
+        if (response.ok) {
+          navigate("/searchFlights");
           return response.json(), alert("Usuario registrado con exito");
-        else {
+        } else {
           throw new Error("The response has some errors");
         }
       });
@@ -93,7 +95,7 @@ const Register = () => {
           <input
             type="number"
             className="input100"
-            placeholder="Ingrese edad*"
+            placeholder="Ingrese su edad*"
             onChange={handleAge}
           />
         </div>

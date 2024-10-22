@@ -8,7 +8,7 @@ import {
   IoAirplaneSharp,
 } from "../../../utils/icons/icons";
 import "./cardFlight.css";
-
+let savedFlights = JSON.parse(localStorage.getItem("FlightSaved")) || [];
 const CardFlight = ({
   user,
   showModal,
@@ -20,6 +20,27 @@ const CardFlight = ({
   const handlerSave = () => {
     SetIsSaved(!isSaved);
   };
+
+  if (isSaved) {
+    const newFlight = {
+      id: flightDeparture.id,
+      airline: flightDeparture.airline,
+      departure: flightDeparture.departure,
+      arrival: flightDeparture.arrival,
+      date: flightDeparture.date,
+      timeDeparture: flightDeparture.timeDeparture,
+      timeArrival: flightDeparture.timeArrival,
+      price: flightDeparture.priceDefault,
+      duration: flightDeparture.duration,
+    };
+    savedFlights.push(newFlight);
+    localStorage.setItem("FlightSaved", JSON.stringify(savedFlights));
+  } else {
+    // savedFlights = savedFlights.filter(
+    //   (flight) => flight.id !== flightDeparture.id
+    // );
+    // localStorage.setItem("FlightSaved", JSON.stringify(savedFlights));
+  }
 
   const handlerBuy = () => {
     console.log(user.email + "123");
