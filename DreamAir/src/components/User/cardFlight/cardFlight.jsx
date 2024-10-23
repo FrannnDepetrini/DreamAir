@@ -16,41 +16,37 @@ const CardFlight = ({
   flightDeparture,
   flightArrival = null,
 }) => {
-  const [isSaved, SetIsSaved] = useState(false);
-  const handlerSave = () => {
-    SetIsSaved(!isSaved);
-    savedValidation();
-  };
   const savedValidation = () => {
-    const validation = savedFlights.filter((x) => {
-      x.departure == flightDeparture.departure &&
-        x.arrival == flightDeparture.arrival &&
-        x.date == flightDeparture.date;
-    });
-    SetIsSaved(validation);
+    return savedFlights.some((flight) => flight.id === flightDeparture.id);
   };
-  if (isSaved) {
-    const newFlight = {
-      id: flightDeparture.id,
-      airline: flightDeparture.airline,
-      departure: flightDeparture.departure,
-      arrival: flightDeparture.arrival,
-      date: flightDeparture.date,
-      timeDeparture: flightDeparture.timeDeparture,
-      timeArrival: flightDeparture.timeArrival,
-      priceDefault: flightDeparture.priceDefault,
-      duration: flightDeparture.duration,
-    };
-    savedFlights.push(newFlight);
-    localStorage.setItem("FlightSaved", JSON.stringify(savedFlights));
-  } else {
-    if (savedFlights.length > 0) {
-      savedFlights = savedFlights.filter(
-        (flight) => flight.id !== flightDeparture.id
-      );
+  const [isSaved, SetIsSaved] = useState(savedValidation());
+  const handlerSave = () => {
+    if (!isSaved) {
+      const newFlight = {
+        id: flightDeparture.id,
+        airline: flightDeparture.airline,
+        departure: flightDeparture.departure,
+        arrival: flightDeparture.arrival,
+        date: flightDeparture.date,
+        timeDeparture: flightDeparture.timeDeparture,
+        timeArrival: flightDeparture.timeArrival,
+        priceDefault: flightDeparture.priceDefault,
+        duration: flightDeparture.duration,
+      };
+      savedFlights.push(newFlight);
       localStorage.setItem("FlightSaved", JSON.stringify(savedFlights));
+      SetIsSaved(true);
+    } else {
+      if (savedFlights.length > 0) {
+        savedFlights = savedFlights.filter(
+          (flight) => flight.id !== flightDeparture.id
+        );
+
+        localStorage.setItem("FlightSaved", JSON.stringify(savedFlights));
+        SetIsSaved(false);
+      }
     }
-  }
+  };
 
   const handlerBuy = () => {
     console.log(user.email + "123");
