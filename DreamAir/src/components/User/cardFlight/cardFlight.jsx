@@ -19,8 +19,16 @@ const CardFlight = ({
   const [isSaved, SetIsSaved] = useState(false);
   const handlerSave = () => {
     SetIsSaved(!isSaved);
+    savedValidation();
   };
-
+  const savedValidation = () => {
+    const validation = savedFlights.filter((x) => {
+      x.departure == flightDeparture.departure &&
+        x.arrival == flightDeparture.arrival &&
+        x.date == flightDeparture.date;
+    });
+    SetIsSaved(validation);
+  };
   if (isSaved) {
     const newFlight = {
       id: flightDeparture.id,
@@ -30,16 +38,18 @@ const CardFlight = ({
       date: flightDeparture.date,
       timeDeparture: flightDeparture.timeDeparture,
       timeArrival: flightDeparture.timeArrival,
-      price: flightDeparture.priceDefault,
+      priceDefault: flightDeparture.priceDefault,
       duration: flightDeparture.duration,
     };
     savedFlights.push(newFlight);
     localStorage.setItem("FlightSaved", JSON.stringify(savedFlights));
   } else {
-    // savedFlights = savedFlights.filter(
-    //   (flight) => flight.id !== flightDeparture.id
-    // );
-    // localStorage.setItem("FlightSaved", JSON.stringify(savedFlights));
+    if (savedFlights.length > 0) {
+      savedFlights = savedFlights.filter(
+        (flight) => flight.id !== flightDeparture.id
+      );
+      localStorage.setItem("FlightSaved", JSON.stringify(savedFlights));
+    }
   }
 
   const handlerBuy = () => {

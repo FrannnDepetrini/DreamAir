@@ -41,7 +41,9 @@ const Favs = ({ showModal }) => {
 
   const renderFlights = () => {
     const filteredFlights = savedFlights
-      .filter((flight) => flight.airline === filterAirline)
+      .filter((flight) =>
+        filterAirline == "Todos" ? true : flight.airline === filterAirline
+      )
       .sort((a, b) =>
         sorted === ""
           ? new Date(a.duration.replace("Hs", "").replace(":", "")) -
