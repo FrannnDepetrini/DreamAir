@@ -16,11 +16,14 @@ export const AuthContextProvider = ({ children }) => {
     });
     localStorage.setItem("DreamAir-token", token);
     localStorage.setItem("DreamAir-email", email);
+    console.log(user);
   };
 
   const handleLogout = () => {
-    setUser(initialState);
     localStorage.removeItem("DreamAir-token");
+    localStorage.removeItem("DreamAir-email");
+    setUser(initialState);
+    console.log(user);
   };
 
   return (

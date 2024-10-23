@@ -8,21 +8,48 @@ import {
   IoAirplaneSharp,
 } from "../../../utils/icons/icons";
 import "./cardFlight.css";
-
+let savedFlights = JSON.parse(localStorage.getItem("FlightSaved")) || [];
 const CardFlight = ({
   user,
   showModal,
   handlerNavigateBuy,
   flightDeparture,
   flightArrival = null,
+  validationDate = null,
 }) => {
-  const [isSaved, SetIsSaved] = useState(false);
+  const savedValidation = () => {
+    return savedFlights.some((flight) => flight.id === flightDeparture.id);
+  };
+  const [isSaved, SetIsSaved] = useState(savedValidation());
   const handlerSave = () => {
-    SetIsSaved(!isSaved);
+    if (!isSaved) {
+      const newFlight = {
+        id: flightDeparture.id,
+        airline: flightDeparture.airline,
+        departure: flightDeparture.departure,
+        arrival: flightDeparture.arrival,
+        date: flightDeparture.date,
+        timeDeparture: flightDeparture.timeDeparture,
+        timeArrival: flightDeparture.timeArrival,
+        priceDefault: flightDeparture.priceDefault,
+        duration: flightDeparture.duration,
+      };
+      savedFlights.push(newFlight);
+      localStorage.setItem("FlightSaved", JSON.stringify(savedFlights));
+      SetIsSaved(true);
+    } else {
+      if (savedFlights.length > 0) {
+        savedFlights = savedFlights.filter(
+          (flight) => flight.id !== flightDeparture.id
+        );
+
+        localStorage.setItem("FlightSaved", JSON.stringify(savedFlights));
+        SetIsSaved(false);
+      }
+    }
   };
 
   const handlerBuy = () => {
-    console.log(user.email + "123");
     if (!user.token) {
       showModal();
     } else {
@@ -65,7 +92,13 @@ const CardFlight = ({
       </div>
       <div className="container_price">
         <h2>${flightDeparture.priceDefault}</h2>
-        <button onClick={handlerBuy}>Comprar</button>
+        <button
+          onClick={handlerBuy}
+          disabled={!validationDate}
+          className={validationDate ? "button-buy" : "button-disabled"}
+        >
+          {validationDate ? "Comprar" : "Expirado"}
+        </button>
       </div>
     </div>
   ) : (
@@ -124,7 +157,14 @@ const CardFlight = ({
           {parseInt(flightDeparture.priceDefault) +
             parseInt(flightArrival.priceDefault)}
         </h2>
-        <button onClick={handlerBuy}>Comprar</button>
+
+        <button
+          onClick={handlerBuy}
+          disabled={!validationDate}
+          className={validationDate ? "button-buy" : "button-disabled"}
+        >
+          {validationDate ? "Comprar" : "Expirado"}
+        </button>
       </div>
     </div>
   );

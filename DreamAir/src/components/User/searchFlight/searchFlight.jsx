@@ -33,17 +33,26 @@ const SearchFlight = () => {
     settravel(e.target.value);
   };
   const handleNavigateFlights = () => {
-    if (travel === "Idavuelta") {
-      navigate(
-        `/flights/${departure}/${arrival}/${dateGo}/${dateBack}/${travel}/${passengers}`
-      );
+    if (
+      departure == "" ||
+      arrival == "" ||
+      dateGo == "" ||
+      dateBack == "" ||
+      passengers == 0
+    ) {
+      alert("Complete todos los campos");
     } else {
-      navigate(
-        `/flights/${departure}/${arrival}/${dateGo}/${travel}/${passengers}`
-      );
+      if (travel === "Idavuelta") {
+        navigate("/flights", {
+          state: { departure, arrival, dateGo, dateBack, travel, passengers },
+        });
+      } else {
+        navigate("/flights", {
+          state: { departure, arrival, dateGo, travel, passengers },
+        });
+      }
     }
   };
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,18 +69,22 @@ const SearchFlight = () => {
     fetchData();
   }, []);
 
-
-
-  const DeparturesMapped = (() => {
-    const departuresMappedDp = [...new Set(data.map(flight => flight.departure))]
-    const optionMapped = departuresMappedDp.map(dep => <option key={dep} value={dep}></option>)
-    return optionMapped
-  })
-  const ArrivalMapped = (() => {
-    const arrivalMappedDp = [...new Set(data.map(flight => flight.arrival))]
-    const optionMapped = arrivalMappedDp.map(arr => <option key={arr} value={arr}></option>)
-    return optionMapped
-  })
+  const DeparturesMapped = () => {
+    const departuresMappedDp = [
+      ...new Set(data.map((flight) => flight.departure)),
+    ];
+    const optionMapped = departuresMappedDp.map((dep) => (
+      <option key={dep} value={dep}></option>
+    ));
+    return optionMapped;
+  };
+  const ArrivalMapped = () => {
+    const arrivalMappedDp = [...new Set(data.map((flight) => flight.arrival))];
+    const optionMapped = arrivalMappedDp.map((arr) => (
+      <option key={arr} value={arr}></option>
+    ));
+    return optionMapped;
+  };
 
   return (
     <div
@@ -88,8 +101,13 @@ const SearchFlight = () => {
           </option>
           <option value="Ida">Ida</option>
         </select>
-        <select value={passengers} onChange={(e) => setPassengers(e.target.value)}>
-          <option value="0" disabled>Cant Pasajeros</option>
+        <select
+          value={passengers}
+          onChange={(e) => setPassengers(e.target.value)}
+        >
+          <option value="0" disabled>
+            Cant Pasajeros
+          </option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -122,7 +140,7 @@ const SearchFlight = () => {
                 list="vuelosDestino"
               />
               <datalist id="vuelosDestino">
-                {!loading ?ArrivalMapped() : null}
+                {!loading ? ArrivalMapped() : null}
               </datalist>
 
               <FaCalendarAlt onClick={openCalendarGo} className="calendar1" />
@@ -165,9 +183,9 @@ const SearchFlight = () => {
                 list="vuelosOrigen"
               />
               <datalist id="vuelosOrigen">
-                {!loading ?DeparturesMapped() : null}
+                {!loading ? DeparturesMapped() : null}
               </datalist>
-              
+
               <HiOutlineSwitchHorizontal className="switchIda" />
               <IoLocationSharp className="locationIda1" />
               <input
@@ -177,7 +195,7 @@ const SearchFlight = () => {
                 list="vuelosDestino"
               />
               <datalist id="vuelosDestino">
-                {!loading ?ArrivalMapped() : null}
+                {!loading ? ArrivalMapped() : null}
               </datalist>
 
               <FaCalendarAlt className="calendarIda1" />
@@ -201,8 +219,6 @@ const SearchFlight = () => {
         <button
           onClick={handleNavigateFlights}
           className="buttom_search_flight"
-          disabled={passengers == "0"}
-
         >
           Buscar
         </button>

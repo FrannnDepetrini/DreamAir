@@ -82,20 +82,35 @@ const BuyFligth = () => {
               DNI (Documento Nacional de Identidad)
             </label>
             <input
-              type="text"
+              type="number"
               id="dni"
               name="dni"
               placeholder="45838091"
               className="form-input"
+              min={1000000}
+              max={100000000}
+              onInput={(e) => {
+                if (e.target.value.length > 9) {
+                  e.target.value = e.target.value.slice(0, 9); // Limitar a 8 dígitos
+                }
+              }}
             />
 
-            <label htmlFor="fechaNacimiento" className="form-label">
-              Fecha de nacimiento
+            <label htmlFor="Edad" className="form-label">
+              Edad
             </label>
             <input
-              type="date"
-              id="fechaNacimiento"
-              name="fechaNacimiento"
+              type="number"
+              id="edad"
+              name="edad"
+              placeholder="21"
+              min={0}
+              max={99}
+              onInput={(e) => {
+                if (e.target.value.length > 2) {
+                  e.target.value = e.target.value.slice(0, 2); // Limitar a 2 dígitos
+                }
+              }}
               className="form-input"
             />
 
@@ -209,11 +224,33 @@ const BuyFligth = () => {
           </div>
           <div className="fligth_date">
             <div className="going">
-              <h4>IDA</h4>
-              <p>{date.toLocaleDateString("es-ES", opts)}</p>
-              <p>
-                {flight.timeDeparture} - {flight.timeArrival}
-              </p>
+              {flight.travel == "IDA" ? (
+                <>
+                  {" "}
+                  <h4>IDA</h4>
+                  <p>{date.toLocaleDateString("es-ES", opts)}</p>
+                  <p>
+                    {flight.timeDeparture} - {flight.timeArrival}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <div>
+                    <h4>IDA</h4>
+                    <p>{date.toLocaleDateString("es-ES", opts)}</p>
+                    <p>
+                      {flight.timeDeparture} - {flight.timeArrival}
+                    </p>
+                  </div>
+                  <div>
+                    <h4>VUELTA</h4>
+                    <p>{date.toLocaleDateString("es-ES", opts)}</p>
+                    <p>
+                      {flight.timeDeparture} - {flight.timeArrival}
+                    </p>
+                  </div>
+                </>
+              )}
             </div>
             {/* <div className="going">
               <h4>VUELTA</h4>
