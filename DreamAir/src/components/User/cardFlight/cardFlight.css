@@ -85,7 +85,7 @@
   align-items: center;
 }
 
-body_flight_dp_ar {
+.body_flight_dp_ar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -101,8 +101,6 @@ body_flight_dp_ar {
   align-items: center;
   justify-content: start;
   padding: 8px;
-
-  
 
   width: 100%;
 
@@ -148,7 +146,7 @@ body_flight_dp_ar {
   font-size: 20px;
 }
 
-.container_price button {
+.button-buy {
   background-color: var(--orange);
   color: var(--cream);
   font-family: var(--Lalezar);
@@ -162,6 +160,20 @@ body_flight_dp_ar {
   align-items: center;
 }
 
-.container_price button:hover {
+.button-buy:hover {
   background-color: var(--darkOrange);
+}
+
+.button-disabled {
+  background-color: #ff6b3594;
+  color: var(--cream);
+  font-family: var(--Lalezar);
+  border-radius: 4px;
+  height: 45px;
+  width: 50%;
+  font-weight: normal;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

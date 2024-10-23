@@ -39,6 +39,8 @@ const Favs = ({ showModal }) => {
     setIconClass(!iconClass);
   };
 
+  const today = new Date();
+
   const renderFlights = () => {
     const filteredFlights = savedFlights
       .filter((flight) =>
@@ -59,13 +61,13 @@ const Favs = ({ showModal }) => {
           user={user}
           key={flight.id}
           showModal={showModal}
-          handlerNavigateBuy={null}
+          // handlerNavigateBuy={navigateBuy}
           flightDeparture={flight}
-          //   flightDate={flight.date}
+          validationDate={new Date(flight.date) >= today}
         />
       ))
     ) : (
-      <h1>No hay vuelos con esas características</h1>
+      <h1>No hay vuelos con esas caracterÃ­sticas</h1>
     );
   };
   return (

@@ -15,6 +15,7 @@ const CardFlight = ({
   handlerNavigateBuy,
   flightDeparture,
   flightArrival = null,
+  validationDate = null,
 }) => {
   const savedValidation = () => {
     return savedFlights.some((flight) => flight.id === flightDeparture.id);
@@ -49,7 +50,6 @@ const CardFlight = ({
   };
 
   const handlerBuy = () => {
-    console.log(user.email + "123");
     if (!user.token) {
       showModal();
     } else {
@@ -92,7 +92,13 @@ const CardFlight = ({
       </div>
       <div className="container_price">
         <h2>${flightDeparture.priceDefault}</h2>
-        <button onClick={handlerBuy}>Comprar</button>
+        <button
+          onClick={handlerBuy}
+          disabled={!validationDate}
+          className={validationDate ? "button-buy" : "button-disabled"}
+        >
+          {validationDate ? "Comprar" : "Expirado"}
+        </button>
       </div>
     </div>
   ) : (
@@ -151,7 +157,14 @@ const CardFlight = ({
           {parseInt(flightDeparture.priceDefault) +
             parseInt(flightArrival.priceDefault)}
         </h2>
-        <button onClick={handlerBuy}>Comprar</button>
+
+        <button
+          onClick={handlerBuy}
+          disabled={!validationDate}
+          className={validationDate ? "button-buy" : "button-disabled"}
+        >
+          {validationDate ? "Comprar" : "Expirado"}
+        </button>
       </div>
     </div>
   );
