@@ -89,7 +89,7 @@ const BuyFligth = () => {
               className="form-input"
               min={1000000}
               max={100000000}
-              onInput={(e) => {
+              onChange={(e) => {
                 if (e.target.value.length > 9) {
                   e.target.value = e.target.value.slice(0, 9); // Limitar a 8 dígitos
                 }
@@ -106,7 +106,7 @@ const BuyFligth = () => {
               placeholder="21"
               min={0}
               max={99}
-              onInput={(e) => {
+              onChange={(e) => {
                 if (e.target.value.length > 2) {
                   e.target.value = e.target.value.slice(0, 2); // Limitar a 2 dígitos
                 }

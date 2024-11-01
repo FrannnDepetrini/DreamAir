@@ -71,7 +71,16 @@ function App() {
           />
           {/* ADMIN */}
           <Route path="/tableAdmin" element={<PagetableUsers />} />
-          <Route path="/createAdmin" element={<PagecreateUsers />} />
+          <Route
+            path="/createAdmin"
+            element={
+              <AuthContextProvider>
+                <Protected>
+                  <PagecreateUsers />
+                </Protected>
+              </AuthContextProvider>
+            }
+          />
         </Route>
         <Route path="/unauthorized" element={<Unauthorized />} />
       </Routes>

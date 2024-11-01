@@ -72,7 +72,14 @@
 }
 
 label {
+  margin-left: 2px;
   color: white;
+}
+
+.labelError {
+  font-size: 10px;
+  color: red;
+  padding-bottom: 4px;
 }
 
 .div_labelInput {
