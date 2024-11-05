@@ -15,7 +15,7 @@ import PagetableAirline from "./pages/AirlinePages/PageTableAirline/pagetableAir
 // ADMIN
 import PagetableUsers from "./pages/AdminPages/PageTableUsers/pagetableUsers";
 import PagecreateUsers from "./pages/AdminPages/PageCreateUsers/pagecreateUsers";
-import Protected from "./components/protected/Protected";
+import Protected from "./components/protected/protected";
 import { useState } from "react";
 import { AuthContextProvider } from "./services/authContext/authContext";
 
@@ -51,7 +51,7 @@ function App() {
           <Route
             path="/buyFlight"
             element={
-              <Protected showModal={showModal} requiredRole="cliente">
+              <Protected showModal={showModal} requiredRole="client">
                 <BuyFligth />
               </Protected>
             }
@@ -75,7 +75,7 @@ function App() {
             path="/createAdmin"
             element={
               <AuthContextProvider>
-                <Protected>
+                <Protected showModal={showModal} requiredRole="admin">
                   <PagecreateUsers />
                 </Protected>
               </AuthContextProvider>

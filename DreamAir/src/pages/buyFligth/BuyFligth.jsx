@@ -10,6 +10,12 @@ const BuyFligth = () => {
   const focusOption = (currentOpt) => {
     setActiveIndex(currentOpt);
   };
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const flight = location.state;
+  let subtotal =
+    parseFloat(flight.passengers) * parseFloat(flight.priceDefault);
   const focusOption1 = (currentopt) => {
     setActiveIndex1(currentopt);
     setFee(
@@ -24,12 +30,9 @@ const BuyFligth = () => {
     );
   };
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  const flight = location.state;
-  let subtotal =
-    parseFloat(flight.passengers) * parseFloat(flight.priceDefault);
-  let date = new Date(flight.date);
+  let dateGo = new Date(flight.dateGo);
+
+  let dateBack = new Date(flight.dateBack);
   const opts = { year: "numeric", month: "short", day: "numeric" };
   return (
     <div className="div_container_buy_flight">
@@ -224,39 +227,34 @@ const BuyFligth = () => {
           </div>
           <div className="fligth_date">
             <div className="going">
-              {flight.travel == "IDA" ? (
+              {flight.travel == "Ida" ? (
                 <>
                   {" "}
                   <h4>IDA</h4>
-                  <p>{date.toLocaleDateString("es-ES", opts)}</p>
+                  <p>{dateGo.toLocaleDateString("es-ES", opts)}</p>
                   <p>
-                    {flight.timeDeparture} - {flight.timeArrival}
+                    {flight.timeDepartureGo} - {flight.timeArrivalGo}
                   </p>
                 </>
               ) : (
                 <>
                   <div>
                     <h4>IDA</h4>
-                    <p>{date.toLocaleDateString("es-ES", opts)}</p>
+                    <p>{dateGo.toLocaleDateString("es-ES", opts)}</p>
                     <p>
-                      {flight.timeDeparture} - {flight.timeArrival}
+                      {flight.timeDepartureGo} - {flight.timeArrivalGo}
                     </p>
                   </div>
                   <div>
                     <h4>VUELTA</h4>
-                    <p>{date.toLocaleDateString("es-ES", opts)}</p>
+                    <p>{dateBack.toLocaleDateString("es-ES", opts)}</p>
                     <p>
-                      {flight.timeDeparture} - {flight.timeArrival}
+                      {flight.timeDepartureBack} - {flight.timeArrivalBack}
                     </p>
                   </div>
                 </>
               )}
             </div>
-            {/* <div className="going">
-              <h4>VUELTA</h4>
-              <p>09 Oct. 2024</p>
-              <p>16:50 - 17:50</p>
-            </div> */}
           </div>
           <p>{flight.airline}</p>
         </div>

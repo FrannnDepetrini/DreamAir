@@ -230,24 +230,26 @@ const CreateUser = ({ user }) => {
         })
           .then((response) => {
             if (response.ok) {
-              return response.json(); // Si la respuesta es exitosa, la procesamos como JSON
+              return response.json();
             } else {
               return response.text().then((text) => {
-                // Extraemos el mensaje de error del texto de la respuesta
-                throw new Error(text); // Lanzamos el error con el mensaje
+                throw new Error(text);
               });
             }
           })
           .then((data) => {
-            // Manejo de datos exitosos
             console.log("Usuario creado con éxito", data);
+            alert("Usuario creado con exito");
           })
           .catch((error) => {
-            // Manejo de errores
-            console.error("Error al crear el usuario:", error);
-            alert(`Error al crear el usuario: ${error}`); // Mostrar el mensaje de error al usuario
+            const errorException = error.message.match(
+              /This email already exists/
+            )
+              ? "Este email ya está en uso"
+              : "Error inesperado, vuelva a intentar más tarde";
+            console.error(errorException);
+            alert(errorException);
           });
-        alert("hola clinet");
       } else {
         //fetch airline
         fetch("https://localhost:7001/api/UserAirline/Create", {
@@ -261,13 +263,30 @@ const CreateUser = ({ user }) => {
             email: mail,
             password: password,
           }),
-        }).then((response) => {
-          if (response.ok) return response.json();
-          else {
-            throw new Error("The response has some errors");
-          }
-        });
-        alert("hola ariline");
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              return response.text().then((text) => {
+                throw new Error(text);
+              });
+            }
+          })
+          .then((data) => {
+            console.log("Usuario creado con éxito", data);
+            alert("Usuario creado con exito");
+          })
+          .catch((error) => {
+            const errorException = error.message.match(
+              /This email already exists/
+            )
+              ? "Este email ya está en uso"
+              : "Error inesperado, vuelva a intentar más tarde";
+            console.error(errorException);
+            console.error(error);
+            alert(errorException);
+          });
       }
     }
   };

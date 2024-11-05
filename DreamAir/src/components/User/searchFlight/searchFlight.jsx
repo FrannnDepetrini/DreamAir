@@ -34,11 +34,15 @@ const SearchFlight = () => {
   };
   const handleNavigateFlights = () => {
     if (
+      (departure == "" ||
+        arrival == "" ||
+        dateGo == "" ||
+        dateBack == "" ||
+        (passengers == 0 && travel)) == "Ida" ||
       departure == "" ||
       arrival == "" ||
       dateGo == "" ||
-      dateBack == "" ||
-      passengers == 0
+      (passengers == 0 && travel == "Idavuelta")
     ) {
       alert("Complete todos los campos");
     } else {

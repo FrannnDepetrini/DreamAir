@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../services/authContext/authContext";
 import { jwtDecode } from "jwt-decode";
@@ -15,7 +15,7 @@ const Protected = ({ children, showModal, requiredRole }) => {
 
     const decodedToken = jwtDecode(user.token);
     console.log(decodedToken);
-    const userRole = decodedToken.Role;
+    const userRole = decodedToken.role;
     console.log(userRole);
     if (userRole !== requiredRole) {
       return navigate("/unauthorized");

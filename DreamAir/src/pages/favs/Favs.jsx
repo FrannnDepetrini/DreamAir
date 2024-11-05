@@ -62,12 +62,12 @@ const Favs = ({ showModal }) => {
           key={flight.id}
           showModal={showModal}
           // handlerNavigateBuy={navigateBuy}
-          flightDeparture={flight}
+          flight={flight}
           validationDate={new Date(flight.date) >= today}
         />
       ))
     ) : (
-      <h1>No hay vuelos con esas caracterÃ­sticas</h1>
+      <h1>No hay vuelos con esas características</h1>
     );
   };
   return (

@@ -1,13 +1,15 @@
 import { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
 const initialState = {
-  email: localStorage.getItem("DreamAir-email") ?? "",
-  token: localStorage.getItem("DreamAir-token") ?? "",
+  email: "",
+  token: "",
 };
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(initialState);
+  const navigate = useNavigate();
 
   const handleLogin = (email, token) => {
     setUser({
@@ -23,6 +25,7 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.removeItem("DreamAir-token");
     localStorage.removeItem("DreamAir-email");
     setUser(initialState);
+    navigate("/");
     console.log(user);
   };
 
