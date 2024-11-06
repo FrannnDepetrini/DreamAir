@@ -14,8 +14,7 @@ const CardModal = ({ handleLogin, isOpen, closeModal }) => {
   const handleSetPass = (e) => {
     setPassword(e.target.value);
   };
-  const handlerLogIn = async (e) => {
-    e.preventDefault();
+  const handlerLogIn = async () => {
     const res = await fetch("https://localhost:7001/api/Autentication/login", {
       method: "POST",
       headers: {
@@ -32,6 +31,8 @@ const CardModal = ({ handleLogin, isOpen, closeModal }) => {
     } catch (err) {
       console.error(err);
     }
+    setEmail("");
+    setPassword("");
     closeModal();
   };
   return (
@@ -59,6 +60,7 @@ const CardModal = ({ handleLogin, isOpen, closeModal }) => {
             id="emailmodal"
             name="email"
             placeholder="Mail"
+            value={email}
             required
           />
 
@@ -68,6 +70,7 @@ const CardModal = ({ handleLogin, isOpen, closeModal }) => {
             id="password"
             name="password"
             placeholder="Contraseña"
+            value={password}
             required
           />
           <button type="submit" className="login-btn">

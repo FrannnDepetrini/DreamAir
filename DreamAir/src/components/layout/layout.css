@@ -16,7 +16,7 @@
 
 .container_layout_ajusted {
   display: grid;
-  grid-template-columns: 170px 1fr; /* Ancho del aside y el main */
+  grid-template-columns: 180px 1fr; /* Ancho del aside y el main */
   grid-template-rows: 59px 1fr 120px;
   grid-template-areas:
     "header header"

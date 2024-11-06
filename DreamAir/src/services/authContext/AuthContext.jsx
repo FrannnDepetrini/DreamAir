@@ -1,30 +1,38 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 export const AuthContext = createContext();
 
 const initialState = {
-  email: "",
-  token: "",
+  email: localStorage.getItem("DreamAir-email") || "",
+  token: localStorage.getItem("DreamAir-token") || "",
+  role: localStorage.getItem("DreamAir-role") || "",
 };
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(initialState);
   const navigate = useNavigate();
 
   const handleLogin = (email, token) => {
+    const decodedToken = jwtDecode(token);
+    console.log(decodedToken);
+    const role = decodedToken.role;
     setUser({
       email,
       token,
+      role,
     });
     localStorage.setItem("DreamAir-token", token);
     localStorage.setItem("DreamAir-email", email);
+    localStorage.setItem("DreamAir-role", role);
     console.log(user);
   };
 
   const handleLogout = () => {
     localStorage.removeItem("DreamAir-token");
     localStorage.removeItem("DreamAir-email");
-    setUser(initialState);
+    localStorage.removeItem("DreamAir-role");
+    setUser({ email: "", toke: "", role: "" });
     navigate("/");
     console.log(user);
   };

@@ -25,12 +25,12 @@
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  width: 170px;
+  width: 180px;
   transition: width 0.3s ease-in-out;
 }
 
 .container_aside:hover {
-  width: 170px;
+  width: 180px;
 }
 
 .container_aside div {

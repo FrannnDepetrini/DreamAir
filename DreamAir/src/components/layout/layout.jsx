@@ -37,6 +37,7 @@ const Layout = ({ isModalVisible, showModal, closeModal }) => {
           toggleMenuOpen={handlerMenuOpen}
           toggleMenuClose={handlerMenuClose}
           className="aside"
+          userRole={user.role}
         />
         <Outlet className={isMenuOpen ? "main_adjusted" : "main"}></Outlet>
 

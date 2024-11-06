@@ -45,7 +45,14 @@ function App() {
           }
         >
           {/* USER */}
-          <Route index element={<PageSearchFlight />} />
+          <Route
+            index
+            element={
+              <AuthContextProvider>
+                <PageSearchFlight />
+              </AuthContextProvider>
+            }
+          />
           <Route path="/searchFlights" element={<PageSearchFlight />} />
           <Route path="/register" element={<PagesRegister />} />
           <Route
@@ -64,13 +71,22 @@ function App() {
           <Route
             path="/tableAirline"
             element={
-              <Protected showModal={showModal} requiredRole="admin">
+              <Protected showModal={showModal} requiredRole="airline">
                 <PagetableAirline />
               </Protected>
             }
           />
           {/* ADMIN */}
-          <Route path="/tableAdmin" element={<PagetableUsers />} />
+          <Route
+            path="/tableAdmin"
+            element={
+              <AuthContextProvider>
+                <Protected showModal={showModal} requiredRole="admin">
+                  <PagetableUsers />
+                </Protected>
+              </AuthContextProvider>
+            }
+          />
           <Route
             path="/createAdmin"
             element={
