@@ -9,16 +9,29 @@ import { useNavigate } from "react-router-dom";
 
 import "./aside.css";
 
-const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen, userRole }) => {
-  const [activeIndex, setActiveIndex] = useState("searchFlights");
+const Aside = ({
+  toggleMenuOpen,
+  toggleMenuClose,
+  isMenuOpen,
+  userRole,
+  showModal,
+}) => {
+  const [activeIndex, setActiveIndex] = useState("/");
   const navigate = useNavigate();
   const focusOption = (currentOpt) => {
-    setActiveIndex(currentOpt);
-    handleNavigate(currentOpt);
+    if (
+      userRole != "client" &&
+      (currentOpt == "/myFlights" || currentOpt == "/favs")
+    ) {
+      showModal();
+    } else {
+      setActiveIndex(currentOpt);
+      handleNavigate(currentOpt);
+    }
   };
 
   const handleNavigate = (currentOpt) => {
-    navigate(`/${currentOpt}`);
+    navigate(`${currentOpt}`);
   };
 
   return (
@@ -30,13 +43,13 @@ const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen, userRole }) => {
       <div
         onClick={() => {
           userRole == "client" || userRole == ""
-            ? focusOption("searchFlights")
+            ? focusOption("/")
             : userRole == "airline"
             ? focusOption("createFlight")
             : focusOption("createAdmin");
         }}
         className={
-          activeIndex == "searchFlights"
+          activeIndex == "/"
             ? "container_button_flights_focus"
             : "container_button_flights"
         }
@@ -56,9 +69,9 @@ const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen, userRole }) => {
       {(userRole == "" || userRole == "client") && (
         <>
           <div
-            onClick={() => focusOption("favs")}
+            onClick={() => focusOption("/favs")}
             className={
-              activeIndex == "favs"
+              activeIndex == "/favs"
                 ? "container_button_favs_focus"
                 : "container_button_favs"
             }
@@ -72,13 +85,13 @@ const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen, userRole }) => {
       <div
         onClick={() => {
           userRole == "client" || userRole == ""
-            ? focusOption("myFlights")
+            ? focusOption("/myFlights")
             : userRole == "airline"
-            ? focusOption("tableAirline")
-            : focusOption("tableAdmin");
+            ? focusOption("/tableAirline")
+            : focusOption("/tableAdmin");
         }}
         className={
-          activeIndex == "myFlights"
+          activeIndex == "/myFlights"
             ? "container_button_my_flights_focus"
             : "container_button_my_flights"
         }
@@ -96,9 +109,9 @@ const Aside = ({ toggleMenuOpen, toggleMenuClose, isMenuOpen, userRole }) => {
       {(userRole == "" || userRole == "client") && (
         <>
           <div
-            onClick={() => focusOption("support")}
+            onClick={() => focusOption("/support")}
             className={
-              activeIndex == "support"
+              activeIndex == "/support"
                 ? "container_button_support_focus"
                 : "container_button_support"
             }

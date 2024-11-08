@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
@@ -26,6 +26,16 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.setItem("DreamAir-email", email);
     localStorage.setItem("DreamAir-role", role);
     console.log(user);
+    switch (role) {
+      case "airline":
+        navigate("/createFlight");
+        break;
+      case "admin":
+        navigate("/createAdmin");
+        break;
+      default:
+        console.log("uli");
+    }
   };
 
   const handleLogout = () => {
@@ -33,10 +43,8 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.removeItem("DreamAir-email");
     localStorage.removeItem("DreamAir-role");
     setUser({ email: "", toke: "", role: "" });
-    navigate("/");
     console.log(user);
   };
-
   return (
     <AuthContext.Provider value={{ user, handleLogin, handleLogout }}>
       {children}

@@ -14,7 +14,8 @@ const CardModal = ({ handleLogin, isOpen, closeModal }) => {
   const handleSetPass = (e) => {
     setPassword(e.target.value);
   };
-  const handlerLogIn = async () => {
+  const handlerLogIn = async (e) => {
+    e.preventDefault();
     const res = await fetch("https://localhost:7001/api/Autentication/login", {
       method: "POST",
       headers: {

@@ -17,19 +17,15 @@
   gap: 28px;
 }
 
-.selected_div_create_flight{
+.selected_div_create_flight {
   width: 40%;
 }
 
-.select_createFlight{
-  background-color: var(--blue);
-  border: none;
+.nameAirline {
   color: var(--cream);
-  height: 40px;
-  padding: 8px;
   font-family: var(--LeagueSpartan);
   font-weight: 400;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .div_search {
@@ -37,11 +33,9 @@
   gap: 8px;
   height: 100%;
   width: 90%;
-
 }
-.contenedor{
+.contenedor {
   display: flex;
-
 }
 
 .div_search input {
@@ -131,7 +125,7 @@
   pointer-events: none;
 }
 
-.seat1_airline{
+.seat1_airline {
   color: #ff6b35;
   padding: 4px;
   z-index: 1;
@@ -140,7 +134,7 @@
   font-size: 28px;
 }
 
-.usd_airline{
+.usd_airline {
   color: #ff6b35;
   padding: 4px;
   z-index: 1;

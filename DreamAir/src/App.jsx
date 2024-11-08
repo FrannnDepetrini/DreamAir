@@ -33,7 +33,7 @@ function App() {
     <Router>
       <Routes>
         <Route
-          path="/"
+          // path="/"
           element={
             <AuthContextProvider>
               <Layout
@@ -46,6 +46,7 @@ function App() {
         >
           {/* USER */}
           <Route
+            path="/"
             index
             element={
               <AuthContextProvider>
@@ -53,14 +54,16 @@ function App() {
               </AuthContextProvider>
             }
           />
-          <Route path="/searchFlights" element={<PageSearchFlight />} />
+          {/* <Route path="/searchFlights" element={<PageSearchFlight />} /> */}
           <Route path="/register" element={<PagesRegister />} />
           <Route
             path="/buyFlight"
             element={
-              <Protected showModal={showModal} requiredRole="client">
-                <BuyFligth />
-              </Protected>
+              <AuthContextProvider>
+                <Protected showModal={showModal} requiredRole="client">
+                  <BuyFligth />
+                </Protected>
+              </AuthContextProvider>
             }
           />
           <Route path="/favs" element={<Favs showModal={showModal} />} />

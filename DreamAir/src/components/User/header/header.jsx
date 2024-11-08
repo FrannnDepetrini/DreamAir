@@ -6,7 +6,7 @@ const Header = ({ user, toggleMenu, showModal, handleLogOut }) => {
   const navigate = useNavigate();
 
   const handleNavigate = (path) => {
-    navigate(`/${path}`);
+    navigate(`${path}`);
   };
   const openModal = () => {
     if (user.token) {
@@ -22,10 +22,7 @@ const Header = ({ user, toggleMenu, showModal, handleLogOut }) => {
         <div onClick={toggleMenu} className="container_menu">
           <IoMenu className="icon" />
         </div>
-        <div
-          className="container_image"
-          onClick={() => handleNavigate("searchFlights")}
-        >
+        <div className="container_image" onClick={() => handleNavigate("/")}>
           <img
             style={{ width: "200px" }}
             src="https://github.com/FrannnDepetrini/DreamAir/blob/main/DreamAir/src/utils/images/LogoDreamAirPH.png?raw=true"
@@ -34,9 +31,7 @@ const Header = ({ user, toggleMenu, showModal, handleLogOut }) => {
         </div>
       </div>
       <div onClick={openModal} className="container_login">
-        <button type="submit">
-          {!user.token ? "Iniciar sesion" : user.email}
-        </button>
+        <h3>{!user.token ? "Iniciar sesion" : user.email}</h3>
         <FaUser className="icon" />
       </div>
     </div>
