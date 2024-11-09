@@ -12,19 +12,42 @@ import { AuthContext } from "../../../services/authContext/authContext.jsx";
 import { jwtDecode } from "jwt-decode";
 
 const CreateFlight = () => {
+  const [travel, setTravel] = useState("Idavuelta");
   const [departure, setDeparture] = useState("");
   const [arrival, setArrival] = useState("");
   const [economic, setEconomic] = useState("");
   const [firstClass, setFirstClass] = useState("");
   const [price, setPrice] = useState("");
-  const [dateDeparture, setDateDeparture] = useState("");
-  const [departureTime, setDepartureTime] = useState("");
-  const [arrivalTime, setArrivalTime] = useState("");
+  const [dateDepartureGo, setDateDepartureGo] = useState("");
+  const [departureTimeGo, setDepartureTimeGo] = useState("");
+  const [arrivalTimeGo, setArrivalTimeGo] = useState("");
+  const [dateDepartureBack, setDateDepartureBack] = useState("");
+  const [departureTimeBack, setDepartureTimeBack] = useState("");
+  const [arrivalTimeBack, setArrivalTimeBack] = useState("");
 
   const { user } = useContext(AuthContext);
   const inputDateGoRef = useRef(null);
+  const inputDateBackRef = useRef(null);
+
+  const handleCleaninput = () => {
+    setDeparture("");
+    setEconomic("");
+    setArrival("");
+    setFirstClass("");
+    setPrice("");
+    setDateDepartureGo("");
+    setDepartureTimeGo("");
+    setArrivalTimeGo("");
+    setDateDepartureBack("");
+    setDepartureTimeBack("");
+    setArrivalTimeBack("");
+  };
   const openCalendarGo = () => {
     inputDateGoRef.current.showPicker();
+  };
+
+  const openCalendarBack = () => {
+    inputDateBackRef.current.showPicker();
   };
 
   const handleDeparture = (e) => {
@@ -47,25 +70,39 @@ const CreateFlight = () => {
     setPrice(e.target.value);
   };
 
-  const handleDepartureTime = (e) => {
-    setDepartureTime(e.target.value);
+  const handleDepartureTimeGo = (e) => {
+    setDepartureTimeGo(e.target.value);
   };
 
-  const handleArrivalTime = (e) => {
-    setArrivalTime(e.target.value);
+  const handleArrivalTimeGo = (e) => {
+    setArrivalTimeGo(e.target.value);
+  };
+  const handleDepartureTimeBack = (e) => {
+    setDepartureTimeBack(e.target.value);
+  };
+
+  const handleArrivalTimeBack = (e) => {
+    setArrivalTimeBack(e.target.value);
+  };
+
+  const handleSelect = (e) => {
+    setTravel(e.target.value);
   };
 
   const handleSend = async () => {
     const formData = {
-      travel: "Ida",
+      travel: travel,
       departure: departure,
       arrival: arrival,
-      dateGo: new Date(dateDeparture),
+      dateGo: new Date(dateDepartureGo),
+      timeDepartureGo: departureTimeGo,
+      timeArrivalGo: arrivalTimeGo,
+      dateBack: travel == "Ida" ? null : new Date(dateDepartureBack),
+      timeDepartureBack: travel == "Ida" ? null : departureTimeBack,
+      timeArrivalBack: travel == "Ida" ? null : arrivalTimeBack,
       totalAmountEconomic: economic,
       totalAmountFirstClass: firstClass,
       priceDefault: parseFloat(price),
-      timeDepartureGo: departureTime,
-      timeArrivalGo: arrivalTime,
     };
 
     fetch("https://localhost:7001/api/Flight/Create", {
@@ -76,7 +113,10 @@ const CreateFlight = () => {
       },
       body: JSON.stringify(formData),
     }).then((response) => {
-      if (response.ok) return response.json(), alert("Vuelo creado con exito");
+      if (response.ok)
+        return (
+          response.json(), alert("Vuelo creado con exito"), handleCleaninput()
+        );
       else {
         throw new Error("The response has some errors");
       }
@@ -85,7 +125,6 @@ const CreateFlight = () => {
 
   const decodeName = (user) => {
     const decodedToken = jwtDecode(user.token);
-    console.log(decodedToken);
     const name = decodedToken.name;
     return name;
   };
@@ -94,6 +133,10 @@ const CreateFlight = () => {
     <div className="div_container_create_flight">
       <div className="selected_div_create_flight">
         <h3 className="nameAirline">{decodeName(user)}</h3>
+        <select onChange={handleSelect}>
+          <option value="Idavuelta">Ida y vuelta</option>
+          <option value="Ida">Ida</option>
+        </select>
       </div>
 
       <div className="contenedor">
@@ -105,6 +148,7 @@ const CreateFlight = () => {
                 type="text"
                 placeholder="Origen*"
                 onChange={handleDeparture}
+                value={departure}
               />
               <HiOutlineSwitchHorizontal className="switch_airline" />
               <IoLocationSharp className="location1_airline" />
@@ -112,6 +156,7 @@ const CreateFlight = () => {
                 type="text"
                 placeholder="Destino*"
                 onChange={handleArrival}
+                value={arrival}
               />
             </div>
 
@@ -121,18 +166,21 @@ const CreateFlight = () => {
                 type="number"
                 placeholder="Cap. Economicos*"
                 onChange={handleEconomic}
+                value={economic}
               />
               <MdAirlineSeatReclineExtra className="seat1_airline" />
               <input
                 type="number"
                 placeholder="Cap. Primera Clase*"
                 onChange={handleFirstClass}
+                value={firstClass}
               />
               <IoLogoUsd className="usd_airline" />
               <input
                 type="text"
                 placeholder="Precio base*"
                 onChange={handlePrice}
+                value={price}
               />
             </div>
           </div>
@@ -146,28 +194,65 @@ const CreateFlight = () => {
               className="calendarHiddenGoCreateFlight"
               ref={inputDateGoRef}
               type="date"
-              onChange={(e) => setDateDeparture(e.target.value)}
+              onChange={(e) => setDateDepartureGo(e.target.value)}
             />
             <input
               readOnly
               onClick={openCalendarGo}
               type="text"
-              value={dateDeparture}
+              value={dateDepartureGo}
               placeholder="Salida*"
             />
-            {/* <FaCalendarAlt className="calendar1_airline" />
-            <input type="date" placeholder="Fecha de salida*" onChange={handleDateDeparture} /> */}
             <FaClock className="clock2_airline" />
             <input
-              type="text"
+              type="time"
               placeholder="Hora salida*"
-              onChange={handleDepartureTime}
+              onChange={handleDepartureTimeGo}
+              value={departureTimeGo}
             />
             <FaClock className="clock3_airline" />
             <input
-              type="text"
+              type="time"
               placeholder="Hora llegada*"
-              onChange={handleArrivalTime}
+              onChange={handleArrivalTimeGo}
+              value={arrivalTimeGo}
+            />
+          </div>
+
+          <div
+            className="div_container_back"
+            style={{ display: travel == "Ida" ? "none" : "flex" }}
+          >
+            <FaCalendarAlt
+              onClick={openCalendarBack}
+              className="calendar_airline_back"
+            />
+            <input
+              className="calendarHiddenBackCreateFlight"
+              ref={inputDateBackRef}
+              type="date"
+              onChange={(e) => setDateDepartureBack(e.target.value)}
+            />
+            <input
+              readOnly
+              onClick={openCalendarBack}
+              type="text"
+              value={dateDepartureBack}
+              placeholder="Vuelta*"
+            />
+            <FaClock className="clock2_airline" />
+            <input
+              type="time"
+              placeholder="Hora salida vuelta*"
+              onChange={handleDepartureTimeBack}
+              value={departureTimeBack}
+            />
+            <FaClock className="clock3_airline" />
+            <input
+              type="time"
+              placeholder="Hora llegada vuelta*"
+              onChange={handleArrivalTimeBack}
+              value={arrivalTimeBack}
             />
           </div>
         </div>
