@@ -9,6 +9,7 @@ import PageSearchFlight from "./pages/pageSearchFlight/pageSearchFlight";
 import Favs from "./pages/favs/Favs";
 import MyFlights from "./pages/myFlights/myFlights";
 import Flights from "./pages/flights/flights";
+import PageSupport from "./pages/pageSupport/PageSupport";
 //AIRLINE
 import PagecreateFlight from "./pages/AirlinePages/PagecreateFlight/pagecreateFlight";
 import PagetableAirline from "./pages/AirlinePages/PageTableAirline/pagetableAirline";
@@ -21,6 +22,7 @@ import { AuthContextProvider } from "./services/authContext/authContext";
 
 //Unauthorized
 import Unauthorized from "./pages/Unauthorized/unauthorized";
+
 function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const showModal = () => {
@@ -69,6 +71,7 @@ function App() {
           <Route path="/favs" element={<Favs showModal={showModal} />} />
           <Route path="/myFlights" element={<MyFlights />} />
           <Route path="/flights" element={<Flights showModal={showModal} />} />
+          <Route path="/support" element={<PageSupport />} />
           {/* AIRLINE */}
           <Route path="/createFlight" element={<PagecreateFlight />} />
           <Route

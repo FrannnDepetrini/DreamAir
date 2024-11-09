@@ -11,10 +11,11 @@
 
 .container_our_info {
   padding: 16px;
-  height: 70%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
+  gap: 4px;
 }
 .container_our_info h2 {
   font-family: var(--RadioCanada);
@@ -22,17 +23,19 @@
   font-size: 20px;
 }
 
-.container_our_info a {
+.container_our_info p {
   text-decoration: none;
   color: black;
   font-family: var(--Inter);
+  cursor: pointer;
 }
 .container_info_extra {
+  gap: 4px;
   padding: 16px;
-  height: 70%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
 }
 
 .container_info_extra h2 {
@@ -41,10 +44,11 @@
   font-size: 20px;
 }
 
-.container_info_extra a {
+.container_info_extra p {
   text-decoration: none;
   color: black;
   font-family: var(--Inter);
+  cursor: pointer;
 }
 .container_social_media {
   display: flex;
@@ -73,7 +77,6 @@
 }
 
 .icon_ig {
-
   font-size: 32px;
 }
 .link_facebook {
