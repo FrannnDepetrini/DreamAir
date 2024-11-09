@@ -55,7 +55,6 @@ const CreateUser = ({ user }) => {
   };
 
   const handleInputAge = (e) => {
-    console.log("si estas leyendo esto will sos re gey");
     if (e.target.value.length == "") {
       setErrors((prevErrors) => ({
         ...prevErrors,
@@ -205,8 +204,6 @@ const CreateUser = ({ user }) => {
   };
 
   const handleRegister = () => {
-    console.log(errors);
-    console.log(isValidatedAllInputs());
     if (isValidatedAllInputs()) {
       alert("Hay algun campo que falta de resolver");
     } else {
