@@ -79,11 +79,22 @@ const TableAirline = () => {
     setTimeArrivalBack(e.target.value);
   };
 
-  const handlePenId = (flightId, dateGo, timeDepartureGo, timeArrivalGo) => {
+  const handlePenId = (
+    flightId,
+    dateGo,
+    timeDepartureGo,
+    timeArrivalGo,
+    dateBack,
+    timeDepartureBack,
+    timeArrivalBack
+  ) => {
     setIsPen(flightId);
     setDateDepartureGo(dateGo);
     setTimeDepartureGo(timeDepartureGo);
     setTimeArrivalGo(timeArrivalGo);
+    setDateDepartureBack(dateBack);
+    setTimeDepartureBack(timeDepartureBack);
+    setTimeArrivalBack(timeArrivalBack);
   };
 
   const handleAceptChanges = (flightId) => {
@@ -270,7 +281,10 @@ const TableAirline = () => {
                                 flight.id,
                                 dateGo.toLocaleDateString("en-CA"),
                                 flight.timeDepartureGo,
-                                flight.timeArrivalGo
+                                flight.timeArrivalGo,
+                                dateBack.toLocaleDateString("en-CA"),
+                                flight.timeDepartureBack,
+                                flight.timeArrivalBack
                               )
                             }
                           />{" "}
