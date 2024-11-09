@@ -45,8 +45,8 @@ const Aside = ({
           userRole == "client" || userRole == ""
             ? focusOption("/")
             : userRole == "airline"
-            ? focusOption("createFlight")
-            : focusOption("createAdmin");
+            ? focusOption("/createFlight")
+            : focusOption("/createAdmin");
         }}
         className={
           activeIndex == "/"
@@ -101,7 +101,7 @@ const Aside = ({
           {userRole == "client" || userRole == ""
             ? "Mis viajes"
             : userRole == "airline"
-            ? "Vuelos creados"
+            ? "Vuelos"
             : "Usuarios"}
         </a>
       </div>

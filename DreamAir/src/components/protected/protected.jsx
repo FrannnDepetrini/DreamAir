@@ -9,7 +9,7 @@ const Protected = ({ children, showModal, requiredRole }) => {
   useEffect(() => {
     if (!user?.token) {
       showModal();
-      return navigate(-1);
+      return navigate("/unauthorized");
     }
 
     console.log(user.role);

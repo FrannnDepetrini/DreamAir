@@ -7,14 +7,11 @@ import {
   IoLogoUsd,
   FaClock,
 } from "../../../utils/icons/icons.js";
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useRef, useContext } from "react";
 import { AuthContext } from "../../../services/authContext/authContext.jsx";
 import { jwtDecode } from "jwt-decode";
 
 const CreateFlight = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
   const [departure, setDeparture] = useState("");
   const [arrival, setArrival] = useState("");
   const [economic, setEconomic] = useState("");
@@ -23,7 +20,6 @@ const CreateFlight = () => {
   const [dateDeparture, setDateDeparture] = useState("");
   const [departureTime, setDepartureTime] = useState("");
   const [arrivalTime, setArrivalTime] = useState("");
-  const [airline, setAirline] = useState("0");
 
   const { user } = useContext(AuthContext);
   const inputDateGoRef = useRef(null);
@@ -51,20 +47,12 @@ const CreateFlight = () => {
     setPrice(e.target.value);
   };
 
-  const handleDateDeparture = (e) => {
-    setDateDeparture(e.target.value);
-  };
-
   const handleDepartureTime = (e) => {
     setDepartureTime(e.target.value);
   };
 
   const handleArrivalTime = (e) => {
     setArrivalTime(e.target.value);
-  };
-
-  const handleAirline = (e) => {
-    setAirline(e.target.value);
   };
 
   const handleSend = async () => {
@@ -78,7 +66,6 @@ const CreateFlight = () => {
       priceDefault: parseFloat(price),
       timeDepartureGo: departureTime,
       timeArrivalGo: arrivalTime,
-      // airline: airline,
     };
 
     fetch("https://localhost:7001/api/Flight/Create", {
@@ -96,30 +83,6 @@ const CreateFlight = () => {
     });
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("https://localhost:7001/api/Flight/Get");
-        const data = await response.json();
-        setData(data);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
-  const AirlineMapped = () => {
-    const airlineMappedDp = [...new Set(data.map((flight) => flight.airline))];
-    const optionMapped = airlineMappedDp.map((dep) => (
-      <option key={dep} value={dep}>
-        {dep}
-      </option>
-    ));
-    return optionMapped;
-  };
   const decodeName = (user) => {
     const decodedToken = jwtDecode(user.token);
     console.log(decodedToken);
@@ -130,16 +93,6 @@ const CreateFlight = () => {
   return (
     <div className="div_container_create_flight">
       <div className="selected_div_create_flight">
-        {/* <select
-          value={airline}
-          className="select_createFlight"
-          onChange={handleAirline}
-        >
-          <option value="0" disabled>
-            Aerolineas
-          </option>
-          {!loading ? AirlineMapped() : null}
-        </select> */}
         <h3 className="nameAirline">{decodeName(user)}</h3>
       </div>
 

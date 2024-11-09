@@ -33,8 +33,6 @@ export const AuthContextProvider = ({ children }) => {
       case "admin":
         navigate("/createAdmin");
         break;
-      default:
-        console.log("uli");
     }
   };
 
