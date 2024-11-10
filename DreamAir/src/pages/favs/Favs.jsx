@@ -11,6 +11,8 @@ const Favs = ({ showModal }) => {
   const [filterAirline, setFilterAirline] = useState("Todos");
   const [icon, setIcon] = useState(false);
   const [iconClass, setIconClass] = useState(false);
+  const [airlines, setAirlines] = useState([]);
+  const [loadingAirline, setLoadingAirline] = useState(true);
 
   const { user } = useContext(AuthContext);
 
@@ -26,6 +28,25 @@ const Favs = ({ showModal }) => {
       setSavedFlights(JSON.parse(saved)); // Guardamos el array completo de vuelos guardados
     }
     setLoading(false);
+  }, []);
+
+  // PETICION DE AEROLINEAS
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const responseAirline = await fetch(
+          "https://localhost:7001/api/UserAirline/GetAirlines"
+        );
+        const airlines = await responseAirline.json();
+        setAirlines(airlines);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoadingAirline(false);
+      }
+    };
+    fetchData();
   }, []);
 
   const handleRadio = (e) => {
@@ -67,7 +88,7 @@ const Favs = ({ showModal }) => {
         />
       ))
     ) : (
-      <h1>No hay vuelos con esas características</h1>
+      <h1>No hay vuelos con esas caracterÃ­sticas</h1>
     );
   };
   return (
@@ -110,51 +131,23 @@ const Favs = ({ showModal }) => {
               />
               <p>Todos</p>
             </div>
-            <div className="checkbox_filters">
-              <input
-                type="radio"
-                name="radio"
-                value={"Avianca"}
-                onChange={handleRadio}
-              />
-              <p>Avianca</p>
-            </div>
-            <div className="checkbox_filters">
-              <input
-                type="radio"
-                name="radio"
-                value={"Aerolineas Argentinas"}
-                onChange={handleRadio}
-              />
-              <p>Aerolineas Arg.</p>
-            </div>
-            <div className="checkbox_filters">
-              <input
-                type="radio"
-                name="radio"
-                value={"Emirates"}
-                onChange={handleRadio}
-              />
-              <p>Emirates</p>
-            </div>
-            <div className="checkbox_filters">
-              <input
-                type="radio"
-                name="radio"
-                value={"Flybondi"}
-                onChange={handleRadio}
-              />
-              <p>Flybondi</p>
-            </div>
-            <div className="checkbox_filters">
-              <input
-                type="radio"
-                name="radio"
-                value={"Sol"}
-                onChange={handleRadio}
-              />
-              <p>Sol</p>
-            </div>
+            {loadingAirline ? (
+              <p>...Cargando vuelos...</p>
+            ) : (
+              airlines.map((airline) => {
+                return (
+                  <div className="checkbox_filters" key={airline}>
+                    <input
+                      type="radio"
+                      name="radio"
+                      value={airline}
+                      onChange={handleRadio}
+                    />
+                    <p>{airline}</p>
+                  </div>
+                );
+              })
+            )}
           </div>
 
           {/* CLASES */}

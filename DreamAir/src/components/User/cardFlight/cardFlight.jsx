@@ -24,12 +24,14 @@ const CardFlight = ({
     if (!isSaved) {
       const newFlight = {
         id: flight.id,
+        travel: flight.travel,
         airline: flight.airline,
         departure: flight.departure,
         arrival: flight.arrival,
-        date: flight.dateGo,
+        dateGo: flight.dateGo,
         timeDepartureGo: flight.timeDepartureGo,
         timeArrivalGo: flight.timeArrivalGo,
+        dateBack: flight.dateBack && null,
         timeDepartureBack: flight.timeDepartureBack && null,
         timeArrivalBack: flight.timeArrivalBack && null,
         priceDefault: flight.priceDefault,

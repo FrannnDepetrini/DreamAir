@@ -7,7 +7,9 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../services/authContext/authContext.jsx";
 const Flights = ({ showModal }) => {
   const [data, setData] = useState([]);
+  const [airlines, setAirlines] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingAirline, setLoadingAirline] = useState(true);
   const [sorted, setSorted] = useState("");
   const [filterAirline, setFilterAirline] = useState("Todos");
   const [icon, setIcon] = useState(false);
@@ -27,6 +29,26 @@ const Flights = ({ showModal }) => {
   const handleSelectSorted = (e) => {
     setSorted(e.target.value);
   };
+
+  // PETICION DE AEROLINEAS
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const responseAirline = await fetch(
+          "https://localhost:7001/api/UserAirline/GetAirlines"
+        );
+        const airlines = await responseAirline.json();
+        setAirlines(airlines);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoadingAirline(false);
+      }
+    };
+    fetchData();
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -49,19 +71,19 @@ const Flights = ({ showModal }) => {
   };
 
   const renderFlights = () => {
+    console.log(data);
     const filteredFlights = data
-      .filter(
-        (flight) =>
-          filterAirline === "Todos"
-            ? flight.departure === departure &&
-              flight.arrival === arrival &&
-              flight.dateGo.slice(0, 10) === dateGo
-            : //new Date(flight.date).toLocaleDateString("en-CA") === dateGo
-              flight.departure === departure &&
-              flight.airline === filterAirline &&
-              flight.arrivalGo === arrival &&
-              flight.dateGo.slice(0, 10) === dateGo
-        //new Date(flight.date).toLocaleDateString("en-CA") === dateGo //&& flight.date === dateBack
+      .filter((flight) =>
+        filterAirline === "Todos"
+          ? flight.travel === travel &&
+            flight.departure === departure &&
+            flight.arrival === arrival &&
+            flight.dateGo.slice(0, 10) === dateGo
+          : flight.travel === travel &&
+            flight.departure === departure &&
+            flight.airline === filterAirline &&
+            flight.arrival === arrival &&
+            flight.dateGo.slice(0, 10) === dateGo
       )
       .sort((a, b) =>
         sorted === ""
@@ -83,7 +105,7 @@ const Flights = ({ showModal }) => {
         />
       ))
     ) : (
-      <h1>No hay vuelos con esas características</h1>
+      <h1>No hay vuelos con esas caracterÃ­sticas</h1>
     );
   };
 
@@ -135,51 +157,23 @@ const Flights = ({ showModal }) => {
               />
               <p>Todos</p>
             </div>
-            <div className="checkbox_filters">
-              <input
-                type="radio"
-                name="radio"
-                value={"Avianca"}
-                onChange={handleRadio}
-              />
-              <p>Avianca</p>
-            </div>
-            <div className="checkbox_filters">
-              <input
-                type="radio"
-                name="radio"
-                value={"Aerolineas Argentinas"}
-                onChange={handleRadio}
-              />
-              <p>Aerolineas Arg.</p>
-            </div>
-            <div className="checkbox_filters">
-              <input
-                type="radio"
-                name="radio"
-                value={"Emirates"}
-                onChange={handleRadio}
-              />
-              <p>Emirates</p>
-            </div>
-            <div className="checkbox_filters">
-              <input
-                type="radio"
-                name="radio"
-                value={"Flybondi"}
-                onChange={handleRadio}
-              />
-              <p>Flybondi</p>
-            </div>
-            <div className="checkbox_filters">
-              <input
-                type="radio"
-                name="radio"
-                value={"Sol"}
-                onChange={handleRadio}
-              />
-              <p>Sol</p>
-            </div>
+            {loadingAirline ? (
+              <p>...Cargando vuelos...</p>
+            ) : (
+              airlines.map((airline) => {
+                return (
+                  <div className="checkbox_filters" key={airline}>
+                    <input
+                      type="radio"
+                      name="radio"
+                      value={airline}
+                      onChange={handleRadio}
+                    />
+                    <p>{airline}</p>
+                  </div>
+                );
+              })
+            )}
           </div>
 
           {/* CLASES */}
