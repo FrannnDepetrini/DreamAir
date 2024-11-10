@@ -1,11 +1,13 @@
 import "./BuyFligth.css";
 import { IoAirplaneSharp, FaArrowLeft } from "../../utils/icons/icons";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../services/authContext/authContext.jsx";
 const BuyFligth = () => {
   const [activeIndex, setActiveIndex] = useState("");
   const [activeIndex1, setActiveIndex1] = useState("");
-  const [taxes, setTaxes] = useState(0);
+  const { user } = useContext(AuthContext);
+
   const [fee, setFee] = useState(0);
   const focusOption = (currentOpt) => {
     setActiveIndex(currentOpt);
@@ -14,20 +16,52 @@ const BuyFligth = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const flight = location.state;
+  const handleBuy = () => {
+    fetch("https://localhost:7001/api/Ticket/Create", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
+      body: JSON.stringify({
+        classSeat: activeIndex1,
+        flightId: flight.id,
+      }),
+    }).then((response) => {
+      if (response.ok) {
+        alert("Compra exitosa");
+      } else {
+        return response.text().then((text) => {
+          throw new Error(text);
+        });
+      }
+    });
+
+    // .then((response) => {
+    //   if (response.ok) {
+    //     alert("Compra exitosa");
+    //   } else {
+    //     return response.text().then((text) => {
+    //       throw new Error(text);})
+    //   }
+    // })
+  };
+
   let subtotal =
     parseFloat(flight.passengers) * parseFloat(flight.priceDefault);
   const focusOption1 = (currentopt) => {
     setActiveIndex1(currentopt);
+
     setFee(
       currentopt === ""
         ? "-----"
-        : currentopt == "Primera clase"
-        ? "32700"
-        : "25600"
+        : currentopt == "FirstClass"
+        ? `${flight.priceDefault * 0.5}`
+        : `${flight.priceDefault * 0.3}`
     );
-    setTaxes(
-      0.21 * (parseFloat(fee) * parseFloat(flight.passengers) + subtotal)
-    );
+    // setTaxes(
+    //   0.21 * (parseFloat(fee) * parseFloat(flight.passengers) + subtotal)
+    // );
   };
 
   let dateGo = new Date(flight.dateGo);
@@ -140,18 +174,18 @@ const BuyFligth = () => {
             <label className="form-label">Clase</label>
             <div className="button-group">
               <button
-                onClick={() => focusOption1("Economica")}
+                onClick={() => focusOption1("Economic")}
                 className={
-                  activeIndex1 == "Economica" ? "button_selected" : "button"
+                  activeIndex1 == "Economic" ? "button_selected" : "button"
                 }
                 type="button"
               >
                 Económica
               </button>
               <button
-                onClick={() => focusOption1("Primera clase")}
+                onClick={() => focusOption1("FirstClass")}
                 className={
-                  activeIndex1 == "Primera clase" ? "button_selected" : "button"
+                  activeIndex1 == "FirstClass" ? "button_selected" : "button"
                 }
                 type="button"
               >
@@ -187,7 +221,7 @@ const BuyFligth = () => {
           </form>
         </div>
         <div className="buy_button">
-          <button type="submit" className="purchase_button">
+          <button onClick={handleBuy} type="button" className="purchase_button">
             Comprar
           </button>
         </div>
@@ -206,14 +240,14 @@ const BuyFligth = () => {
               <p>${fee}</p>
             </div>
 
-            <div className="details2">
+            {/* <div className="details2">
               <h5>Impuestos </h5>
               <p> ${taxes}</p>
-            </div>
+            </div> */}
           </div>
           <div className="total_payment">
             <h2>Total</h2>
-            <p>${parseFloat(taxes) + parseFloat(fee) + subtotal}</p>
+            <p>${parseFloat(fee) + subtotal}</p>
           </div>
         </div>
         <div className="fligth_info">

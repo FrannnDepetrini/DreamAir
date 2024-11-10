@@ -1,5 +1,6 @@
-import { useReducer, useState } from "react";
+import { useState } from "react";
 import "../createUser/createUser.css";
+import { useValidateInput } from "../../../customHooks/useValidateInput/UseValidateInput";
 
 const CreateUser = ({ user }) => {
   const [name, setName] = useState("");
@@ -23,6 +24,8 @@ const CreateUser = ({ user }) => {
     validateMail: "1",
     validatePass: "1",
   });
+
+  const validateEmail = useValidateInput("email");
   console.log(userType);
   const handleInputName = (e) => {
     if (e.target.value == "") {
@@ -129,10 +132,16 @@ const CreateUser = ({ user }) => {
   };
 
   const handleInputEmail = (e) => {
-    if (e.target.value == "") {
+    validateEmail.validate(e.target.value);
+
+    console.log(validateEmail.isValid);
+    console.log(validateEmail.error);
+    console.log(validateEmail.value, 444);
+
+    if (!validateEmail.isValid) {
       setErrors((prevErrors) => ({
         ...prevErrors,
-        email: "El email no debe ser vacio",
+        mail: validateEmail.error,
       }));
     } else {
       setErrors((prevErrors) => ({
@@ -142,6 +151,18 @@ const CreateUser = ({ user }) => {
       setMail(e.target.value);
     }
   };
+  // if (e.target.value == "") {
+  //   setErrors((prevErrors) => ({
+  //     ...prevErrors,
+  //     email: "El email no debe ser vacio",
+  //   }));
+  // } else {
+  //   setErrors((prevErrors) => ({
+  //     ...prevErrors,
+  //     mail: "",
+  //   }));
+  //   setMail(e.target.value);
+  // }
 
   const handleValidateEmail = (e) => {
     if (e.target.value != mail) {
