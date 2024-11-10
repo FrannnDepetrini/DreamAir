@@ -6,7 +6,7 @@ import {
   MdCancel,
 } from "../../../utils/icons/icons";
 import "./TableAirline.css";
-import { AuthContext } from "../../../services/authContext/AuthContext.jsx";
+import { AuthContext } from "../../../services/authContext/authContext.jsx";
 import { useNavigate } from "react-router-dom";
 const TableAirline = () => {
   const navigate = useNavigate();

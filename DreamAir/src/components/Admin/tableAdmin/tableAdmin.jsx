@@ -6,7 +6,7 @@ import {
   MdCancel,
 } from "../../../utils/icons/icons";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../services/authContext/AuthContext";
+import { AuthContext } from "../../../services/authContext/authContext";
 import { useNavigate } from "react-router-dom";
 const TableAdmin = () => {
   const [data, setData] = useState([]);
