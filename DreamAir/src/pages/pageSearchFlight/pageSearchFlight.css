@@ -1,14 +1,21 @@
 @import url(../../utils/fonts/fonts.css);
+@import url(../../utils/colors/colors.css);
+
+[data-theme="dark"] {
+  --lightGray: var(--mediumBlack) !important;
+  --black: var(--cream) !important;
+}
 * {
   box-sizing: border-box;
 }
 .container_searchFlight {
   padding: 32px;
-  background-color: var(--lighGray);
+  background-color: var(--lightGray);
 }
 .title {
   font-family: var(--Lalezar);
   font-size: 32px;
   font-weight: normal;
   padding: 8px;
+  color: var(--black);
 }

@@ -59,26 +59,30 @@ const TableAdmin = () => {
       id: userId,
       newRole: userRole,
     };
-    console.log(newUserUpdate);
-    fetch("https://localhost:7001/api/User/UpdateRole", {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-      body: JSON.stringify(newUserUpdate),
-    }).then((response) => {
-      if (response.ok) return response.json();
-      else {
-        throw new Error("The response has some errors");
-      }
-    });
-    setData((prevData) =>
-      prevData.map((user) =>
-        user.id === userId ? { ...user, role: userRole } : user
-      )
-    );
-    setIsPen("");
+    if (userRole != "client" && userRole != "airline" && userRole != "admin") {
+      alert("Solo puedes poner roles client | airline | admin");
+    } else {
+      console.log(newUserUpdate);
+      fetch("https://localhost:7001/api/User/UpdateRole", {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+        body: JSON.stringify(newUserUpdate),
+      }).then((response) => {
+        if (response.ok) return response.json();
+        else {
+          throw new Error("The response has some errors");
+        }
+      });
+      setData((prevData) =>
+        prevData.map((user) =>
+          user.id === userId ? { ...user, role: userRole } : user
+        )
+      );
+      setIsPen("");
+    }
   };
 
   const handleCancelChanges = () => {

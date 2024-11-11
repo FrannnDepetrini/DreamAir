@@ -6,6 +6,10 @@
   padding: 0;
   margin: 0;
 }
+[data-theme="dark"] {
+  --cream: var(--mediumBlack) !important;
+  --silver: black !important;
+}
 
 .container_header {
   background-color: var(--cream);
