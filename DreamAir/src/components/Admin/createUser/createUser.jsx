@@ -230,8 +230,7 @@ const CreateUser = ({ user }) => {
               });
             }
           })
-          .then((data) => {
-            console.log("Usuario creado con éxito", data);
+          .then(() => {
             alert("Usuario creado con exito");
           })
           .catch((error) => {
@@ -240,7 +239,6 @@ const CreateUser = ({ user }) => {
             )
               ? "Este email ya está en uso"
               : "Error inesperado, vuelva a intentar más tarde";
-            console.error(errorException);
             alert(errorException);
           });
       } else {
@@ -266,8 +264,7 @@ const CreateUser = ({ user }) => {
               });
             }
           })
-          .then((data) => {
-            console.log("Usuario creado con éxito", data);
+          .then(() => {
             alert("Usuario creado con exito");
           })
           .catch((error) => {
@@ -276,8 +273,6 @@ const CreateUser = ({ user }) => {
             )
               ? "Este email ya está en uso"
               : "Error inesperado, vuelva a intentar más tarde";
-            console.error(errorException);
-            console.error(error);
             alert(errorException);
           });
       }

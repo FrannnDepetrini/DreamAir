@@ -25,7 +25,16 @@ const TableAirline = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://localhost:7001/api/Flight/Get");
+        const response = await fetch(
+          "https://localhost:7001/api/UserAirline/GetFlights",
+          {
+            method: "GET",
+            headers: {
+              "Content-type": "application/json",
+              Authorization: `Bearer ${user.token}`,
+            },
+          }
+        );
         const data = await response.json();
         setData(data);
       } catch (err) {
@@ -107,7 +116,7 @@ const TableAirline = () => {
       timeDepartureBack: flightId.travel == "Ida" ? null : timeDepartureBack,
       timeArrivalBack: flightId.travel == "Ida" ? null : timeArrivalBack,
     };
-    // console.log(newFlightUpdate)
+
     fetch("https://localhost:7001/api/Flight/Update", {
       method: "PUT",
       headers: {
@@ -126,6 +135,7 @@ const TableAirline = () => {
         flight.id === flightId ? { ...flight, ...newFlightUpdate } : flight
       )
     );
+
     setIsPen("");
   };
 

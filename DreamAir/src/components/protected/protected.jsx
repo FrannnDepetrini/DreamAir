@@ -12,7 +12,6 @@ const Protected = ({ children, showModal, requiredRole }) => {
       return navigate("/unauthorized");
     }
 
-    console.log(user.role);
     if (user.role !== requiredRole) {
       return navigate("/unauthorized");
     }

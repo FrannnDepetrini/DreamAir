@@ -62,7 +62,6 @@ const TableAdmin = () => {
     if (userRole != "client" && userRole != "airline" && userRole != "admin") {
       alert("Solo puedes poner roles client | airline | admin");
     } else {
-      console.log(newUserUpdate);
       fetch("https://localhost:7001/api/User/UpdateRole", {
         method: "PUT",
         headers: {
@@ -112,7 +111,6 @@ const TableAdmin = () => {
                 </td>
               </tr>
             ) : (
-              (console.log(data),
               data.map((user) => {
                 return (
                   <tr key={user.id}>
@@ -157,7 +155,7 @@ const TableAdmin = () => {
                     </td>
                   </tr>
                 );
-              }))
+              })
             )}
           </tbody>
           <tfoot></tfoot>

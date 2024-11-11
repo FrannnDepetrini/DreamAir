@@ -60,10 +60,9 @@ export function useValidateInput(inputType = "genericText") {
         }
       }
     }
-    setErrores((prevErrors) => ({
-      ...prevErrors,
+    setErrores({
       msg: errorMsg,
-    }));
+    });
   };
 
   return [validateInput, errores];

@@ -73,7 +73,6 @@ const TableUser = () => {
             </tr>
           </thead>
           <tbody>
-            {console.log(data)}
             {loading ? (
               <tr>
                 <td>
@@ -112,7 +111,11 @@ const TableUser = () => {
                         ? "------"
                         : ticket.timeArrivalBack + " Hs"}{" "}
                     </td>
-                    <td>{ticket.state}</td>
+                    <td>
+                      {new Date(ticket.dateGo) >= new Date()
+                        ? "Activo"
+                        : "Inactivo"}
+                    </td>
                     <td>
                       <RiDeleteBin6Line
                         className="trash_icon"

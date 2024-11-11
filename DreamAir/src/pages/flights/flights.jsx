@@ -71,19 +71,22 @@ const Flights = ({ showModal }) => {
   };
 
   const renderFlights = () => {
-    console.log(data);
     const filteredFlights = data
       .filter((flight) =>
         filterAirline === "Todos"
           ? flight.travel === travel &&
             flight.departure === departure &&
             flight.arrival === arrival &&
-            flight.dateGo.slice(0, 10) === dateGo
+            flight.dateGo.slice(0, 10) === dateGo &&
+            new Date(flight.dateGo) >= new Date() &&
+            flight.dateBack?.slice(0, 10) === dateBack
           : flight.travel === travel &&
             flight.departure === departure &&
             flight.airline === filterAirline &&
             flight.arrival === arrival &&
-            flight.dateGo.slice(0, 10) === dateGo
+            flight.dateGo.slice(0, 10) === dateGo &&
+            new Date(flight.dateGo) >= new Date() &&
+            flight.dateBack?.slice(0, 10) === dateBack
       )
       .sort((a, b) =>
         sorted === ""
@@ -105,7 +108,7 @@ const Flights = ({ showModal }) => {
         />
       ))
     ) : (
-      <h1>No hay vuelos con esas caracterÃ­sticas</h1>
+      <h1>No hay vuelos con esas caracteri­sticas</h1>
     );
   };
 
