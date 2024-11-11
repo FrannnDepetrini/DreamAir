@@ -1,5 +1,6 @@
-import { useReducer, useState } from "react";
+import { useState } from "react";
 import "../createUser/createUser.css";
+import { useValidateInput } from "../../../customHooks/useValidateInput/UseValidateInput";
 
 const CreateUser = ({ user }) => {
   const [name, setName] = useState("");
@@ -18,12 +19,13 @@ const CreateUser = ({ user }) => {
     nationality: "1",
     document: "1",
     phone: "1",
-    mail: "1",
-    password: "1",
     validateMail: "1",
     validatePass: "1",
   });
-  console.log(userType);
+
+  const [validateEmail, errorsEmail] = useValidateInput("email");
+  const [validatePass, errorsPass] = useValidateInput();
+
   const handleInputName = (e) => {
     if (e.target.value == "") {
       setErrors((prevErrors) => ({
@@ -128,21 +130,6 @@ const CreateUser = ({ user }) => {
     }
   };
 
-  const handleInputEmail = (e) => {
-    if (e.target.value == "") {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        email: "El email no debe ser vacio",
-      }));
-    } else {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        mail: "",
-      }));
-      setMail(e.target.value);
-    }
-  };
-
   const handleValidateEmail = (e) => {
     if (e.target.value != mail) {
       setErrors((prevErrors) => ({
@@ -154,20 +141,6 @@ const CreateUser = ({ user }) => {
         ...prevErrors,
         validateMail: "",
       }));
-    }
-  };
-  const handleInputPassword = (e) => {
-    if (e.target.value == "") {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        password: "La contraseña no debe ser vacia",
-      }));
-    } else {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        password: "",
-      }));
-      setPassword(e.target.value);
     }
   };
 
@@ -185,20 +158,43 @@ const CreateUser = ({ user }) => {
     }
   };
 
+  //Usan hook
+
+  const handleInputEmail = (e) => {
+    validateEmail(e.target.value);
+    setMail(e.target.value);
+  };
+
+  const handleInputPassword = (e) => {
+    validatePass(e.target.value);
+    setPassword(e.target.value);
+  };
+
   const isValidatedAllInputs = () => {
     if (userType == "aerolinea") {
       let objetToAirlines = {
         name: errors.name,
-        mail: errors.mail,
-        password: errors.password,
+        mail: errorsEmail.msg,
+        password: errorsPass.msg,
         validateMail: errors.validateMail,
         validatePass: errors.validatePass,
       };
       let result = !Object.values(objetToAirlines).every((val) => val === "");
       return result;
     }
-
-    let result = !Object.values(errors).every((val) => val === "");
+    let objetToClients = {
+      name: errors.name,
+      mail: errorsEmail.msg,
+      password: errorsPass.msg,
+      validateMail: errors.validateMail,
+      validatePass: errors.validatePass,
+      lastName: errors.lastName,
+      age: errors.age,
+      nationality: errors.nationality,
+      document: errors.document,
+      phone: errors.phone,
+    };
+    let result = !Object.values(objetToClients).every((val) => val === "");
 
     return result;
   };
@@ -234,8 +230,7 @@ const CreateUser = ({ user }) => {
               });
             }
           })
-          .then((data) => {
-            console.log("Usuario creado con éxito", data);
+          .then(() => {
             alert("Usuario creado con exito");
           })
           .catch((error) => {
@@ -244,7 +239,6 @@ const CreateUser = ({ user }) => {
             )
               ? "Este email ya está en uso"
               : "Error inesperado, vuelva a intentar más tarde";
-            console.error(errorException);
             alert(errorException);
           });
       } else {
@@ -270,8 +264,7 @@ const CreateUser = ({ user }) => {
               });
             }
           })
-          .then((data) => {
-            console.log("Usuario creado con éxito", data);
+          .then(() => {
             alert("Usuario creado con exito");
           })
           .catch((error) => {
@@ -280,8 +273,6 @@ const CreateUser = ({ user }) => {
             )
               ? "Este email ya está en uso"
               : "Error inesperado, vuelva a intentar más tarde";
-            console.error(errorException);
-            console.error(error);
             alert(errorException);
           });
       }
@@ -448,15 +439,19 @@ const CreateUser = ({ user }) => {
             </div>
           </>
         ) : null}
-
+        <h3>{errorsEmail.email}</h3>
         <div className="div_email">
           <div className="div_labelInput">
             <label
               className={
-                errors.mail != "1" && errors.mail != "" ? "labelError" : ""
+                errorsEmail.msg != "1" && errorsEmail.msg != ""
+                  ? "labelError"
+                  : ""
               }
             >
-              {errors.mail != "1" && errors.mail != "" ? errors.mail : "Email"}
+              {errorsEmail.msg != "1" && errorsEmail.msg != ""
+                ? errorsEmail.msg
+                : "Email"}
             </label>
             <input
               onChange={(e) => handleInputEmail(e)}
@@ -490,13 +485,13 @@ const CreateUser = ({ user }) => {
           <div className="div_labelInput">
             <label
               className={
-                errors.password != "1" && errors.password != ""
+                errorsPass.msg != "1" && errorsPass.msg != ""
                   ? "labelError"
                   : ""
               }
             >
-              {errors.password != "1" && errors.password != ""
-                ? errors.password
+              {errorsPass.msg != "1" && errorsPass.msg != ""
+                ? errorsPass.msg
                 : "Contraseña"}
             </label>
 

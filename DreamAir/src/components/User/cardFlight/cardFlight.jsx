@@ -21,31 +21,38 @@ const CardFlight = ({
   };
   const [isSaved, SetIsSaved] = useState(savedValidation());
   const handlerSave = () => {
-    if (!isSaved) {
-      const newFlight = {
-        id: flight.id,
-        travel: flight.travel,
-        airline: flight.airline,
-        departure: flight.departure,
-        arrival: flight.arrival,
-        dateGo: flight.dateGo,
-        timeDepartureGo: flight.timeDepartureGo,
-        timeArrivalGo: flight.timeArrivalGo,
-        dateBack: flight.dateBack && null,
-        timeDepartureBack: flight.timeDepartureBack && null,
-        timeArrivalBack: flight.timeArrivalBack && null,
-        priceDefault: flight.priceDefault,
-        duration: flight.duration,
-      };
-      savedFlights.push(newFlight);
-      localStorage.setItem("FlightSaved", JSON.stringify(savedFlights));
-      SetIsSaved(true);
+    if (!user.token) {
+      showModal();
     } else {
-      if (savedFlights.length > 0) {
-        savedFlights = savedFlights.filter((flight) => flight.id !== flight.id);
-
+      if (!isSaved) {
+        const newFlight = {
+          id: flight.id,
+          travel: flight.travel,
+          airline: flight.airline,
+          departure: flight.departure,
+          arrival: flight.arrival,
+          dateGo: flight.dateGo,
+          timeDepartureGo: flight.timeDepartureGo,
+          timeArrivalGo: flight.timeArrivalGo,
+          dateBack: flight.dateBack && null,
+          timeDepartureBack: flight.timeDepartureBack && null,
+          timeArrivalBack: flight.timeArrivalBack && null,
+          priceDefault: flight.priceDefault,
+          duration: flight.duration,
+        };
+        savedFlights.push(newFlight);
         localStorage.setItem("FlightSaved", JSON.stringify(savedFlights));
-        SetIsSaved(false);
+        SetIsSaved(true);
+      } else {
+        if (savedFlights.length > 0) {
+          savedFlights = savedFlights.filter(
+            (svFlight) => svFlight.id !== flight.id
+          );
+
+          localStorage.setItem("FlightSaved", JSON.stringify(savedFlights));
+
+          SetIsSaved(false);
+        }
       }
     }
   };

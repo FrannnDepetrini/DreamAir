@@ -124,9 +124,13 @@ const CreateFlight = () => {
   };
 
   const decodeName = (user) => {
-    const decodedToken = jwtDecode(user.token);
-    const name = decodedToken.name;
-    return name;
+    if (user.token == "" && user.email == "" && user.role == "") {
+      return null;
+    } else {
+      const decodedToken = jwtDecode(user.token);
+      const name = decodedToken.name;
+      return name;
+    }
   };
 
   return (

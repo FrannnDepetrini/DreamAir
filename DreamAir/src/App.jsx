@@ -57,8 +57,22 @@ function App() {
                 </Protected>
               }
             />
-            <Route path="/favs" element={<Favs showModal={showModal} />} />
-            <Route path="/myFlights" element={<MyFlights />} />
+            <Route
+              path="/favs"
+              element={
+                <Protected showModal={showModal} requiredRole="client">
+                  <Favs showModal={showModal} />
+                </Protected>
+              }
+            />
+            <Route
+              path="/myFlights"
+              element={
+                <Protected showModal={showModal} requiredRole="client">
+                  <MyFlights />
+                </Protected>
+              }
+            />
             <Route
               path="/flights"
               element={<Flights showModal={showModal} />}

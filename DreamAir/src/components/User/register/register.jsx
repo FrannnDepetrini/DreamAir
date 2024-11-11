@@ -65,7 +65,7 @@ const Register = () => {
         body: JSON.stringify(createClient),
       }).then((response) => {
         if (response.ok) {
-          navigate("/searchFlights");
+          navigate("/");
           return response.json(), alert("Usuario registrado con exito");
         } else {
           throw new Error("The response has some errors");

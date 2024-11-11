@@ -4,6 +4,11 @@
   padding: 0px;
 }
 
+[data-theme="dark"] {
+  --platinium: rgba(0, 0, 0, 0.232) !important ;
+  --silver: white;
+}
+
 .container_aside {
   background-color: var(--cream);
   position: fixed;

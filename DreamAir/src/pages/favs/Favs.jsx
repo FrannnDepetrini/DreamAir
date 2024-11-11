@@ -5,6 +5,7 @@ import { IoMdArrowDropdown } from "../../utils/icons/icons.js";
 import { useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "../../services/authContext/authContext.jsx";
+import { useNavigate } from "react-router-dom";
 const Favs = ({ showModal }) => {
   const [loading, setLoading] = useState(true);
   const [sorted, setSorted] = useState("");
@@ -15,7 +16,7 @@ const Favs = ({ showModal }) => {
   const [loadingAirline, setLoadingAirline] = useState(true);
 
   const { user } = useContext(AuthContext);
-
+  const navigate = useNavigate();
   const [savedFlights, setSavedFlights] = useState([]);
 
   const handleSelectSorted = (e) => {
@@ -60,6 +61,12 @@ const Favs = ({ showModal }) => {
     setIconClass(!iconClass);
   };
 
+  const navigateBuy = (flightSelected) => {
+    navigate("/buyFlight", {
+      state: { ...flightSelected, passengers: 1 },
+    });
+  };
+
   const today = new Date();
 
   const renderFlights = () => {
@@ -82,13 +89,13 @@ const Favs = ({ showModal }) => {
           user={user}
           key={flight.id}
           showModal={showModal}
-          // handlerNavigateBuy={navigateBuy}
+          handlerNavigateBuy={() => navigateBuy(flight)}
           flight={flight}
-          validationDate={new Date(flight.date) >= today}
+          validationDate={new Date(flight.dateGo) >= today}
         />
       ))
     ) : (
-      <h1>No hay vuelos con esas caracterÃ­sticas</h1>
+      <h1>No hay vuelos con esas caracteri­sticas</h1>
     );
   };
   return (

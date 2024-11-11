@@ -1,6 +1,14 @@
 @import url(../../../utils/colors/colors.css);
 @import url(../../../utils/fonts/fonts.css);
 
+:root {
+  --blue: var(--blue);
+}
+
+[data-theme="dark"] {
+  --shadowColor: rgba(0, 0, 0, 0.367) !important;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -15,7 +23,7 @@
   width: 55%;
   background-color: var(--blue);
   border-radius: 8px;
-  box-shadow: 0px 4px 10px 1px rgba(72, 77, 77, 0.452);
+  box-shadow: 0px 4px 10px 1px var(--shadowColor);
 }
 
 .div_container_adjusted {
@@ -28,7 +36,7 @@
   width: 65%;
   background-color: var(--blue);
   border-radius: 8px;
-  box-shadow: 0px 4px 10px 1px rgba(72, 77, 77, 0.452);
+  box-shadow: 0px 4px 10px 1px var(--shadowColor);
 }
 
 .div_select {

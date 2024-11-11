@@ -15,7 +15,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const handleLogin = (email, token) => {
     const decodedToken = jwtDecode(token);
-    console.log(decodedToken);
+
     const role = decodedToken.role;
     setUser({
       email,
@@ -25,7 +25,7 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.setItem("DreamAir-token", token);
     localStorage.setItem("DreamAir-email", email);
     localStorage.setItem("DreamAir-role", role);
-    console.log(user);
+
     switch (role) {
       case "airline":
         navigate("/createFlight");
@@ -41,7 +41,6 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.removeItem("DreamAir-email");
     localStorage.removeItem("DreamAir-role");
     setUser({ email: "", toke: "", role: "" });
-    console.log(user);
   };
   return (
     <AuthContext.Provider value={{ user, handleLogin, handleLogout }}>
