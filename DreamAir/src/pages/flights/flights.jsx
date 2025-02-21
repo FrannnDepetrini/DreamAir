@@ -4,7 +4,7 @@ import { IoMdArrowDropdown } from "../../utils/icons/icons.js";
 import { useLocation } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../services/authContext/authContext.jsx";
+import { AuthContext } from "../../services/authContext/AuthContext.jsx";
 const Flights = ({ showModal }) => {
   const [data, setData] = useState([]);
   const [airlines, setAirlines] = useState([]);

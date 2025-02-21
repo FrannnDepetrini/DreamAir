@@ -1,9 +1,12 @@
 import "./footer.css";
 import { FaFacebookF, FaInstagram } from "../../../utils/icons/icons";
 
-const Footer = () => {
+const Footer = ({ theme }) => {
   return (
-    <div className="container_footer">
+    <div
+      id={`${theme == "dark" ? "cf_dark" : ""}`}
+      className="container_footer"
+    >
       <div className="container_our_info">
         <h2>Nuestra empresa</h2>
         <p>Quienes somos</p>

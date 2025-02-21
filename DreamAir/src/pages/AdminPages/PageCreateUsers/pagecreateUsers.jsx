@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import CreateUser from "../../../components/Admin/createUser/createUser";
 import "../PageCreateUsers/pagecreateUsers.css";
-import { AuthContext } from "../../../services/authContext/authContext";
+import { AuthContext } from "../../../services/authContext/AuthContext";
 const PagecreateUsers = () => {
   const { user } = useContext(AuthContext);
   return (

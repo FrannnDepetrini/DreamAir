@@ -15,6 +15,7 @@ const Aside = ({
   isMenuOpen,
   userRole,
   showModal,
+  theme,
 }) => {
   const [activeIndex, setActiveIndex] = useState("/");
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ const Aside = ({
     <div
       onMouseEnter={toggleMenuOpen}
       onMouseLeave={toggleMenuClose}
+      id={theme == "dark" ? "ca_dark" : ""}
       className={`container_aside ${isMenuOpen ? "container_aside_open" : ""}`}
     >
       <div
@@ -48,6 +50,7 @@ const Aside = ({
             ? focusOption("/createFlight")
             : focusOption("/createAdmin");
         }}
+        id={theme == "dark" ? "cb_dark" : ""}
         className={
           activeIndex == "/"
             ? "container_button_flights_focus"
@@ -70,6 +73,7 @@ const Aside = ({
         <>
           <div
             onClick={() => focusOption("/favs")}
+            id={theme == "dark" ? "cb_dark" : ""}
             className={
               activeIndex == "/favs"
                 ? "container_button_favs_focus"
@@ -90,6 +94,7 @@ const Aside = ({
             ? focusOption("/tableAirline")
             : focusOption("/tableAdmin");
         }}
+        id={theme == "dark" ? "cb_dark" : ""}
         className={
           activeIndex == "/myFlights"
             ? "container_button_my_flights_focus"
@@ -110,6 +115,7 @@ const Aside = ({
         <>
           <div
             onClick={() => focusOption("/support")}
+            id={theme == "dark" ? "cb_dark" : ""}
             className={
               activeIndex == "/support"
                 ? "container_button_support_focus"

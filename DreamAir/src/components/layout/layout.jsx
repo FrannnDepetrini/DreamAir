@@ -5,8 +5,10 @@ import "../layout/layout.css";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import CardModal from "../User/modal/cardModal";
-import { AuthContext } from "../../services/authContext/authContext";
+import { AuthContext } from "../../services/authContext/AuthContext";
+import { ThemeContext } from "../../services/themeContext/ThemeContext";
 const Layout = ({ isModalVisible, showModal, closeModal }) => {
+  const { theme } = useContext(ThemeContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { handleLogin, user, handleLogout } = useContext(AuthContext);
 
@@ -38,6 +40,7 @@ const Layout = ({ isModalVisible, showModal, closeModal }) => {
           showModal={showModal}
           toggleMenu={handlerMenu}
           handleLogOut={handlerLogOut}
+          theme={theme}
           className="header"
         />
         <Aside
@@ -47,12 +50,17 @@ const Layout = ({ isModalVisible, showModal, closeModal }) => {
           className="aside"
           userRole={user.role}
           showModal={showModal}
+          theme={theme}
         />
         <Outlet className={isMenuOpen ? "main_adjusted" : "main"}></Outlet>
 
-        <Footer className={isMenuOpen ? "footer_adjusted" : "footer"} />
+        <Footer
+          theme={theme}
+          className={isMenuOpen ? "footer_adjusted" : "footer"}
+        />
       </div>
       <CardModal
+        theme={theme}
         handleLogin={handleLogin}
         isOpen={isModalVisible}
         closeModal={closeModal}

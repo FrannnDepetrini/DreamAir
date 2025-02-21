@@ -8,7 +8,7 @@ import {
   FaClock,
 } from "../../../utils/icons/icons.js";
 import { useState, useRef, useContext } from "react";
-import { AuthContext } from "../../../services/authContext/authContext.jsx";
+import { AuthContext } from "../../../services/authContext/AuthContext.jsx";
 import { jwtDecode } from "jwt-decode";
 
 const CreateFlight = () => {

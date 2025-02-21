@@ -5,10 +5,6 @@
   --blue: var(--blue);
 }
 
-[data-theme="dark"] {
-  --shadowColor: rgba(0, 0, 0, 0.367) !important;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -37,6 +33,10 @@
   background-color: var(--blue);
   border-radius: 8px;
   box-shadow: 0px 4px 10px 1px var(--shadowColor);
+}
+
+#divContainer_dark {
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.26);
 }
 
 .div_select {

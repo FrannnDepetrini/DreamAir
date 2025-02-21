@@ -1,7 +1,7 @@
 import "./TableUser.css";
 import { RiDeleteBin6Line } from "../../../utils/icons/icons";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../services/authContext/authContext";
+import { AuthContext } from "../../../services/authContext/AuthContext";
 import { useNavigate } from "react-router-dom";
 const TableUser = () => {
   const [data, setData] = useState([]);

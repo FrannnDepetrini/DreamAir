@@ -1,12 +1,25 @@
 @import url(../../../utils/colors/colors.css);
 @import url(../../../utils//fonts/fonts.css);
 
+#cf_dark {
+  background-color: var(--lightBlack);
+  border-color: var(--mediumBlack);
+  color: white;
+}
+#cf_dark p {
+  color: white;
+}
+.container_footer p {
+  transition: all 0.25s ease-in-out;
+}
+
 .container_footer {
   background-color: var(--cream);
   display: flex;
   justify-content: space-around;
   grid-area: footer;
   border-top: 1px solid var(--silver);
+  transition: all 0.25s ease-in-out;
 }
 
 .container_our_info {

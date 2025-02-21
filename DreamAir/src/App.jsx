@@ -18,7 +18,8 @@ import PagetableUsers from "./pages/AdminPages/PageTableUsers/pagetableUsers";
 import PagecreateUsers from "./pages/AdminPages/PageCreateUsers/pagecreateUsers";
 import Protected from "./components/protected/protected";
 import { useState } from "react";
-import { AuthContextProvider } from "./services/authContext/authContext";
+import { AuthContextProvider } from "./services/authContext/AuthContext.jsx";
+import { ThemeContextProvider } from "./services/themeContext/ThemeContext.jsx";
 
 //Unauthorized
 import Unauthorized from "./pages/Unauthorized/unauthorized";
@@ -34,87 +35,89 @@ function App() {
   return (
     <Router>
       <AuthContextProvider>
-        <Routes>
-          <Route
-            // path="/"
-            element={
-              <Layout
-                showModal={showModal}
-                closeModal={closeModal}
-                isModalVisible={isModalVisible}
+        <ThemeContextProvider>
+          <Routes>
+            <Route
+              // path="/"
+              element={
+                <Layout
+                  showModal={showModal}
+                  closeModal={closeModal}
+                  isModalVisible={isModalVisible}
+                />
+              }
+            >
+              {/* USER */}
+              <Route path="/" index element={<PageSearchFlight />} />
+              {/* <Route path="/searchFlights" element={<PageSearchFlight />} /> */}
+              <Route path="/register" element={<PagesRegister />} />
+              <Route
+                path="/buyFlight"
+                element={
+                  <Protected showModal={showModal} requiredRole="client">
+                    <BuyFligth />
+                  </Protected>
+                }
               />
-            }
-          >
-            {/* USER */}
-            <Route path="/" index element={<PageSearchFlight />} />
-            {/* <Route path="/searchFlights" element={<PageSearchFlight />} /> */}
-            <Route path="/register" element={<PagesRegister />} />
-            <Route
-              path="/buyFlight"
-              element={
-                <Protected showModal={showModal} requiredRole="client">
-                  <BuyFligth />
-                </Protected>
-              }
-            />
-            <Route
-              path="/favs"
-              element={
-                <Protected showModal={showModal} requiredRole="client">
-                  <Favs showModal={showModal} />
-                </Protected>
-              }
-            />
-            <Route
-              path="/myFlights"
-              element={
-                <Protected showModal={showModal} requiredRole="client">
-                  <MyFlights />
-                </Protected>
-              }
-            />
-            <Route
-              path="/flights"
-              element={<Flights showModal={showModal} />}
-            />
-            <Route path="/support" element={<PageSupport />} />
-            {/* AIRLINE */}
-            <Route
-              path="/createFlight"
-              element={
-                <Protected showModal={showModal} requiredRole="airline">
-                  <PagecreateFlight />
-                </Protected>
-              }
-            />
-            <Route
-              path="/tableAirline"
-              element={
-                <Protected showModal={showModal} requiredRole="airline">
-                  <PagetableAirline />
-                </Protected>
-              }
-            />
-            {/* ADMIN */}
-            <Route
-              path="/tableAdmin"
-              element={
-                <Protected showModal={showModal} requiredRole="admin">
-                  <PagetableUsers />
-                </Protected>
-              }
-            />
-            <Route
-              path="/createAdmin"
-              element={
-                <Protected showModal={showModal} requiredRole="admin">
-                  <PagecreateUsers />
-                </Protected>
-              }
-            />
-          </Route>
-          <Route path="/unauthorized" element={<Unauthorized />} />
-        </Routes>
+              <Route
+                path="/favs"
+                element={
+                  <Protected showModal={showModal} requiredRole="client">
+                    <Favs showModal={showModal} />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/myFlights"
+                element={
+                  <Protected showModal={showModal} requiredRole="client">
+                    <MyFlights />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/flights"
+                element={<Flights showModal={showModal} />}
+              />
+              <Route path="/support" element={<PageSupport />} />
+              {/* AIRLINE */}
+              <Route
+                path="/createFlight"
+                element={
+                  <Protected showModal={showModal} requiredRole="airline">
+                    <PagecreateFlight />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/tableAirline"
+                element={
+                  <Protected showModal={showModal} requiredRole="airline">
+                    <PagetableAirline />
+                  </Protected>
+                }
+              />
+              {/* ADMIN */}
+              <Route
+                path="/tableAdmin"
+                element={
+                  <Protected showModal={showModal} requiredRole="admin">
+                    <PagetableUsers />
+                  </Protected>
+                }
+              />
+              <Route
+                path="/createAdmin"
+                element={
+                  <Protected showModal={showModal} requiredRole="admin">
+                    <PagecreateUsers />
+                  </Protected>
+                }
+              />
+            </Route>
+            <Route path="/unauthorized" element={<Unauthorized />} />
+          </Routes>
+        </ThemeContextProvider>
       </AuthContextProvider>
     </Router>
   );

@@ -1,21 +1,27 @@
 @import url(../../utils/fonts/fonts.css);
 @import url(../../utils/colors/colors.css);
 
-[data-theme="dark"] {
-  --lightGray: var(--mediumBlack) !important;
-  --black: var(--cream) !important;
-}
 * {
   box-sizing: border-box;
 }
+
 .container_searchFlight {
   padding: 32px;
-  background-color: var(--lightGray);
+  background-color: var(--cream);
+  transition: all 0.25s ease-in-out;
 }
+
+#c_sf_dark {
+  background-color: var(--lightBlack);
+}
+
 .title {
   font-family: var(--Lalezar);
   font-size: 32px;
   font-weight: normal;
   padding: 8px;
   color: var(--black);
+}
+#h1_dark {
+  color: white;
 }

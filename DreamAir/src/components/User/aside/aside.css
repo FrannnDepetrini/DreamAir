@@ -4,11 +4,6 @@
   padding: 0px;
 }
 
-[data-theme="dark"] {
-  --platinium: rgba(0, 0, 0, 0.232) !important ;
-  --silver: white;
-}
-
 .container_aside {
   background-color: var(--cream);
   position: fixed;
@@ -19,19 +14,16 @@
   justify-content: center;
   overflow: hidden;
   width: 54px;
-  transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out, background-color 0.25s ease-in-out,
+    border-color 0.25s ease-in-out;
+}
+#ca_dark {
+  background-color: var(--lightBlack);
+  border-color: var(--mediumBlack);
 }
 
 .container_aside_open {
-  background-color: var(--cream);
-  position: fixed;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
   width: 180px;
-  transition: width 0.3s ease-in-out;
 }
 
 .container_aside:hover {
@@ -47,6 +39,7 @@
   margin-top: 8px;
   white-space: nowrap;
 }
+
 .container_button_flights_focus,
 .container_button_favs_focus,
 .container_button_my_flights_focus,
@@ -59,6 +52,25 @@
   margin-top: 8px;
   white-space: nowrap;
   background-color: var(--platinium);
+  transition: background-color 0.25s ease-in-out;
+}
+
+#ca_dark .container_button_flights_focus,
+.container_button_favs_focus,
+.container_button_my_flights_focus,
+.container_button_support_focus {
+  cursor: pointer;
+  width: 100%;
+  padding: 6px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 8px;
+  white-space: nowrap;
+  background-color: var(--mediumBlack);
+}
+
+#cb_dark:hover {
+  background-color: var(--mediumBlack) !important;
 }
 .container_button_flights_focus .icon,
 .container_button_my_flights_focus .icon,

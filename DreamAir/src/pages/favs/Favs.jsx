@@ -4,7 +4,7 @@ import { IoMdArrowDropdown } from "../../utils/icons/icons.js";
 
 import { useContext, useEffect, useState } from "react";
 
-import { AuthContext } from "../../services/authContext/authContext.jsx";
+import { AuthContext } from "../../services/authContext/AuthContext.jsx";
 import { useNavigate } from "react-router-dom";
 const Favs = ({ showModal }) => {
   const [loading, setLoading] = useState(true);

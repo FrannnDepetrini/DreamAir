@@ -6,8 +6,11 @@ import {
 } from "../../../utils/icons/icons";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../../../services/themeContext/ThemeContext";
+import { useContext } from "react";
 
 const SearchFlight = () => {
+  const { theme } = useContext(ThemeContext);
   const inputDateGoRef = useRef(null);
   const inputDateBackRef = useRef(null);
   const [travel, settravel] = useState("Idavuelta");
@@ -91,6 +94,7 @@ const SearchFlight = () => {
 
   return (
     <div
+      id={`${theme == "dark" ? "divContainer_dark" : ""}`}
       className={
         travel == "Idavuelta"
           ? "div_container_adjusted"

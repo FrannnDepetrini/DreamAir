@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../services/authContext/authContext";
+import { AuthContext } from "../../services/authContext/AuthContext";
 
 const Protected = ({ children, showModal, requiredRole }) => {
   const navigate = useNavigate();

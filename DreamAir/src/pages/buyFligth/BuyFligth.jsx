@@ -2,7 +2,7 @@ import "./BuyFligth.css";
 import { IoAirplaneSharp, FaArrowLeft } from "../../utils/icons/icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
-import { AuthContext } from "../../services/authContext/authContext.jsx";
+import { AuthContext } from "../../services/authContext/AuthContext.jsx";
 const BuyFligth = () => {
   const [activeIndex, setActiveIndex] = useState("");
   const [activeIndex1, setActiveIndex1] = useState("");
